@@ -13,7 +13,8 @@
         <!-- Include the footer here -->
         @include('admin.body.footer')
     </div>
-
+    <!-- <aside class="control-sidebar control-sidebar-dark"> -->
+    <!-- </aside> -->
     </body>
     <script>
     window.addEventListener('load', () => loadDark());
@@ -21,6 +22,7 @@
 
 
 <script>
+    $("#my-toggle-button").ControlSidebar('toggle');
     function toggleDark() {
         var element = document.getElementById("wholeBody")
         var element2 = document.getElementById("navBarToggle")

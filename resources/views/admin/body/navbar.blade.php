@@ -40,6 +40,7 @@
         </li>
       </ul>
     </li>
+
     <!-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="flag-icon flag-icon-us"></i>
@@ -71,9 +72,11 @@
         <i class="fas fa-th-large"></i>
       </a> -->
       <a class="nav-link" href="#" ><i id="darkIcon" onclick="toggleDark()" class="fa fa-moon"></i></a>
-
+      <!-- <a href="#" data-widget="control-sidebar">Toggle me</a> -->
+      <!-- <a href="#" data-widget="control-sidebar" data-controlsidebar-slide="false">Toggle Control Sidebar</a> -->
     </li>
   </ul>
 </nav>
 <!-- /.navbar -->
+
 @endif
