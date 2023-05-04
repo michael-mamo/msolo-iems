@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="10">
+    <meta http-equiv="refresh" content="3600">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Income and Expense Management System</title>
     <!-- Google Font: Source Sans Pro -->
