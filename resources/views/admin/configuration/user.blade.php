@@ -1,9 +1,9 @@
 @extends('admin.adminMaster')
 
 @section('content')
-@php 
+@php
 $userCount = 0;
-@endphp 
+@endphp
   <!-- Theme style -->
 <body class="hold-transition sidebar-mini dark-mode">
   <!-- Site wrapper -->
@@ -45,7 +45,7 @@ $userCount = 0;
                         </button>
                       </div>
                       <div class="modal-body">
-                      <form action = "{{route('user.add')}}" enctype ="multipart/form-data" method = "POST"> 
+                      <form action = "{{route('user.add')}}" enctype ="multipart/form-data" method = "POST">
                         @csrf
                         <div class="card-body">
                           <div class="row">
@@ -57,7 +57,7 @@ $userCount = 0;
                                 <span class = "text-danger text-sm">{{$message}}</span>
                                 @enderror
                             </div>
-                            <div class="col-md-6 col-6 col-sm-12 form-group">
+                            <div class="col-md-6 col-12 col-sm-12 form-group">
                               <label for="lastName"  class="text-sm">Last Name</label>
                               <input type="text" name = "lname" class="form-control form-control-sm" id="lastName"
                                 placeholder="Type father name here">
@@ -67,26 +67,36 @@ $userCount = 0;
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-md-6 col-6 col-sm-12 form-group">
-                              <label for="gender" class="text-sm">Gender</label>
-                              <select name = "gender" class="form-control form-control-sm" id="gender">
-                                <option value="">--Choose Gender--</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                              </select>
-                              @error('gender')
-                              <span class = "text-danger text-sm">{{$message}}</span>
-                              @enderror
-                            </div>
-                            <div class="col-md-6 col-6 col-sm-12 form-group">
-                              <label for="email" class="text-sm">Email</label>
-                              <input name = "email" required type="email" class="form-control form-control-sm" id="email"
-                                placeholder="Type your email here">
+                            <div class="col-md-12 col-12 col-sm-12 form-group">
+                                <label for="phone_number" class="text-sm">Phone Number</label>
+                                <input name = "email" required type="number" class="form-control form-control-sm" id="phone_number"
+                                placeholder="Type your phone number here as 09...">
                                 @error('email')
                                 <span class = "text-danger text-sm">{{$message}}</span>
                                 @enderror
                             </div>
-                          </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6 col-6 col-sm-12 form-group">
+                            <label for="email" class="text-sm">Email (optional)</label>
+                            <input type="email" name = "phoneNumber" class="form-control form-control-sm" id="email"
+                            placeholder="Type your email here">
+                            @error('phoneNumber')
+                            <span class = "text-danger text-sm">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6 col-6 col-sm-12 form-group">
+                            <label for="gender" class="text-sm">Gender</label>
+                            <select name = "gender" class="form-control form-control-sm" id="gender">
+                            <option value="">--Choose Gender--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            </select>
+                            @error('gender')
+                            <span class = "text-danger text-sm">{{$message}}</span>
+                            @enderror
+                        </div>
+                        </div>
                           <div class="row">
                             <div class="col-md-6 col-6 col-sm-12 form-group">
                               <label for="usertype" class="text-sm">User Type</label>
@@ -174,7 +184,7 @@ $userCount = 0;
                   </thead>
                   <tbody>
                       @foreach($userData as $key => $user)
-                      @php 
+                      @php
                       $userCount+=1;
                       $no = $key+1;
                       @endphp
@@ -293,7 +303,7 @@ $userCount = 0;
                               </div>
                             </div>
                           </div>
-                          
+
                           <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="editIsActive" name ="isActive" {{ $user->isactive == 1?"checked":""}}  >
                             <label class="form-check-label" for="editIsActive">Is Active</label>

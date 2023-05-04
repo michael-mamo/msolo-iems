@@ -59,13 +59,18 @@ class UserController extends Controller
     // Function to add user
     public function UserAdd(Request $request){
         $validatedData = $request->validate([
-            'email'=>'required|unique:users',
+            'email' => 'required|unique:users|string|min:9|max:10|regex:/[0-9]{9}/',
+            // 'email'=>'required|unique:users',
             'name'=>'required',
             'usertype' => 'required',
             'role' => 'required',
             'gender'=>'required',
-            'password' => 'required|confirmed',
-        ]);
+            'password' => 'required|confirmed'],
+            [
+                'email.min' => 'The phone number is invalid',
+                'email.max' => 'The phone number is invalid',
+                'email.unique' => 'The phone number is already registered'
+            ]);
         $data = new User();
         $data->name = $request->name;
         $data->lname = $request->lname;
@@ -85,6 +90,7 @@ class UserController extends Controller
             $data['profile_photo_path'] = $fileName;
         }
         $data->email = $request->email;
+        $data->phonenumber = $request->phoneNumber;
         $data->password = bcrypt($request->password);
         $data->save();
         $notification = array(
