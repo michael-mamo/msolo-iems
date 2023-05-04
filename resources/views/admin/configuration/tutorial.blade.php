@@ -113,7 +113,7 @@
                     <tr>
                       <td>{{$key+1}}</td>
                       <td>{{$tutorial->title}}</td>
-                      <td>{{$tutorial->subtitle}}</td> 
+                      <td>{{$tutorial->subtitle}}</td>
                       <td class="text-center"><video height="100px" width="100px" controls src="{{url('uploads/tutorials/'.$tutorial->file)}}"></video></td>
                       <td>@if($tutorial->isactive == '1')
                           Yes
@@ -222,8 +222,9 @@
   <!-- ./wrapper -->
   <script>
     $(function () {
-      $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
+        $("#example1").DataTable({
+        scrollX: true,
+        "responsive": false, "lengthChange": true, "autoWidth": false,
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
         "paging": true,

@@ -444,7 +444,8 @@
   <script>
     $(function () {
       $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
+        scrollX: true,
+        "responsive": false, "lengthChange": true, "autoWidth": false,
         "buttons": [{
                 extend: 'copyHtml5',
                 exportOptions: {

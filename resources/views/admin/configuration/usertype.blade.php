@@ -182,7 +182,7 @@
                     </tr>
                   </tfoot>
                 </table>
-                
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -197,8 +197,9 @@
   <!-- ./wrapper -->
   <script>
     $(function () {
-      $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
+        $("#example1").DataTable({
+        scrollX: true,
+        "responsive": false, "lengthChange": true, "autoWidth": false,
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
         "paging": true,
