@@ -8,7 +8,7 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Fill in the form to register</p>
-        <form action = "{{route('user.register')}}" enctype ="multipart/form-data" method = "POST"> 
+        <form action = "{{route('user.register')}}" enctype ="multipart/form-data" method = "POST">
           @csrf
           <div class="card-body">
             <div class="row">
@@ -42,8 +42,8 @@
                 @enderror
               </div>
               <div class="col-md-6 col-6 col-sm-12 form-group">
-                <label for="email" class="text-sm">Email</label>
-                <input name = "email" type="email" class="form-control form-control-sm" id="email"
+                <label for="email" class="text-sm">Phone Number</label>
+                <input name = "email" type="text" class="form-control form-control-sm" id="email"
                   placeholder="Type your email here">
                   @error('email')
                   <span class = "text-danger text-sm">{{$message}}</span>
@@ -153,8 +153,8 @@
 
 		case 'error':
 		toastr.error(" {{ Session::get('message') }} ");
-		break; 
+		break;
 	}
-	@endif 
+	@endif
 	</script>
 </html>
