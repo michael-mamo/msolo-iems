@@ -1,5 +1,6 @@
 @extends('admin.adminMaster')
 @section('content')
+@if(Auth::User()->isactive == '1')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -770,3 +771,12 @@
     });
 </script>
 @endsection
+
+@else
+<div class="alert alert-warning">
+    <h3 class="alert-title">Waiting for Approval</h3>
+    <div class="alert-body">
+        <p>Dear user, your account is waiting for approval. If the approval is waiting for too long please contact the admin <a href="https://t.me/solo_learner" target="_blank">Contact Admin</a></p>
+    </div>
+</div>
+@endif

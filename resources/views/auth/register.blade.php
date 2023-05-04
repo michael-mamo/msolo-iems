@@ -20,7 +20,7 @@
                   <span class = "text-danger text-sm">{{$message}}</span>
                   @enderror
               </div>
-              <div class="col-md-6 col-6 col-sm-12 form-group">
+              <div class="col-md-6 col-12 col-sm-12 form-group">
                 <label for="lastName"  class="text-sm">Last Name</label>
                 <input type="text" name = "lname" class="form-control form-control-sm" id="lastName"
                   placeholder="Type father name here">
@@ -30,6 +30,24 @@
               </div>
             </div>
             <div class="row">
+                <div class="col-md-12 col-12 col-sm-12 form-group">
+                    <label for="phone_number" class="text-sm">Phone Number</label>
+                    <input name = "email" required type="number" class="form-control form-control-sm" id="phone_number"
+                    placeholder="Type your phone number here as 09...">
+                    @error('email')
+                    <span class = "text-danger text-sm">{{$message}}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-6 col-sm-12 form-group">
+                <label for="email" class="text-sm">Email (optional)</label>
+                <input type="email" name = "phoneNumber" class="form-control form-control-sm" id="email"
+                  placeholder="Type your email here">
+                @error('phoneNumber')
+                <span class = "text-danger text-sm">{{$message}}</span>
+                @enderror
+              </div>
               <div class="col-md-6 col-6 col-sm-12 form-group">
                 <label for="gender" class="text-sm">Gender</label>
                 <select name = "gender" class="form-control form-control-sm" id="gender">
@@ -41,16 +59,8 @@
                 <span class = "text-danger text-sm">{{$message}}</span>
                 @enderror
               </div>
-              <div class="col-md-6 col-6 col-sm-12 form-group">
-                <label for="email" class="text-sm">Phone Number</label>
-                <input name = "email" type="text" class="form-control form-control-sm" id="email"
-                  placeholder="Type your email here">
-                  @error('email')
-                  <span class = "text-danger text-sm">{{$message}}</span>
-                  @enderror
-              </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-6 col-6 col-sm-12 form-group">
                 <label for="usertype" class="text-sm">Subscription Type</label>
                 <select disabled name="userType" class="form-control form-control-sm" id="usertype">
@@ -72,7 +82,7 @@
                 <span class = "text-danger text-sm">{{$message}}</span>
                 @enderror
               </div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-md-6 col-6 col-sm-12 form-group">
                 <label for="password" class="text-sm">Password</label>

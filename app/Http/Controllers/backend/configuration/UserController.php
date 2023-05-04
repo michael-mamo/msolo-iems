@@ -11,17 +11,24 @@ class UserController extends Controller
     // Function to register user from the outside
     public function UserRegister(Request $request){
         $validatedData = $request->validate([
-            'email'=>'required|unique:users',
+            'email' => 'required|unique:users|string|min:9|max:10|regex:/[0-9]{9}/',
+            // 'email'=>'required|unique:users',
             'name'=>'required',
             'gender'=>'required',
             'password' => 'required|confirmed',
+        ],
+        [
+            'email.min' => 'The phone number is invalid',
+            'email.max' => 'The phone number is invalid',
+            'email.unique' => 'The phone number is already registered'
         ]);
         $data = new User();
         $data->name = $request->name;
         $data->lname = $request->lname;
         $data->role = "User";
-        $data->usertype = $request->userType;
+        $data->usertype = 2;
         $data->gender = $request->gender;
+        $data->phonenumber = $request->phoneNumber;
         if($request->file('image')){
             $file = $request->file('image');
             $fileName = date('YmdHi').$file->getClientOriginalName();
