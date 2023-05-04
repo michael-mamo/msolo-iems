@@ -40,7 +40,7 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="flag-icon flag-icon-us"></i>
         </a>
@@ -58,7 +58,7 @@
             <i class="flag-icon flag-icon-es mr-2"></i> Spanish
           </a>
         </div>
-      </li>
+    </li> -->
     <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">
         <i class="fas fa-expand-arrows-alt"></i>

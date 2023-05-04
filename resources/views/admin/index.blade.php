@@ -778,5 +778,6 @@
     <div class="alert-body">
         <p>Dear user, your account is waiting for approval. If the approval is waiting for too long please contact the admin <a href="https://t.me/solo_learner" target="_blank">Contact Admin</a></p>
     </div>
+    <h4 class="text-danger"><a class="text-danger" href="{{ route('logout')}}">Logout</a></h4>
 </div>
 @endif
