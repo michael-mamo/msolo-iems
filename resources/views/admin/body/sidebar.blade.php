@@ -4,7 +4,8 @@ $route = Route::current()->getName();
 @endphp
 @if(Auth::User()->isactive == '1')
 <!-- Admin side bar -->
-<aside id="sidebarToggle" class="main-sidebar elevation-4">
+<!-- <aside id="sidebarToggle" class="main-sidebar elevation-4"> -->
+<aside class="main-sidebar dark-mode elevation-4">
   <!-- Brand Logo -->
   <a href="#" class="brand-link">
     <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
