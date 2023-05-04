@@ -34,14 +34,14 @@
           <span class = "text-sm text-danger"> {{ $message }}</span>
           @enderror
           <div class="row">
-            <div class="col-8">
+            <!-- <div class="col-8">
               <div class="icheck-primary">
                 <input type="checkbox" name = "rememberMe" id="remember">
                 <label for="remember">
                   Remember Me
                 </label>
               </div>
-            </div>
+            </div> -->
             <!-- /.col -->
             <div class="col-4">
               <button type="submit" name = "btnSignin" class="btn btn-primary btn-block">Sign In</button>
