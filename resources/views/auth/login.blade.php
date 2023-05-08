@@ -12,7 +12,7 @@
         <form action="{{ route('login')}}" method="POST">
             @csrf
           <div class="input-group mb-1">
-            <input id = "email" type="number" name = "email" class="form-control"  placeholder="Phone Number Here as 09********">
+            <input id = "email" type="text" name = "email" class="form-control"  placeholder="Phone Number Here as 09********">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-phone"></span>
