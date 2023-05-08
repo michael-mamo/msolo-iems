@@ -234,7 +234,7 @@ $userCount = 0;
                                   <span class = "text-danger text-sm">{{$message}}</span>
                                 @enderror
                               </div>
-                              <div class="col-md-6 col-6 col-sm-12 form-group">
+                              <div class="col-md-6 col-lg-6 col-sm-12 form-group">
                                 <label for="editLastName" class="text-sm">Last Name</label>
                                 <input type="text" name="lname" value="{{$user->lname}}" class="form-control form-control-sm" id="editLastName"
                                   placeholder="Type your father name here">
@@ -350,15 +350,6 @@ $userCount = 0;
         scrollX: true,
         "responsive": false, "lengthChange": true, "autoWidth": false,
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
     });
   </script>
   <script type="text/javascript">

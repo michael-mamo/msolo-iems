@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMysavingDepositsTable extends Migration
+class CreateReceivableTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMysavingDepositsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mysaving_deposits', function (Blueprint $table) {
+        Schema::create('receivable_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('savingid');
-            $table->date('date');
-            $table->double('amount', 15, 2);
+            $table->string('name')->unique();
+            $table->string('description')->nullable();
+            $table->boolean('isactive');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMysavingDepositsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mysaving_deposits');
+        Schema::dropIfExists('receivable_types');
     }
 }

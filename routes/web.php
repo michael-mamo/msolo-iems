@@ -11,11 +11,14 @@ use App\Http\Controllers\backend\configuration\IncomeTypeController;
 use App\Http\Controllers\backend\configuration\SavingTypeController;
 use App\Http\Controllers\backend\configuration\TutorialController;
 use App\Http\Controllers\backend\configuration\LiabilityTypeController;
+use App\Http\Controllers\backend\configuration\ReceivableTypeController;
 use App\Http\Controllers\backend\incomeExpense\MyIncomeController;
 use App\Http\Controllers\backend\incomeExpense\MyExpenseController;
 use App\Http\Controllers\backend\saving\MySavingController;
 use App\Http\Controllers\backend\liability\MyLiabilityController;
 use App\Http\Controllers\backend\liability\MyLiabilityPaymentController;
+use App\Http\Controllers\backend\receivable\MyReceivableController;
+use App\Http\Controllers\backend\receivable\MyReceivablePaymentController;
 use App\Http\Controllers\backend\saving\MySavingDepositController;
 use App\Http\Controllers\backend\saving\MySavingWithdrawalController;
 use App\Http\Controllers\backend\report\ReportController;
@@ -93,11 +96,17 @@ Route::prefix('configuration')->group(function(){
     Route::POST('tutorial/edit/{id}', [TutorialController::class, 'TutorialEdit'])->name('tutorial.edit');
     Route::get('tutorial/delete/{id}', [TutorialController::class, 'TutorialDelete'])->name('tutorial.delete');
 
-
+    // All liability routes
     Route::get('liabilityType/view', [LiabilityTypeController::class, 'LiabilityTypeView'])->name('liabilityType.view');
     Route::POST('liabilityType/add', [LiabilityTypeController::class, 'LiabilityTypeAdd'])->name('liabilityType.add');
     Route::POST('liabilityType/edit/{id}', [LiabilityTypeController::class, 'LiabilityTypeEdit'])->name('liabilityType.edit');
     Route::get('liabilityType/delete/{id}', [LiabilityTypeController::class, 'LiabilityTypeDelete'])->name('liabilityType.delete');
+
+    // All receivable routes
+    Route::get('receivableType/view', [ReceivableTypeController::class, 'ReceivableTypeView'])->name('receivableType.view');
+    Route::POST('receivableType/add', [ReceivableTypeController::class, 'ReceivableTypeAdd'])->name('receivableType.add');
+    Route::POST('receivableType/edit/{id}', [ReceivableTypeController::class, 'ReceivableTypeEdit'])->name('receivableType.edit');
+    Route::get('receivableType/delete/{id}', [ReceivableTypeController::class, 'ReceivableTypeDelete'])->name('receivableType.delete');
 
 });
 Route::prefix('incomeExpense')->group(function(){
@@ -143,6 +152,19 @@ Route::prefix('liability')->group(function(){
     Route::get('myLiabilityPayment/delete/{payid}', [MyLiabilityPaymentController::class, 'MyLiabilityPaymentDelete'])->name('myLiabilityPayment.delete');
 
 });
+Route::prefix('receivable')->group(function(){
+    // All my recievable routes
+    Route::get('myReceivable/view', [MyReceivableController::class, 'MyReceivableView'])->name('myReceivable.view');
+    Route::POST('myReceivable/add', [MyReceivableController::class, 'MyReceivableAdd'])->name('myReceivable.add');
+    Route::POST('myReceivable/edit/{id}', [MyReceivableController::class, 'MyReceivableEdit'])->name('myReceivable.edit');
+    Route::get('myReceivable/delete/{id}', [MyReceivableController::class, 'MyReceivableDelete'])->name('myReceivable.delete');
+
+    // All my recievable payment routes
+    Route::POST('myReceivablePayment/add/{id}', [MyReceivablePaymentController::class, 'MyReceivablePaymentAdd'])->name('myReceivablePayment.add');
+    Route::get('myReceivablePayment/delete/{payid}', [MyReceivablePaymentController::class, 'MyReceivablePaymentDelete'])->name('myReceivablePayment.delete');
+
+});
+
 Route::get('report/view', [ReportController::class, 'ReportView'])->name('report.view');
 Route::get('report/generate', [ReportController::class, 'ReportGenerate'])->name('report.generate');
 

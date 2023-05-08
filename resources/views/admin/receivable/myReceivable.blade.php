@@ -3,7 +3,6 @@
 <body class="hold-transition sidebar-mini dark-mode">
   <!-- Site wrapper -->
   <div class="wrapper">
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -11,12 +10,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>My Liability</h1>
+              <h1>My Receivable</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                <li class="breadcrumb-item active">My Liability</li>
+                <li class="breadcrumb-item active">My Receivable</li>
               </ol>
             </div>
           </div>
@@ -28,9 +27,9 @@
         <div class="row text-sm">
             <div class="col-md-12 col-12 callout callout-info">
                 <div class="text-center">
-                <h4 class = "text-gray float-left">My Liability Data</h4>
-                  <button type="button" class="btn btn-primary float-right btn-md" data-toggle="modal" data-target="#modal-newLiability">
-                    New Liability <span class="fa fa-plus"></span>
+                <h4 class = "text-gray float-left">My Receivable Data</h4>
+                  <button type="button" class="btn btn-primary float-right btn-md" data-toggle="modal" data-target="#modal-newReceivable">
+                    New Receivable <span class="fa fa-plus"></span>
                   </button>
                 </div>
             </div>
@@ -43,8 +42,8 @@
                 <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">What I payed </span>
-                    <span class="info-box-number">{{number_format($payedAmount, 2, '.', ',')}}</span>
+                    <span class="info-box-text">What I Lent </span>
+                    <span class="info-box-number">{{number_format($totalAmount, 2, '.', ',')}}</span>
                     <div class="progress">
                     <div class="progress-bar" ></div>
                     </div>
@@ -58,9 +57,8 @@
                 <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">What I Borrowed</span>
-                    <span class="info-box-number">{{number_format($totalAmount, 2, '.', ',')}}</span>
-
+                    <span class="info-box-text">What I Received</span>
+                    <span class="info-box-number">{{number_format($receivedAmount, 2, '.', ',')}}</span>
                     <div class="progress">
                     <div class="progress-bar"></div>
                     </div>
@@ -75,8 +73,8 @@
               <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">What I Owe</span>
-                <span class="info-box-number">{{number_format($oweAmount, 2, '.', ',')}}</span>
+                <span class="info-box-text">What I Will Receive</span>
+                <span class="info-box-number">{{number_format($willReceiveAmount, 2, '.', ',')}}</span>
 
                 <div class="progress">
                   <div class="progress-bar"></div>
@@ -95,69 +93,69 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-                <div class="modal fade" id="modal-newLiability">
+                <div class="modal fade" id="modal-newReceivable">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title">Add New Liability </h4>
+                        <h4 class="modal-title">Add New Receivable </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                      <form method="POST" action="{{route('myLiability.add')}}">
-                                            @csrf
-                                            <div class="card-body card_addliability" id="card_addliability">
-                                                <div class="form-group">
-                                                    <label for="date">Date</label>
-                                                    <input name='date' required type="date"
-                                                        class="form-control form-control-sm" id="date">
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                                        <div class="row mb-0">
-                                                            <div class="form-group col-6">
-                                                                <select required name="liabilityType[]"
-                                                                    class="form-control form-control-sm"
-                                                                    id="liabilityType">
-                                                                    <option value="">--Liability Type--</option>
-                                                                    @foreach($liabilityTypeData as $liabilityType)
-                                                                    <option value="{{$liabilityType->id}}">
-                                                                        {{$liabilityType->name}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group col-6">
-                                                                <input name='lender[]' required type="text"
-                                                                    class="form-control form-control-sm" id="lender" placeholder="Lender Name Here">
-                                                            </div>
-                                                            <div class="form-group col-6">
-                                                                <input name="amount[]" type="number" min=0 step=".01"
-                                                                    class="form-control form-control-sm" id="amount"
-                                                                    placeholder="Amount in birr">
-                                                            </div>
-                                                            <div class="form-group col-6">
-                                                                <input name="duration[]" type="number" min=0 step=".01"
-                                                                    class="form-control form-control-sm" id="duration"
-                                                                    placeholder="Duration in Days">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                                        <textarea name="description[]" id="" rows="3"
-                                                            class="form-control form-control-sm"
-                                                            placeholder="Some description about the liability"></textarea>
-                                                    </div>
-                                                    <div class="mb-2 mt-2 col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center">
-                                                        <span id="addliability" class="btn btn-success btn-sm addliability"><span
-                                                                class="fas fa-plus"></span></span>
-                                                    </div>
-                                                </div>
+                      <form method="POST" action="{{route('myReceivable.add')}}">
+                            @csrf
+                            <div class="card-body card_addreceivable" id="card_addreceivable">
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input name='date' required type="date"
+                                        class="form-control form-control-sm" id="date">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="row mb-0">
+                                            <div class="form-group col-6">
+                                                <select required name="receivableType[]"
+                                                    class="form-control form-control-sm"
+                                                    id="receivableType">
+                                                    <option value="">--Receivable Type--</option>
+                                                    @foreach($receivableTypeData as $receivableType)
+                                                    <option value="{{$receivableType->id}}">
+                                                        {{$receivableType->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                            <div class="form-group text-center">
-                                                <button type="submit" class="btn btn-primary">Add Liability</button>
+                                            <div class="form-group col-6">
+                                                <input name='borrower[]' required type="text"
+                                                    class="form-control form-control-sm" id="borrower" placeholder="Borrower Name Here">
                                             </div>
-                                        </form>
+                                            <div class="form-group col-6">
+                                                <input name="amount[]" type="number" min=0 step=".01"
+                                                    class="form-control form-control-sm" id="amount"
+                                                    placeholder="Amount in birr">
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <input name="duration[]" type="number" min=0 step=".01"
+                                                    class="form-control form-control-sm" id="duration"
+                                                    placeholder="Duration in Days">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                        <textarea name="description[]" id="" rows="3"
+                                            class="form-control form-control-sm"
+                                            placeholder="Some description about the receivable"></textarea>
+                                    </div>
+                                    <div class="mb-2 mt-2 col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center">
+                                        <span id="addreceivable" class="btn btn-success btn-sm addreceivable"><span
+                                                class="fas fa-plus"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Add Reveivable</button>
+                            </div>
+                        </form>
                       </div>
                     </div>
                     <!-- /.modal-content -->
@@ -170,98 +168,98 @@
                     <tr>
                       <th>No</th>
                       <th>Date</th>
-                      <th>Lender</th>
-                      <th>Liability Type</th>
+                      <th>Borrower</th>
+                      <th>Receivable Type</th>
                       <th>Total Amount</th>
-                      <th>Amount Payed</th>
+                      <th>Amount Recieved</th>
                       <th>Amount Left</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($myLiabilityData as $keyone=>$myLiability)
+                    @foreach($myReceivableData as $keyone=>$myReceivable)
                         @php
-                            $thisPayedAmount = 0.00;
+                            $thisReceivedAmount = 0.00;
                             $thisLeftAmount = 0.00;
                         @endphp
-                        @foreach($myLiabilityPaymentData as $key=>$payment)
-                            @if($payment->liabilityid == $myLiability->id)
+                        @foreach($myReceivablePaymentData as $key=>$received)
+                            @if($received->receivableid == $myReceivable->id)
                                 @php
-                                    $thisPayedAmount += $payment->amount;
+                                    $thisReceivedAmount += $received->amount;
                                 @endphp
                             @endif
                         @endforeach
                         @php
-                            $thisLeftAmount = $myLiability->amount - $thisPayedAmount;
+                            $thisLeftAmount = $myReceivable->amount - $thisReceivedAmount;
                         @endphp
                     <tr>
                       <td>{{$keyone+1}}</td>
-                      <td>{{$myLiability->date}}</td>
-                      <td>{{$myLiability->lender}}</td>
-                      <td>{{$myLiability['LiabilityType']['name'] }}</td>
-                      <td>{{$myLiability->amount}}</td>
-                      <td>{{$thisPayedAmount}}</td>
+                      <td>{{$myReceivable->date}}</td>
+                      <td>{{$myReceivable->lender}}</td>
+                      <td>{{$myReceivable['ReceivableType']['name'] }}</td>
+                      <td>{{$myReceivable->amount}}</td>
+                      <td>{{$thisReceivedAmount}}</td>
                       <td>{{$thisLeftAmount}}</td>
                       <td class="text-center">
                         <div class="btn-group bg-success">
                           <button type="button" class="btn btn-sm btn-secondary float-left" data-toggle="modal"
-                            data-target="#modal-editMyliability{{$myLiability->id}}">
+                            data-target="#modal-editmyReceivable{{$myReceivable->id}}">
                             <i class="fas fa-edit"></i></span>
                           </button>
                           <button type="button" class="btn btn-sm btn-success float-left" data-toggle="modal"
-                            data-target="#modal-payLiability{{$myLiability->id}}">
+                            data-target="#modal-payReceivable{{$myReceivable->id}}">
                             <i class="fas fa-plus"></i></span>
                           </button>
-                          <a id='delete' href="{{route('myLiability.delete', $myLiability->id)}}"  type="button" class="btn btn-sm btn-danger">
+                          <a id='delete' href="{{route('myReceivable.delete', $myReceivable->id)}}"  type="button" class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                           </a>
                         </div>
                       </td>
                     </tr>
-                    <div class="modal fade text-left" id="modal-editMyliability{{$myLiability->id}}">
+                    <div class="modal fade text-left" id="modal-editmyReceivable{{$myReceivable->id}}">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Edit My Liability</h4>
+                            <h4 class="modal-title">Edit My Receivable</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            <form action="{{route('myLiability.edit', $myLiability->id)}}" method="POST">
+                            <form action="{{route('myReceivable.edit', $myReceivable->id)}}" method="POST">
                               @csrf
                               <div class="card-body">
                                 <div class="form-group">
                                   <label for="date">Date</label>
-                                  <input name='date' value="{{$myLiability->date}}" type="date" class="form-control" id="date">
+                                  <input name='date' value="{{$myReceivable->date}}" type="date" class="form-control" id="date">
                                 </div>
                                 <div class="form-group">
-                                  <label for="lender">Lender</label>
-                                  <input name='lender' value="{{$myLiability->lender}}" type="text" class="form-control" id="lender">
+                                  <label for="borrower">Borrower</label>
+                                  <input name='borrower' value="{{$myReceivable->borrower}}" type="text" class="form-control" id="borrower">
                                 </div>
                                 <div class="form-group">
-                                  <label for="editLiabilityType">Liability Type</label>
-                                  <select name="liabilityTypeId" class="form-control" id="editLiabilityType">
-                                    <option value="">--Liability Type</option>
-                                    @foreach($liabilityTypeData as $liabilityType)
-                                    <option {{$liabilityType->id == $myLiability->liabilitytypeid?"selected":""}} value="{{$liabilityType->id}}">{{$liabilityType->name}}</option>
+                                  <label for="editReveivableType">Reveivable Type</label>
+                                  <select name="receivableTypeId" class="form-control" id="editReveivableType">
+                                    <option value="">--Reveivable Type</option>
+                                    @foreach($receivableTypeData as $receivableType)
+                                    <option {{$receivableType->id == $myReceivable->receivabletypeid?"selected":""}} value="{{$receivableType->id}}">{{$receivableType->name}}</option>
                                     @endforeach
                                   </select>
                                 </div>
                                 <div class="form-group">
                                   <label for="editAmount">Amount</label>
-                                  <input name='amount' value="{{$myLiability->amount}}" type="number" min=0 step=".01" class="form-control" id="editAmount"
+                                  <input name='amount' value="{{$myReceivable->amount}}" type="number" min=0 step=".01" class="form-control" id="editAmount"
                                     placeholder="Amount in birr">
                                 </div>
                                 <div class="form-group">
                                   <label for="editDuration">Duration</label>
-                                  <input name='duration' value="{{$myLiability->duration}}" type="number" min=0 step=".01" class="form-control" id="editDuration"
+                                  <input name='duration' value="{{$myReceivable->duration}}" type="number" min=0 step=".01" class="form-control" id="editDuration"
                                     placeholder="Duration in Days">
                                 </div>
                                 <div class="form-group">
                                   <label for="description">Description</label>
                                   <textarea name='description' class="form-control" rows="4" id="description"
-                                    placeholder="Type some description about the liability">{{$myLiability->description}}</textarea>
+                                    placeholder="Type some description about the receivable">{{$myReceivable->description}}</textarea>
                                 </div>
                               </div>
                               <!-- /.card-body -->
@@ -281,10 +279,10 @@
                     <tr>
                     <th>No</th>
                       <th>Date</th>
-                      <th>Lender</th>
-                      <th>Liability Type</th>
+                      <th>Borrower</th>
+                      <th>Receivable Type</th>
                       <th>Total Amount</th>
-                      <th>Amount Payed</th>
+                      <th>Amount Reveived</th>
                       <th>Amount Left</th>
                       <th>Action</th>
                     </tr>
@@ -298,27 +296,27 @@
           </div>
         </div>
             <div style="visibility:hidden;">
-                <div class="whole_extra_item_add_liability"
-                    id="whole_extra_item_add_liability">
-                    <div class="delete_extra_item_liability" id="delete_extra_item_liability">
+                <div class="whole_extra_item_add_receivable"
+                    id="whole_extra_item_add_receivable">
+                    <div class="delete_extra_item_receivable" id="delete_extra_item_receivable">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <select required name="liabilityType[]"
+                                        <select required name="receivableType[]"
                                             class="form-control form-control-sm"
-                                            id="liabilityType">
+                                            id="receivableType">
                                             <option value="">--liability Type--
                                             </option>
-                                            @foreach($liabilityTypeData as $liabilityType)
-                                            <option value="{{$liabilityType->id}}">
-                                                {{$liabilityType->name}}</option>
+                                            @foreach($receivableTypeData as $receivableType)
+                                            <option value="{{$receivableType->id}}">
+                                                {{$receivableType->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-6">
-                                        <input name='lender[]' required type="text"
-                                            class="form-control form-control-sm" id="lender" placeholder="Lender Name Here">
+                                        <input name='borrower[]' required type="text"
+                                            class="form-control form-control-sm" id="borrower" placeholder="Borrower Name Here">
                                     </div>
                                     <div class="form-group col-6">
                                         <input name="amount[]" type="number" min=0
@@ -339,12 +337,12 @@
                             <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                 <textarea name="description[]" id="" rows="3"
                                     class="form-control form-control-sm"
-                                    placeholder="Some description about the liability"></textarea>
+                                    placeholder="Some description about the receivable"></textarea>
                             </div>
                             <div class="mt-2 mb-2 col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center">
-                                <span id="addliability" class="btn btn-success btn-sm addliability"><span
+                                <span id="addreceivable" class="btn btn-success btn-sm addreceivable"><span
                                         class="fas fa-plus"></span></span>
-                                <span id="removeliability" class="btn btn-danger btn-sm removeliability"><span
+                                <span id="removereceivable" class="btn btn-danger btn-sm removereceivable"><span
                                         class="fas fa-minus"></span></span>
                             </div>
                         </div>
@@ -354,12 +352,12 @@
         </div>
       </section>
   </div>
-  @foreach($myLiabilityData as $key=>$myLiability)
-  <div class="modal fade text-left" id="modal-payLiability{{$myLiability->id}}">
+  @foreach($myReceivableData as $key=>$myReceivable)
+  <div class="modal fade text-left" id="modal-payReceivable{{$myReceivable->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title">Liability Payment</h4>
+            <h4 class="modal-title">Reveivable Payment</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -378,8 +376,8 @@
                     @php
                     $paymentMade = 0;
                     @endphp
-                    @foreach($myLiabilityPaymentData as $key=>$payment)
-                    @if($payment->liabilityid == $myLiability->id)
+                    @foreach($myReceivablePaymentData as $key=>$payment)
+                    @if($payment->receivableid == $myReceivable->id)
                     @php
                     $paymentMade += $payment->amount;
                     @endphp
@@ -388,7 +386,7 @@
                     <td>{{$payment->amount}}</td>
                     <td class="text-center">
                         <div class="btn-group bg-success">
-                        <a id='delete' href="{{route('myLiabilityPayment.delete', $payment->id)}}"  type="button" class="btn btn-sm btn-danger">
+                        <a id='delete' href="{{route('myReceivablePayment.delete', $payment->id)}}"  type="button" class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                         </a>
                         </div>
@@ -398,7 +396,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <form action="{{route('myLiabilityPayment.add', $myLiability->id)}}" method="POST">
+            <form action="{{route('myReceivablePayment.add', $myReceivable->id)}}" method="POST">
                 @csrf
                 <div class="card-body">
                 <div class="form-group">
@@ -407,11 +405,11 @@
                 </div>
                 <div class="form-group">
                     <label for="editAmount">Amount</label>
-                    <input name='amount' required type="number" min=0 step=".01" max="{{$myLiability->amount - $paymentMade}}" class="form-control" id="editAmount"
+                    <input name='amount' required type="number" min=0 step=".01" max="{{$myReceivable->amount - $paymentMade}}" class="form-control" id="editAmount"
                     placeholder="Amount in birr">
                 </div>
                 <div class="form-group">
-                    <label for="editAmount" class="text-danger">Left upaid Amount: {{$myLiability->amount - $paymentMade}} Birr</label>
+                    <label for="editAmount" class="text-danger">Left upaid Amount: {{$myReceivable->amount - $paymentMade}} Birr</label>
                 </div>
                 </div>
                 <!-- /.card-body -->
@@ -432,12 +430,12 @@
   <script src="assets/plugins/toastr/toastr.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
-        $(document).on('click', '.addliability', function(){
-            var whole_extra_item_add_liability = $('#whole_extra_item_add_liability').html();
-            $(".card_addliability").append(whole_extra_item_add_liability);
+        $(document).on('click', '.addreceivable', function(){
+            var whole_extra_item_add_receivable = $('#whole_extra_item_add_receivable').html();
+            $(".card_addreceivable").append(whole_extra_item_add_receivable);
         });
         $(document).on('click', '.removeliability', function(event) {
-            $(this).closest(".delete_extra_item_liability").remove();
+            $(this).closest(".delete_extra_item_receivable").remove();
         });
     });
 </script>
@@ -451,21 +449,21 @@
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s liability as of date {{$todayDate}}'
+                title: '{{$fullName}} \'s receivable as of date {{$todayDate}}'
             },
             {
                 extend: 'excelHtml5',
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s liability as of date {{$todayDate}}'
+                title: '{{$fullName}} \'s receivable as of date {{$todayDate}}'
             },
             {
                 extend: 'pdfHtml5',
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s liability as of date {{$todayDate}}',
+                title: '{{$fullName}} \'s receivable as of date {{$todayDate}}',
                 customize: function (doc) {
                     doc.content[1].table.widths =
                         Array(doc.content[1].table.body[0].length + 1).join('*').split('');
@@ -476,14 +474,14 @@
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s liability as of date {{$todayDate}}'
+                title: '{{$fullName}} \'s receivable as of date {{$todayDate}}'
             },
             {
               extend: 'print',
                 exportOptions: {
                     columns: ':visible',
                 },
-                title: '{{$fullName}} \'s liability as of date {{$todayDate}}'
+                title: '{{$fullName}} \'s receivable as of date {{$todayDate}}'
             },
             'colvis'
                 ]

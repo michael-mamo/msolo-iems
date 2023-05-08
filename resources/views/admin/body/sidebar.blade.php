@@ -99,6 +99,12 @@ $route = Route::current()->getName();
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{route('receivableType.view')}}" class="nav-link {{ ($route == 'receivableType.view')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Receivable Type</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('tutorial.view') }}" class="nav-link {{ ($route == 'tutorial.view')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tutorial</p>
@@ -155,6 +161,14 @@ $route = Route::current()->getName();
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{route('myReceivable.view')}}" class="nav-link {{ ($route == 'myReceivable.view')?'active':''}}">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              My Receivable
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{route('mySaving.view')}}" class="nav-link {{ ($route == 'mySaving.view')?'active':''}}">
             <i class="nav-icon fas fa-piggy-bank"></i>
             <p>
@@ -198,22 +212,22 @@ $route = Route::current()->getName();
           </a>
         </li>
         @endif
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="{{route('help.tutorial')}}" class="nav-link {{ ($route == 'help.tutorial')?'active':''}}">
             <i class="nav-icon fas fa-question-circle"></i>
             <p>
               Help
             </p>
           </a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a href="developer.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>
               Developer/s
             </p>
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </div>
