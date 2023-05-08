@@ -59,7 +59,7 @@
                                                         class="form-control form-control-sm" id="date">
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                                                         <div class="row mb-0">
                                                             <div class="form-group col-12">
                                                                 <select required name="incomeType[]"
@@ -79,12 +79,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-5">
+                                                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                                                         <textarea name="description[]" id="" rows="3"
                                                             class="form-control form-control-sm"
                                                             placeholder="Some description about the income"></textarea>
                                                     </div>
-                                                    <div class="col-2 text-center">
+                                                    <div class="mt-2 mb-2 col-xs-12 col-sm-12 col-md-2 col-lg-2 text-center">
                                                         <span id="addincome" class="btn btn-success btn-sm addincome"><span
                                                                 class="fas fa-plus"></span></span>
                                                     </div>
@@ -137,7 +137,7 @@
                                                         class="form-control form-control-sm" id="date">
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
                                                         <div class="row mb-0">
                                                             <div class="form-group col-12">
                                                                 <select required name="expenseType[]"
@@ -157,12 +157,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-5">
+                                                    <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
                                                         <textarea name="description[]" id="" rows="3"
                                                             class="form-control form-control-sm"
                                                             placeholder="Some description about the expense"></textarea>
                                                     </div>
-                                                    <div class="col-2 text-center">
+                                                    <div class="mb-2 mt-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
                                                         <span id="addexpense" class="btn btn-success btn-sm addexpense"><span
                                                                 class="fas fa-plus"></span></span>
                                                     </div>
@@ -450,7 +450,7 @@
                         id="whole_extra_item_add_income">
                         <div class="delete_extra_item_income" id="delete_extra_item_income">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
                                     <div class="row">
                                         <div class="form-group col-12">
                                             <select required name="incomeType[]"
@@ -473,12 +473,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
                                     <textarea name="description[]" id="" rows="3"
                                         class="form-control form-control-sm"
                                         placeholder="Some description about the income"></textarea>
                                 </div>
-                                <div class="col-2 text-center">
+                                <div class="mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
                                     <span id="addincome" class="btn btn-success btn-sm addincome"><span
                                             class="fas fa-plus"></span></span>
                                     <span id="removeincome" class="btn btn-danger btn-sm removeincome"><span
@@ -493,7 +493,7 @@
                         id="whole_extra_item_add_expense">
                         <div class="delete_extra_item_expense" id="delete_extra_item_expense">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
                                     <div class="row">
                                         <div class="form-group col-12">
                                             <select required name="expenseType[]"
@@ -516,12 +516,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
                                     <textarea name="description[]" id="" rows="3"
                                         class="form-control form-control-sm"
                                         placeholder="Some description about the expense"></textarea>
                                 </div>
-                                <div class="col-2 text-center">
+                                <div class="mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
                                     <span id="addexpense" class="btn btn-success btn-sm addexpense"><span
                                             class="fas fa-plus"></span></span>
                                     <span id="removeexpense"

@@ -1,6 +1,7 @@
 @include('admin.body.header')
 @include('admin.body.script')
-<body class="hold-transition login-page dark-mode">
+<!-- <body class="hold-transition login-page dark-mode"> -->
+<body class="hold-transition login-page">
   <div>
     <div class="card card-outline card-primary">
       <div class="card-header text-center">

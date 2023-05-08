@@ -114,7 +114,7 @@
                                                         class="form-control form-control-sm" id="date">
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                                         <div class="row mb-0">
                                                             <div class="form-group col-6">
                                                                 <select required name="liabilityType[]"
@@ -143,12 +143,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-5">
+                                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                                         <textarea name="description[]" id="" rows="3"
                                                             class="form-control form-control-sm"
                                                             placeholder="Some description about the liability"></textarea>
                                                     </div>
-                                                    <div class="col-2 text-center">
+                                                    <div class="mb-2 mt-2 col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center">
                                                         <span id="addliability" class="btn btn-success btn-sm addliability"><span
                                                                 class="fas fa-plus"></span></span>
                                                     </div>
@@ -302,7 +302,7 @@
                     id="whole_extra_item_add_liability">
                     <div class="delete_extra_item_liability" id="delete_extra_item_liability">
                         <div class="row">
-                            <div class="col-5">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <select required name="liabilityType[]"
@@ -336,12 +336,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                 <textarea name="description[]" id="" rows="3"
                                     class="form-control form-control-sm"
                                     placeholder="Some description about the liability"></textarea>
                             </div>
-                            <div class="col-2 text-center">
+                            <div class="mt-2 mb-2 col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center">
                                 <span id="addliability" class="btn btn-success btn-sm addliability"><span
                                         class="fas fa-plus"></span></span>
                                 <span id="removeliability" class="btn btn-danger btn-sm removeliability"><span
