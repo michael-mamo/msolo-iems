@@ -72,7 +72,7 @@
               <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">This Month Income ({{$todayMonth}})</span>
+                <span class="info-box-text">This Month Expense ({{$todayMonth}})</span>
                 <span class="info-box-number">{{number_format($thisMonthExpense, 2, '.', ',')}}</span>
                 <div class="progress">
                   <div class="progress-bar" style="width: {{$differenceInMonth}}%"></div>
@@ -101,7 +101,7 @@
               <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">This Year Income ({{$todayYear}})</span>
+                <span class="info-box-text">This Year Expense ({{$todayYear}})</span>
                 <span class="info-box-number">{{number_format($thisYearExpense, 2, '.', ',')}}</span>
 
                 <div class="progress">
@@ -156,7 +156,7 @@
                                             <div class="form-group col-12">
                                                 <select required name="expenseType[]"
                                                     class="form-control form-control-sm"
-                                                    id="incomeType">
+                                                    id="expenseType">
                                                     <option value="">--Choose Expense Type--</option>
                                                     @foreach($expenseTypeData as $expenseType)
                                                     <option value="{{$expenseType->id}}">
@@ -258,7 +258,7 @@
                                 <div class="form-group">
                                   <label for="description">Description</label>
                                   <textarea name='description' class="form-control" rows="4" id="description"
-                                    placeholder="Type some description about the income">{{$myExpense->description}}</textarea>
+                                    placeholder="Type some description about the expense">{{$myExpense->description}}</textarea>
                                 </div>
                               </div>
                               <!-- /.card-body -->

@@ -24,7 +24,7 @@
       </section>
       <!-- Main content -->
       <section class="content">
-        <!-- Button for new expense -->
+        <!-- Button for new income -->
         <div class="row text-sm">
             <div class="col-md-12 col-12 callout callout-info">
                 <div class="text-center">
@@ -36,7 +36,7 @@
             </div>
         </div>
         <!-- row -->
-        <!-- Genetal expense widgets -->
+        <!-- Genetal income widgets -->
         <div class="row">
           <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box bg-orange">
@@ -279,7 +279,7 @@
                     <tr>
                       <th>No</th>
                       <th>Date</th>
-                      <th>Expense Type</th>
+                      <th>Income Type</th>
                       <th>Amount</th>
                       <th>Description</th>
                       <th>Action</th>
