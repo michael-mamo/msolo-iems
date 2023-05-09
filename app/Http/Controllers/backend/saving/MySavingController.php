@@ -18,7 +18,7 @@ class MySavingController extends Controller
     public function MySavingView(){
         $userId = Auth::user()->id;
         $data['mySavingData'] = MySaving::where('userid', $userId)->orderByRaw("FIELD(status,'In Progress') DESC")->orderBy("status","asc")->get();
-        $data['savingTypeData'] = SavingType::all();
+        $data['savingTypeData'] = SavingType::where('isactive', 1)->orderby('name')->get();
         $data['mySavingDepositData'] = MySavingDeposit::all();
         $data['mySavingWithdrawalData'] = MySavingWithdrawal::all();
         return view('admin.saving.mySaving', $data);

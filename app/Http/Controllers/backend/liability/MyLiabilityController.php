@@ -23,7 +23,7 @@ class MyLiabilityController extends Controller
         $data['totalAmount'] = MyLiability::where('userid', $userId)->sum('amount');
         $data['oweAmount'] = $data['totalAmount'] - $data['payedAmount'];
         $data['myLiabilityData'] = MyLiability::where('userid',$userId)->get();
-        $data['liabilityTypeData'] = LiabilityType::all();
+        $data['liabilityTypeData'] = LiabilityType::where('isactive', 1)->orderby('name')->get();
         $data['myLiabilityPaymentData'] = MyLiabilityPayment::all();
         return view('admin.liability.myLiability', $data);
     }

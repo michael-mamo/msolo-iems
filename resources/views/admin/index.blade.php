@@ -64,7 +64,7 @@
                                                             <div class="form-group col-12">
                                                                 <select required name="incomeType[]"
                                                                     class="form-control form-control-sm"
-                                                                    id="incomeType">
+                                                                    id="incomeType" style="width: 100%;">
                                                                     <option value="">--Choose Income Type--</option>
                                                                     @foreach($incomeTypeData as $incomeType)
                                                                     <option value="{{$incomeType->id}}">
@@ -215,7 +215,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="savingType">Saving Type</label>
-                                                    <select id="savingType" name = "savingType" class="form-control">
+                                                    <select id="savingType" name = "savingType" class="selectThird form-control">
                                                     <option value="">--Choose Saving Type--</option>
                                                     @foreach($savingTypeData as $savingType)
                                                     <option value="{{$savingType->id}}">{{$savingType->name}}</option>
@@ -753,6 +753,9 @@
   })
 </script>
 <script type="text/javascript">
+
+
+
     $(document).ready(function(){
         $(document).on('click', '.addincome', function(){
             var whole_extra_item_add_income = $('#whole_extra_item_add_income').html();
@@ -761,6 +764,8 @@
         $(document).on('click', '.removeincome', function(event) {
             $(this).closest(".delete_extra_item_income").remove();
         });
+
+
         $(document).on('click', '.addexpense', function() {
             var whole_extra_item_add_expense = $('#whole_extra_item_add_expense').html();
             $(this).closest(".card_addexpense").append(whole_extra_item_add_expense);
@@ -769,6 +774,7 @@
             $(this).closest(".delete_extra_item_expense").remove();
         });
     });
+
 </script>
 @endsection
 

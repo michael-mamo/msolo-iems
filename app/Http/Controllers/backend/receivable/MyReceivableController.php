@@ -23,7 +23,7 @@ class MyReceivableController extends Controller
         $data['totalAmount'] = MyReceivable::where('userid', $userId)->sum('amount');
         $data['willReceiveAmount'] = $data['totalAmount'] - $data['receivedAmount'];
         $data['myReceivableData'] = MyReceivable::where('userid',$userId)->get();
-        $data['receivableTypeData'] = ReceivableType::all();
+        $data['receivableTypeData'] = ReceivableType::where('isactive', 1)->orderby('name')->get();
         $data['myReceivablePaymentData'] = MyReceivablePayment::all();
         return view('admin.receivable.myReceivable', $data);
     }

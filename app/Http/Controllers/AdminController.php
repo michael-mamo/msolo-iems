@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
-use App\Models\UserType;
+use App\Models\Usertype;
 use App\Models\IncomeType;
 use App\Models\ExpenseType;
 use carbon\Carbon;
@@ -30,9 +30,9 @@ class AdminController extends Controller
         $data['activeUserCount'] = User::where('isactive','1')->count();
         $data['inActiveUserCount'] = User::where('isactive','0')->count();
         // Get the user type info
-        $data['userTypeCount'] = UserType::all()->count();
-        $data['activeUserTypeCount'] = UserType::where('isactive','1')->count();
-        $data['inActiveUserTypeCount'] = UserType::where('isactive','0')->count();
+        $data['userTypeCount'] = Usertype::all()->count();
+        $data['activeUserTypeCount'] = Usertype::where('isactive','1')->count();
+        $data['inActiveUserTypeCount'] = Usertype::where('isactive','0')->count();
         // Get income type info
         $data['incomeTypeCount'] = IncomeType::all()->count();
         $data['activeIncomeTypeCount'] = IncomeType::where('isactive','1')->count();

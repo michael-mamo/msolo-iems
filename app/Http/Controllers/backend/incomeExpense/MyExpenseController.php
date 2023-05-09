@@ -129,7 +129,7 @@ class MyExpenseController extends Controller
         $data['differenceInYear'] = $differenceInYear;
         $data['myExpenseData'] = MyExpense::where('userid',$userId)
                                   ->whereYear('date', $todayYear)->orwhereYear('date', $lastYear)->get();
-        $data['expenseTypeData'] = ExpenseType::where('isactive', 1)->get();
+        $data['expenseTypeData'] = ExpenseType::where('isactive', 1)->orderby('name')->get();
         return view('admin.incomeExpense.myExpense', $data);
     }
     // Function to add income

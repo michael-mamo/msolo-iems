@@ -19,9 +19,9 @@ class MyDashboardController extends Controller
         $id = Auth::User()->id;
         // Get date infomration
         $data['myIncomeData'] = MyIncome::where('userid',$id)->get();
-        $data['incomeTypeData'] = IncomeType::where('isactive', 1)->get();
-        $data['expenseTypeData'] = ExpenseType::where('isactive', 1)->get();
-        $data['savingTypeData'] = SavingType::where('isactive', 1)->get();
+        $data['incomeTypeData'] = IncomeType::where('isactive', 1)->orderby('name')->get();
+        $data['expenseTypeData'] = ExpenseType::where('isactive', 1)->orderby('name')->get();
+        $data['savingTypeData'] = SavingType::where('isactive', 1)->orderby('name')->get();
         $data['todayDate'] = Carbon::today()->format('Y-m-d');
         $data['day'] = Carbon::today()->format('d l');
         $data['month'] = Carbon::today()->format('F');

@@ -87,7 +87,7 @@ class MyIncomeController extends Controller
         $data['thisYearIncome']= $thisYearIncome;
         $data['differenceInYear'] = $differenceInYear;
         $data['myIncomeData'] = MyIncome::where('userid',$userId)->get();
-        $data['incomeTypeData'] = IncomeType::where('isactive', 1)->get();
+        $data['incomeTypeData'] = IncomeType::where('isactive', 1)->orderby('name')->get();
         return view('admin.incomeExpense.myIncome', $data);
     }
     // Function to add income
