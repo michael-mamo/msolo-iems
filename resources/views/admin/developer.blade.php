@@ -70,7 +70,7 @@
                                         </div>
                                         <!-- <div class="card-footer">
                                             <div class="text-right">
-                                                <a href="#" class="btn btn-sm bg-teal">
+                                                <a href="#" class="btn btn-sm">
                                                 <i class="fa fa-telegram" aria-hidden="true"></i>
                                                 </a>
                                             </div>
