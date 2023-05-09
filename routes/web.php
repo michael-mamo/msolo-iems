@@ -23,6 +23,7 @@ use App\Http\Controllers\backend\saving\MySavingDepositController;
 use App\Http\Controllers\backend\saving\MySavingWithdrawalController;
 use App\Http\Controllers\backend\report\ReportController;
 use App\Http\Controllers\backend\contact\ContactController;
+use App\Http\Controllers\backend\DeveloperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -181,3 +182,5 @@ Route::prefix('contact')->group(function(){
 Route::prefix('help')->group(function(){
     Route::get('help/tutorial', [TutorialController::class, 'TutorialHelp'])->name('help.tutorial');
 });
+
+Route::get('developer/view', [DeveloperController::class, 'ViewDeveloper'])->name('developer.view');

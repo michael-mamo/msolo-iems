@@ -220,14 +220,14 @@ $route = Route::current()->getName();
             </p>
           </a>
         </li> -->
-        <!-- <li class="nav-item">
-          <a href="developer.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
+        <li class="nav-item">
+          <a href="{{route('developer.view')}}" class="nav-link {{ ($route == 'developer.view')?'active':''}}">
+            <i class="nav-icon fas fa-laptop"></i>
             <p>
-              Developer/s
+              Developer
             </p>
           </a>
-        </li> -->
+        </li>
       </ul>
     </nav>
   </div>

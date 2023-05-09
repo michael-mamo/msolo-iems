@@ -1,5 +1,31 @@
 @include('admin.body.header')
-<body id="wholeBody" class=" hold-transition login-page">
+<style>
+  .backImg {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('uploads/general/back.jpg');
+    background-size: cover;
+    z-index: -1;
+}
+
+.backImg::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.50);
+}
+.nav-link {
+    z-index: 1;
+}
+</style>
+<body id="wholeBody" class=" hold-transition login-page backImg">
 <a class="nav-link" href="#" ><i id="darkIcon" onclick="toggleDark()" class="fa fa-moon"></i></a>
   <div class="login-box">
     <!-- /.login-logo -->
