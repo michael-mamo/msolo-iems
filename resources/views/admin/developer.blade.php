@@ -31,7 +31,7 @@
                                             <div class="row">
                                                 <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 text-center">
                                                     <img style="height: 350px; width: 350px;"
-                                                        src="{{url('uploads/developer/developer.jpg')}}"
+                                                        src="{{url('uploads/developer/developer.JPG')}}"
                                                         alt="user-avatar" class="img-circle img-fluid">
                                                 </div>
                                                 <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
