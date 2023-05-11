@@ -19,6 +19,7 @@
       $fullName = Auth::User()->name.' '.Auth::User()->lname;
       $role = Auth::User()->role;
       $reg_date = Auth::User()->created_at;
+      $userId = Auth::User()->id;
       @endphp
         <img src="{{(!empty(Auth::User()->profile_photo_path))? url('uploads/userImages/'.$profile): url('uploads/userImages/maleDefault.png')}}" class="user-image img-circle elevation-2" alt="User Image">
         <span class="d-none d-md-inline">{{$name}}</span>
@@ -35,8 +36,9 @@
         </li>
         <!-- Menu Footer-->
         <li class="user-footer">
-          <a href="#" class="btn btn-secondary btn-flat">Change pwd<span class="fa fa-key"></span></a>
-          <a href="{{ route('logout')}}" class="btn btn-danger btn-flat float-right">Logout <span class="fa fa-power-off"></span></a>
+          <a href=""  type="button" class="btn btn-secondary btn-flat" data-toggle="modal"
+                            data-target="#modal-changePwd">Change pwd<span class="fa fa-key"></span></a>
+          <a href="{{route('logout')}}" class="btn btn-danger btn-flat float-right">Logout <span class="fa fa-power-off"></span></a>
         </li>
       </ul>
     </li>
@@ -78,5 +80,55 @@
   </ul>
 </nav>
 <!-- /.navbar -->
-
+<div class="modal fade text-left" id="modal-changePwd">
+    <div class="modal-dialog modal-dialog-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title">Change Password</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <form method = "POST" action="{{route('profile.changepassword', $userId)}}">
+            @csrf
+            <div class="card-body">
+            <div class="row">
+                <div class="col-12 form-group">
+                <label for="editFirstName" class="text-sm">Old Password</label>
+                <input type="text" required name = "oldPassword" class="form-control form-control-sm"
+                    id="editFirstName" placeholder="Type your old password here">
+                @error('oldPassword')
+                    <span class = "text-danger text-sm">{{$message}}</span>
+                @enderror
+                </div>
+                <div class="col-12 form-group">
+                <label for="newPassword" class="text-sm">New Password</label>
+                <input type="password" required name="password" class="form-control form-control-sm" id="newPassword"
+                    placeholder="Type your new password here">
+                @error('newPassword')
+                    <span class = "text-danger text-sm">{{$message}}</span>
+                @enderror
+                </div>
+                <div class="col-12 form-group">
+                <label for="confirmPassword"  class="text-sm">Confirm Password</label>
+                <input type="password" required name="password_confirmation" class="form-control form-control-sm" id="confirmPassword"
+                    placeholder="Confirm your new password here">
+                @error('confirmPassword')
+                    <span class = "text-danger text-sm">{{$message}}</span>
+                @enderror
+                </div>
+            </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="text-center form-group">
+            <button type="submit" class="btn btn-success">Change <i class="fa fa-key"></i></button>
+            </div>
+        </form>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @endif

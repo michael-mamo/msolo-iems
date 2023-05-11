@@ -175,6 +175,7 @@ $userCount = 0;
                     <tr>
                       <th>No</th>
                       <th>Full Name</th>
+                      <th>Phone</th>
                       <th>Gender</th>
                       <th>Role</th>
                       <th>User Type</th>
@@ -191,6 +192,7 @@ $userCount = 0;
                     <tr>
                       <td>{{ $no }}</td>
                       <td>{{ $user->name." ".$user->lname}}</td>
+                      <td>{{ $user->email}}</td>
                       <td>{{ $user->gender}}</td>
                       <td>{{ $user->role}}</td>
                       <td>{{ $user['Usertype']['name'] }}</td>
@@ -280,7 +282,15 @@ $userCount = 0;
                                   <span class = "text-danger text-sm">{{$message}}</span>
                                 @enderror
                               </div>
-                              <div class="col-md-6 col-6 col-sm-12 form-group">
+                              <div class="col-md-6 col-sm-12 form-group">
+                                <label for="email" class="text-sm">Email</label>
+                                <input type="email" value="{{$user->phonenumber}}" name = "phoneNumber" class="form-control form-control-sm" id="email"
+                                  placeholder="Type the email here">
+                                @error('phoneNumber')
+                                  <span class = "text-danger text-sm">{{$message}}</span>
+                                @enderror
+                              </div>
+                              <div class="col-md-6 col-sm-12 form-group">
                                 <label for="newPassword" class="text-sm">New Password</label>
                                 <input type="text" name = "newPassword" class="form-control form-control-sm" id="newPassword"
                                   placeholder="Type new password here">
@@ -325,6 +335,7 @@ $userCount = 0;
                     <tr>
                       <th>No</th>
                       <th>Full Name</th>
+                      <th>Phone</th>
                       <th>Gender</th>
                       <th>Role</th>
                       <th>User Type</th>

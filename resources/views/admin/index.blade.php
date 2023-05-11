@@ -63,8 +63,8 @@
                                                         <div class="row mb-0">
                                                             <div class="form-group col-12">
                                                                 <select required name="incomeType[]"
-                                                                    class="form-control form-control-sm"
-                                                                    id="incomeType" style="width: 100%;">
+                                                                    class="selectIncome form-control form-control-sm"
+                                                                     style="width: 100%;">
                                                                     <option value="">--Choose Income Type--</option>
                                                                     @foreach($incomeTypeData as $incomeType)
                                                                     <option value="{{$incomeType->id}}">
@@ -141,8 +141,8 @@
                                                         <div class="row mb-0">
                                                             <div class="form-group col-12">
                                                                 <select required name="expenseType[]"
-                                                                    class="form-control form-control-sm"
-                                                                    id="incomeType">
+                                                                    class="selectExpense form-control form-control-sm"
+                                                                    style="width: 100%;">
                                                                     <option value="">--Choose Expense Type--</option>
                                                                     @foreach($expenseTypeData as $expenseType)
                                                                     <option value="{{$expenseType->id}}">
@@ -214,8 +214,8 @@
                                                     <input name="title" type="text" class="form-control" id="title" placeholder="Type the title here">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="savingType">Saving Type</label>
-                                                    <select id="savingType" name = "savingType" class="selectThird form-control">
+                                                    <label>Saving Type</label>
+                                                    <select  name = "savingType" class="selectSaving form-control">
                                                     <option value="">--Choose Saving Type--</option>
                                                     @foreach($savingTypeData as $savingType)
                                                     <option value="{{$savingType->id}}">{{$savingType->name}}</option>
@@ -444,95 +444,14 @@
                 </div>
                 <!-- /.card -->
             </div>
-            <div style="visibility: hidden;" class="row">
+            <!-- <div style="visibility: hidden;" class="row">
                 <div class="col-md-6 col-6">
-                    <div class="whole_extra_item_add_income"
-                        id="whole_extra_item_add_income">
-                        <div class="delete_extra_item_income" id="delete_extra_item_income">
-                            <div class="row">
-                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <select required name="incomeType[]"
-                                                class="form-control form-control-sm"
-                                                id="incomeType">
-                                                <option value="">--Choose Income Type--
-                                                </option>
-                                                @foreach($incomeTypeData as $incomeType)
-                                                <option value="{{$incomeType->id}}">
-                                                    {{$incomeType->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-12">
-                                            <input name="amount[]" type="number" min=0
-                                                step=".01"
-                                                class="form-control form-control-sm"
-                                                id="amount"
-                                                placeholder="Type the amount in Birr here">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-                                    <textarea name="description[]" id="" rows="3"
-                                        class="form-control form-control-sm"
-                                        placeholder="Some description about the income"></textarea>
-                                </div>
-                                <div class="mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
-                                    <span id="addincome" class="btn btn-success btn-sm addincome"><span
-                                            class="fas fa-plus"></span></span>
-                                    <span id="removeincome" class="btn btn-danger btn-sm removeincome"><span
-                                            class="fas fa-minus"></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-md-6 col-6">
-                    <div class="whole_extra_item_add_expense"
-                        id="whole_extra_item_add_expense">
-                        <div class="delete_extra_item_expense" id="delete_extra_item_expense">
-                            <div class="row">
-                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <select required name="expenseType[]"
-                                                class="form-control form-control-sm"
-                                                id="expenseType">
-                                                <option value="">--Choose Expense Type--
-                                                </option>
-                                                @foreach($expenseTypeData as $expenseType)
-                                                <option value="{{$expenseType->id}}">
-                                                    {{$expenseType->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-12">
-                                            <input name="amount[]" type="number" min=0
-                                                step=".01"
-                                                class="form-control form-control-sm"
-                                                id="amount"
-                                                placeholder="Type the amount in Birr here">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-                                    <textarea name="description[]" id="" rows="3"
-                                        class="form-control form-control-sm"
-                                        placeholder="Some description about the expense"></textarea>
-                                </div>
-                                <div class="mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center">
-                                    <span id="addexpense" class="btn btn-success btn-sm addexpense"><span
-                                            class="fas fa-plus"></span></span>
-                                    <span id="removeexpense"
-                                        class="btn btn-danger btn-sm removeexpense"><span
-                                            class="fas fa-minus"></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </div>
@@ -753,24 +672,33 @@
   })
 </script>
 <script type="text/javascript">
-
-
+    $('.selectIncome').select2()
+    $('.selectExpense').select2()
 
     $(document).ready(function(){
+        var incomeSelect = 0;
+        var expenseSelect = 0;
         $(document).on('click', '.addincome', function(){
-            var whole_extra_item_add_income = $('#whole_extra_item_add_income').html();
+            incomeSelect++;
+            var selectIncomeClass = 'selectInc'+incomeSelect;
+            // var whole_extra_item_add_income = $('#whole_extra_item_add_income').html();
+            var whole_extra_item_add_income = "<div class='whole_extra_item_add_income'id='whole_extra_item_add_income'><div class='delete_extra_item_income' id='delete_extra_item_income'><div class='row'><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><div class='row'><div class='form-group col-12'><select required name='incomeType[]' style='width: 100%;' class='"+selectIncomeClass+" form-control form-control-sm'><option value=''>--Choose Income Type--</option>@foreach($incomeTypeData as $incomeType)<option value='{{$incomeType->id}}'>{{$incomeType->name}}</option>@endforeach</select></div><div class='form-group col-12'><input name='amount[]' type='number' min=0 step='.01' class='form-control form-control-sm'id='amount'placeholder='Type the amount in Birr here'></div></div></div><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><textarea name='description[]' id='' rows='3'class='form-control form-control-sm'placeholder='Some description about the income'></textarea></div><div class='mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center'><span id='addincome' class='btn btn-success btn-sm addincome'><span class='fas fa-plus'></span></span><span id='removeincome' class='btn btn-danger btn-sm removeincome'><span class='fas fa-minus'></span></span></div></div></div></div>";
             $(".card_addincome").append(whole_extra_item_add_income);
+            $('.'+selectIncomeClass).select2()
         });
         $(document).on('click', '.removeincome', function(event) {
             $(this).closest(".delete_extra_item_income").remove();
+            incomeSelect--;
         });
-
-
         $(document).on('click', '.addexpense', function() {
-            var whole_extra_item_add_expense = $('#whole_extra_item_add_expense').html();
+            expenseSelect++;
+            var selectExpenseClass = 'selectExp'+expenseSelect;
+            var whole_extra_item_add_expense = "<div class='whole_extra_item_add_expense'id='whole_extra_item_add_expense'><div class='delete_extra_item_expense' id='delete_extra_item_expense'><div class='row'><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><div class='row'><div class='form-group col-12'><select style='width: 100%;' required name='expenseType[]'class='"+selectExpenseClass+" form-control form-control-sm' id='expenseType'><option value=''>--Choose Expense Type--</option>@foreach($expenseTypeData as $expenseType)<option value='{{$expenseType->id}}'>{{$expenseType->name}}</option>@endforeach</select></div><div class='form-group col-12'><input name='amount[]' type='number' min=0 step='.01' class='form-control form-control-sm'id='amount'placeholder='Type the amount in Birr here'></div></div></div><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><textarea name='description[]' id='' rows='3' class='form-control form-control-sm' placeholder='Some description about the expense'></textarea></div><div class='mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center'><span id='addexpense' class='btn btn-success btn-sm addexpense'><span class='fas fa-plus'></span></span><span id='removeexpense'class='btn btn-danger btn-sm removeexpense'><span class='fas fa-minus'></span></span></div></div></div></div>";
             $(this).closest(".card_addexpense").append(whole_extra_item_add_expense);
+            $('.'+selectExpenseClass).select2();
         });
         $(document).on('click', '.removeexpense', function(event) {
+            expenseSelect--;
             $(this).closest(".delete_extra_item_expense").remove();
         });
     });

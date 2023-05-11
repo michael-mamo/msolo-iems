@@ -8,6 +8,7 @@ use App\Models\MyIncome;
 use App\Models\MyExpense;
 use App\Models\MySaving;
 use App\Models\MyLiability;
+use App\Models\MyReceivable;
 use Auth;
 use carbon\Carbon;
 class ReportController extends Controller
@@ -31,6 +32,7 @@ class ReportController extends Controller
             $data['netIncome'] = $data['totalIncome'] - $data['totalExpense'];
             $data['totalSaving'] = MySaving::where('userid', $userId)->whereBetween('date', [$fromDate, $toDate])->sum('amount');
             $data['totalLiability'] = MyLiability::where('userid', $userId)->whereBetween('date', [$fromDate, $toDate])->sum('amount');
+            $data['totalReceivable'] = MyReceivable::where('userid', $userId)->whereBetween('date', [$fromDate, $toDate])->sum('amount');
             $data['topExpense'] = MyExpense::where('userid',$userId)
                             ->whereBetween('date', [$fromDate, $toDate])
                             ->groupBy('expensetypeid')
@@ -59,6 +61,13 @@ class ReportController extends Controller
                             ->orderBy('sum', 'DESC')
                             ->limit(3)
                             ->get('lender', 'sum');
+            $data['topReceivable'] = MyReceivable::where('userid',$userId)
+                            ->whereBetween('date', [$fromDate, $toDate])
+                            ->groupBy('borrower')
+                            ->selectRaw('sum(amount) as sum, borrower')
+                            ->orderBy('sum', 'DESC')
+                            ->limit(3)
+                            ->get('borrower', 'sum');
             // dd($data['topIncome']);
             return view('admin.report.reportView', $data);
         }

@@ -96,7 +96,7 @@
 
                         <!-- Table row -->
                         <div class="row text-sm mt-5">
-                        <div class="col-3 table-responsive">
+                        <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
                                 <h6 class="text-center" >Top Income</h6>
                                 <table class="table table-striped table-sm">
                                     <thead>
@@ -131,7 +131,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-3 table-responsive">
+                            <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
                                 <h6 class="text-center" >Top Expense</h6>
                                 <table class="table table-striped table-sm">
                                     <thead>
@@ -166,48 +166,48 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-3 table-responsive">
-                                <h6 class="text-center" >Top Income</h6>
+                            <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
+                                <h6 class="text-center" >Receivable</h6>
                                 <table class="table table-striped table-sm">
                                     <thead>
                                     <tr>
-                                    <th>Saving Type</th>
-                                    <th>Amount</th>
+                                    <th>Borrower</th>
+                                    <th>Amount Left</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @php
-                                    $topTotalSaving = 0.00;
+                                    $topTotalReceivable = 0.00;
                                     @endphp
-                                    @foreach($topSaving as $key=>$saving)
+                                    @foreach($topReceivable as $key=>$receivable)
                                     @php
-                                    $topTotalSaving += $saving->sum;
+                                    $topTotalReceivable += $receivable->sum;
                                     @endphp
                                     <tr>
-                                    <td>{{$saving['SavingType']['name']}}</td>
-                                    <td>{{number_format($saving->sum,2)}} Birr</td>
+                                    <td>{{$receivable->borrower}}</td>
+                                    <td>{{number_format($receivable->sum,2)}} Birr</td>
                                     </tr>
                                     <tr>
                                     @endforeach
                                     <tr>
-                                    <th>Other Types</th>
-                                    <th>{{number_format($totalSaving - $topTotalSaving,2)}} Birr</th>
+                                    <th>Other Receivables</th>
+                                    <th>{{number_format($totalReceivable - $topTotalReceivable,2)}} Birr</th>
                                     </tr>
                                     <tr>
-                                    <th>Total Income</th>
-                                    <th>{{number_format($totalSaving,2)}} Birr</th>
+                                    <th>Total Receivable</th>
+                                    <th>{{number_format($totalReceivable,2)}} Birr</th>
                                     </tr>
                                     <tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-3 table-responsive">
-                                <h6 class="text-center" >Top Unpaid Liabilities</h6>
+                            <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
+                                <h6 class="text-center" >Liabilities</h6>
                                 <table class="table table-striped table-sm">
                                     <thead>
                                     <tr>
                                     <th>Lender</th>
-                                    <th>Amount</th>
+                                    <th>Amount Left</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -242,14 +242,49 @@
 
                         <div class="row">
                             <!-- accepted payments column -->
-                            <div class="col-6">
+                            <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
                             <p class="lead">Quick Notes:</p>
                             <p class="text-muted well well-sm shadow-none" >
                                 Bubjet part will be included here
                             </p>
+                            </div> -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
+                            <h6 class="text-center" >Saving</h6>
+                                <table class="table table-striped table-sm">
+                                    <thead>
+                                    <tr>
+                                    <th>Saving Type</th>
+                                    <th>Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php
+                                    $topTotalSaving = 0.00;
+                                    @endphp
+                                    @foreach($topSaving as $key=>$saving)
+                                    @php
+                                    $topTotalSaving += $saving->sum;
+                                    @endphp
+                                    <tr>
+                                    <td>{{$saving['SavingType']['name']}}</td>
+                                    <td>{{number_format($saving->sum,2)}} Birr</td>
+                                    </tr>
+                                    <tr>
+                                    @endforeach
+                                    <tr>
+                                    <th>Other Types</th>
+                                    <th>{{number_format($totalSaving - $topTotalSaving,2)}} Birr</th>
+                                    </tr>
+                                    <tr>
+                                    <th>Total Income</th>
+                                    <th>{{number_format($totalSaving,2)}} Birr</th>
+                                    </tr>
+                                    <tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- /.col -->
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
                             <h4 class="text-center">Summary</h4>
 
                             <div class="table-responsive">
@@ -275,14 +310,19 @@
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td>Total Receivable:</td>
+                                    <td>{{number_format($totalReceivable,2)}} Birr</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
                                     <td>Total Liability:</td>
                                     <td></td>
-                                    <td>{{number_format($totalSaving,2)}} Birr</td>
+                                    <td>{{number_format($totalLiability,2)}} Birr</td>
                                 </tr>
                                 <tr>
                                     <th>Capital:</th>
                                     <th></th>
-                                    <th>{{number_format($totalSaving - $totalLiability,2)}} Birr</th>
+                                    <th>{{number_format($totalSaving + $totalReceivable - $totalLiability,2)}} Birr</th>
                                 </tr>
                                 </table>
                             </div>
@@ -293,11 +333,11 @@
 
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
-                            <div class="col-12">
-                            <a onclick="printReport()" rel="noopener" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                            <div class="text-center col-12">
+                            <a onclick="printReport()" rel="noopener" class="btn btn-success btn-lg"><i class="fas fa-print"></i> Print</a>
+                            <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                 <i class="fas fa-download"></i> Generate PDF
-                            </button>
+                            </button> -->
                             </div>
                         </div>
                         </div>
@@ -305,7 +345,7 @@
                     </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
-                </section>
+            </section>
             @endif
             </div>
         <!-- /.content-wrapper -->

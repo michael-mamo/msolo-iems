@@ -24,6 +24,7 @@ use App\Http\Controllers\backend\saving\MySavingWithdrawalController;
 use App\Http\Controllers\backend\report\ReportController;
 use App\Http\Controllers\backend\contact\ContactController;
 use App\Http\Controllers\backend\DeveloperController;
+use App\Http\Controllers\backend\profile\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -184,3 +185,6 @@ Route::prefix('help')->group(function(){
 });
 
 Route::get('developer/view', [DeveloperController::class, 'ViewDeveloper'])->name('developer.view');
+Route::get('profile/view', [ProfileController::class, 'ViewProfile'])->name('profile.view');
+Route::POST('profile/edit', [ProfileController::class, 'EditProfile'])->name('profile.edit');
+Route::post('profile/changePassword/{id}', [ProfileController::class, 'ChangePassword'])->name('profile.changepassword');

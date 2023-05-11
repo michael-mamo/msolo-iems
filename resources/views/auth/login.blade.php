@@ -1,5 +1,5 @@
 @include('admin.body.header')
-<style>
+<!-- <style>
   .backImg {
     position: relative;
     height: 100vh;
@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('uploads/general/back.jpg');
+    background-color: url('uploads/general/back.jpg');
     background-size: cover;
     z-index: -1;
 }
@@ -24,7 +24,7 @@
 .nav-link {
     z-index: 1;
 }
-</style>
+</style> -->
 <body id="wholeBody" class=" hold-transition login-page backImg">
 <a class="nav-link" href="#" ><i id="darkIcon" onclick="toggleDark()" class="fa fa-moon"></i></a>
   <div class="login-box">

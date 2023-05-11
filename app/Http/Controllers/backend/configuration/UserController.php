@@ -114,6 +114,7 @@ class UserController extends Controller
         $data->lname = $request->lname;
         $data->gender = $request->gender;
         $data->role = $request->role;
+        $data->phonenumber = $request->phoneNumber;
         $data->usertype = $request->usertype;
         if($request->has('isActive')){
             $data->isactive = 1;

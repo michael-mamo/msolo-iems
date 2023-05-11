@@ -110,7 +110,7 @@ class MySavingController extends Controller
         $data->status = 'Terminated';
         $data->save();
         $notification = array(
-            'message'=>'Saving is Completed successfully',
+            'message'=>'Saving is Terminated successfully',
             'alert-type'=>'success'
         );
 

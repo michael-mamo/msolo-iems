@@ -113,29 +113,6 @@ $route = Route::current()->getName();
           </ul>
         </li>
         @endif
-        <!-- <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              My Profile
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="adminRole.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>View Profile</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('user.view') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Change Password</p>
-              </a>
-            </li>
-           </ul>
-          </li> -->
         <li class="nav-item">
           <a href="{{route('myIncome.view')}}" class="nav-link {{ ($route == 'myIncome.view')?'active':''}}">
             <i class="nav-icon fas fa-donate"></i>
@@ -220,6 +197,14 @@ $route = Route::current()->getName();
             </p>
           </a>
         </li> -->
+        <li class="nav-item">
+          <a href="{{route('profile.view')}}" class="nav-link {{ ($route == 'profile.view')?'active':''}}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              My Profile
+            </p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="{{route('developer.view')}}" class="nav-link {{ ($route == 'developer.view')?'active':''}}">
             <i class="nav-icon fas fa-laptop"></i>

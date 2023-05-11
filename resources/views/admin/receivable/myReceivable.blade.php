@@ -195,7 +195,7 @@
                     <tr>
                       <td>{{$keyone+1}}</td>
                       <td>{{$myReceivable->date}}</td>
-                      <td>{{$myReceivable->lender}}</td>
+                      <td>{{$myReceivable->borrower}}</td>
                       <td>{{$myReceivable['ReceivableType']['name'] }}</td>
                       <td>{{$myReceivable->amount}}</td>
                       <td>{{$thisReceivedAmount}}</td>

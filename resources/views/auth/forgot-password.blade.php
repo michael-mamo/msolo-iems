@@ -1,6 +1,7 @@
 @include('admin.body.header')
 
-<body class="hold-transition login-page dark-mode">
+<!-- <body class="hold-transition login-page dark-mode"> -->
+<body class="hold-transition login-page">
   <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
@@ -8,21 +9,21 @@
         <a href="#" class="h1"><b>Forget Password</b></a>
       </div>
       <div class="card-body">
-        <p class="login-box-msg">Please provide the email that you 
-          have used to create your account and we will send you 
-          password reset link through your email</p>
+        <p class="login-box-msg">Please provide your phone number that you
+          have used to create your account and we will send you your new password through sms</p>
         <form action="{{ route('password.email') }}" method="POST">
             @csrf
           <div class="input-group mb-1">
-            <input type="text" name="email" class="form-control" placeholder="Type your email here">
+            <input type="text" name="email" class="form-control" placeholder="Type your phone number here">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
+                <span class="fas fa-phone"></span>
               </div>
             </div>
           </div>
           @error('email')
-            <span class="text-danger">{{ $message }}</span>
+          <span class="text-danger mb-1 mt-1"> This service is not working currently</span>
+            <!-- <span class="text-danger">{{ $message }}</span> -->
           @enderror
           <div class="row">
             <!-- /.col -->
