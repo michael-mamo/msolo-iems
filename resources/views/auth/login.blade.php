@@ -36,7 +36,7 @@
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <form action="{{ route('login')}}" method="POST">
-            <!-- @csrf -->
+            @csrf
           <div class="input-group mb-1">
             <input id = "email" type="text" name = "email" class="form-control"  placeholder="Phone Number Here as 09********">
             <div class="input-group-append">
