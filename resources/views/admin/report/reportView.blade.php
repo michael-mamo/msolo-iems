@@ -95,7 +95,7 @@
                         <!-- /.row -->
 
                         <!-- Table row -->
-                        <div class="row mt-5">
+                        <div class="row mt-3">
                         <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
                                 <h4 class="text-center" >Income Statement</h4>
                                 <table class="table table-sm">
@@ -165,122 +165,101 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
-                                <h6 class="text-center" >Receivable</h6>
-                                <table class="table table-striped table-sm">
+                        </div>
+                        <!-- /.row -->
+                        <div class="row mt-3">
+                        <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
+                                <h4 class="text-center" >Balance Sheet</h4>
+                                <table class="table table-sm">
                                     <thead>
                                     <tr>
-                                    <th>Borrower</th>
-                                    <th>Amount Left</th>
+                                    <th colspan="4">Account Recievable</th>
+                                    <!-- <th colspan="3">Account Recievable</th> -->
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <td>Borrower</td>
+                                    <td>Total Amount</td>
+                                    <td>Payed Amount</td>
+                                    <td>Unpayed Amount</td>
                                     @php
-                                    $topTotalReceivable = 0.00;
+                                    $totalTotal = 0.00;
+                                    $totalPayed = 0.00;
+                                    $totalUnpayed = 0.00;
                                     @endphp
                                     @foreach($topReceivable as $key=>$receivable)
                                     @php
-                                    $topTotalReceivable += $receivable->sum;
+                                    $totalTotal += $receivable->total;
+                                    $totalPayed += $receivable->payed;
+                                    $totalUnpayed += $receivable->unpayed;
                                     @endphp
-                                    <tr>
-                                    <td>{{$receivable->borrower}}</td>
-                                    <td>{{number_format($receivable->sum,2)}} Birr</td>
+                                    <tr class="text-sm">
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$receivable->borrower}}</td>
+                                    <td>{{number_format($receivable->total,2)}} Birr</td>
+                                    <td>{{number_format($receivable->payed,2)}} Birr</td>
+                                    <td>{{number_format($receivable->unpayed,2)}} Birr</td>
                                     </tr>
                                     <tr>
                                     @endforeach
                                     <tr>
-                                    <th>Other Receivables</th>
-                                    <th>{{number_format($totalReceivable - $topTotalReceivable,2)}} Birr</th>
-                                    </tr>
-                                    <tr>
                                     <th>Total Receivable</th>
-                                    <th>{{number_format($totalReceivable,2)}} Birr</th>
+                                    <th>{{number_format($totalTotal,2)}} Birr</th>
+                                    <th>{{number_format($totalPayed,2)}} Birr</th>
+                                    <th>{{number_format($totalUnpayed,2)}} Birr</th>
                                     </tr>
-                                    <tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
-                                <h6 class="text-center" >Liabilities</h6>
-                                <table class="table table-striped table-sm">
+                                    <!-- <tr class="text-success"> -->
+                                    <!-- <th>Total Received Amount Between ('{{$fromDate}}' - '{{$toDate}}')</th> -->
+                                    <!-- <th colspan="3" class="text-center">{{number_format($totalPayed,2)}} Birr</th> -->
+                                    <!-- </tr> -->
+                                    <thead>
                                     <thead>
                                     <tr>
-                                    <th>Lender</th>
-                                    <th>Amount Left</th>
+                                    <th colspan="4">Liability</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <td>Lender</td>
+                                    <td>Total Amount</td>
+                                    <td>Payed Amount</td>
+                                    <td>Unpayed Amount</td>
                                     @php
-                                    $topTotalLiability = 0.00;
+                                    $totalLiabilityTotal = 0.00;
+                                    $totalLiabilityPayed = 0.00;
+                                    $totalLiabilityUnpayed = 0.00;
                                     @endphp
                                     @foreach($topLiability as $key=>$liability)
                                     @php
-                                    $topTotalLiability += $liability->sum;
+                                    $totalLiabilityTotal += $receivable->total;
+                                    $totalLiabilityPayed += $liability->received;
+                                    $totalLiabilityUnpayed += $receivable->unpayed;
                                     @endphp
-                                    <tr>
-                                    <td>{{$liability->lender}}</td>
-                                    <td>{{number_format($liability->sum,2)}} Birr</td>
+                                    <tr class="text-sm">
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$receivable->lender}}</td>
+                                    <td>{{number_format($receivable->total,2)}} Birr</td>
+                                    <td>{{number_format($receivable->payed,2)}} Birr</td>
+                                    <td>{{number_format($receivable->unpayed,2)}} Birr</td>
                                     </tr>
                                     <tr>
                                     @endforeach
                                     <tr>
-                                    <th>Other Types</th>
-                                    <th>{{number_format($totalLiability - $topTotalLiability,2)}} Birr</th>
+                                    <th>Total Liability</th>
+                                    <th>{{number_format($totalLiabilityTotal,2)}} Birr</th>
+                                    <th>{{number_format($totalLiabilityPayed,2)}} Birr</th>
+                                    <th>{{number_format($totalLiabilityUnpayed,2)}} Birr</th>
                                     </tr>
-                                    <tr>
-                                    <th>Total Income</th>
-                                    <th>{{number_format($totalLiability,2)}} Birr</th>
-                                    </tr>
-                                    <tr>
-                                    </tbody>
+                                    <thead>
                                 </table>
                             </div>
-                            <!-- /.col -->
                         </div>
-                        <!-- /.row -->
 
                         <div class="row">
                             <!-- accepted payments column -->
-                            <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
-                            <p class="lead">Quick Notes:</p>
-                            <p class="text-muted well well-sm shadow-none" >
-                                Bubjet part will be included here
-                            </p>
-                            </div> -->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
-                            <h6 class="text-center" >Saving</h6>
-                                <table class="table table-striped table-sm">
-                                    <thead>
-                                    <tr>
-                                    <th>Saving Type</th>
-                                    <th>Amount</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @php
-                                    $topTotalSaving = 0.00;
-                                    @endphp
-                                    @foreach($topSaving as $key=>$saving)
-                                    @php
-                                    $topTotalSaving += $saving->sum;
-                                    @endphp
-                                    <tr>
-                                    <td>{{$saving['SavingType']['name']}}</td>
-                                    <td>{{number_format($saving->sum,2)}} Birr</td>
-                                    </tr>
-                                    <tr>
-                                    @endforeach
-                                    <tr>
-                                    <th>Other Types</th>
-                                    <th>{{number_format($totalSaving - $topTotalSaving,2)}} Birr</th>
-                                    </tr>
-                                    <tr>
-                                    <th>Total Income</th>
-                                    <th>{{number_format($totalSaving,2)}} Birr</th>
-                                    </tr>
-                                    <tr>
-                                    </tbody>
-                                </table>
+                            <p class="lead">Developed By:</p>
+                            <ul class="text-muted list-unstyled" >
+                            <li><i class="fa fa-user"></i> Michael Mamo
+                            <li><i class="fa fa-phone"></i> +251935030322
+                            </ul>
                             </div>
                             <!-- /.col -->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
@@ -303,11 +282,11 @@
                                     <th></th>
                                     <th>{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>Total Saving:</td>
                                     <td>{{number_format($totalSaving,2)}} Birr</td>
                                     <td></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td>Total Receivable:</td>
                                     <td>{{number_format($totalReceivable,2)}} Birr</td>
@@ -321,7 +300,8 @@
                                 <tr>
                                     <th>Capital:</th>
                                     <th></th>
-                                    <th>{{number_format($totalSaving + $totalReceivable - $totalLiability,2)}} Birr</th>
+                                    <!-- <th>{{number_format($totalSaving + $totalReceivable - $totalLiability,2)}} Birr</th> -->
+                                    <th class="{{$totalReceivable >= $totalLiability?'text-success':'text-danger'}}">{{number_format($totalReceivable - $totalLiability,2)}} Birr</th>
                                 </tr>
                                 </table>
                             </div>
