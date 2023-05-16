@@ -255,11 +255,37 @@
                         <div class="row">
                             <!-- accepted payments column -->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
-                            <p class="lead">Developed By:</p>
-                            <ul class="text-muted list-unstyled" >
-                            <li><i class="fa fa-user"></i> Michael Mamo
-                            <li><i class="fa fa-phone"></i> +251935030322
-                            </ul>
+                            <h4 class="text-center" >Savings</h4>
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                    <th>Saving Title</th>
+                                    <th>Saved Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php
+                                    $totalSaving = 0.00;
+                                    @endphp
+                                    @foreach($topSaving as $key=>$saving)
+                                    @php
+                                    $totalSaving += $saving->sum;
+                                    @endphp
+                                    <tr class="text-sm">
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$saving->title}}</td>
+                                    <td>{{number_format($saving->sum,2)}} Birr</td>
+                                    <td></td>
+                                    </tr>
+                                    <tr>
+                                    @endforeach
+                                    <tr class="text-success">
+                                    <th>Total Saving</th>
+                                    <th>{{number_format($totalSaving,2)}} Birr</th>
+                                    <th></th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                             <!-- /.col -->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
@@ -282,11 +308,11 @@
                                     <th></th>
                                     <th>{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
                                 </tr>
-                                <!-- <tr>
+                                <tr>
                                     <td>Total Saving:</td>
                                     <td>{{number_format($totalSaving,2)}} Birr</td>
                                     <td></td>
-                                </tr> -->
+                                </tr>
                                 <tr>
                                     <td>Total Receivable:</td>
                                     <td>{{number_format($totalReceivableUnpayed,2)}} Birr</td>
@@ -301,7 +327,7 @@
                                     <th>Capital:</th>
                                     <th></th>
                                     <!-- <th>{{number_format($totalSaving + $totalReceivable - $totalLiability,2)}} Birr</th> -->
-                                    <th>{{number_format($totalReceivableUnpayed - $totalLiabilityUnpayed,2)}} Birr</th>
+                                    <th>{{number_format($totalSaving + $totalReceivableUnpayed - $totalLiabilityUnpayed,2)}} Birr</th>
                                 </tr>
                                 </table>
                             </div>
@@ -309,7 +335,13 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
+                        <div>
+                            <p class="lead">Developed By:</p>
+                            <ul class="text-muted list-unstyled">
+                                <li><i class="fa fa-user"></i> Michael Mamo
+                                <li><i class="fa fa-phone"></i> +251935030322
+                            </ul>
+                        </div>
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                             <div class="text-center col-12">
