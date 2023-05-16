@@ -95,14 +95,20 @@
                         <!-- /.row -->
 
                         <!-- Table row -->
-                        <div class="row text-sm mt-5">
-                        <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
-                                <h6 class="text-center" >Top Income</h6>
-                                <table class="table table-striped table-sm">
+                        <div class="row mt-5">
+                        <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
+                                <h4 class="text-center" >Income Statement</h4>
+                                <table class="table table-sm table-bordered">
                                     <thead>
                                     <tr>
-                                    <th>Income Type</th>
-                                    <th>Amount</th>
+                                    <th>Category</th>
+                                    <th>Debit</th>
+                                    <th>Credit</th>
+                                    </tr>
+                                    </thead>
+                                    <thead>
+                                    <tr>
+                                    <th colspan=3>Income</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -114,33 +120,23 @@
                                     $topTotalIncome += $income->sum;
                                     @endphp
                                     <tr>
-                                    <td>{{$income['IncomeType']['name']}}</td>
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$income['IncomeType']['name']}}</td>
                                     <td>{{number_format($income->sum,2)}} Birr</td>
+                                    <td></td>
                                     </tr>
                                     <tr>
                                     @endforeach
                                     <tr>
-                                    <th>Other Types</th>
-                                    <th>{{number_format($totalIncome - $topTotalIncome,2)}} Birr</th>
-                                    </tr>
-                                    <tr>
                                     <th>Total Income</th>
                                     <th>{{number_format($totalIncome,2)}} Birr</th>
+                                    <th></th>
                                     </tr>
-                                    <tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-lg-3 col-lg-6 col-sm-6 col-xs-12  table-responsive">
-                                <h6 class="text-center" >Top Expense</h6>
-                                <table class="table table-striped table-sm">
                                     <thead>
                                     <tr>
-                                    <th>Expense Type</th>
-                                    <th>Amount</th>
+                                    <th colspan=3>Expense</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tr>
                                     @php
                                     $topTotalExpense = 0.00;
                                     @endphp
@@ -149,20 +145,24 @@
                                     $topTotalExpense += $expense->sum;
                                     @endphp
                                     <tr>
-                                    <td>{{$expense['ExpenseType']['name']}}</td>
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$expense['ExpenseType']['name']}}</td>
+                                    <td></td>
                                     <td>{{number_format($expense->sum,2)}} Birr</td>
                                     </tr>
                                     <tr>
                                     @endforeach
                                     <tr>
-                                    <th>Other Types</th>
-                                    <th>{{number_format($totalExpense - $topTotalExpense,2)}} Birr</th>
-                                    </tr>
-                                    <tr>
-                                    <th>Total Income</th>
+                                    <th>Total Expense</th>
+                                    <th></th>
                                     <th>{{number_format($totalExpense,2)}} Birr</th>
                                     </tr>
                                     <tr>
+                                    <thead>
+                                    <th>Net Income</th>
+                                    <th>{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
+                                    <th></th>
+                                    </tr>
+                                    </thead>
                                     </tbody>
                                 </table>
                             </div>
