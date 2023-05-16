@@ -38,35 +38,30 @@ class ReportController extends Controller
                             ->groupBy('expensetypeid')
                             ->selectRaw('sum(amount) as sum, expensetypeid')
                             ->orderBy('sum', 'DESC')
-                            ->limit(3)
                             ->get('expensetypeid', 'sum');
             $data['topIncome'] = MyIncome::where('userid',$userId)
                             ->whereBetween('date', [$fromDate, $toDate])
                             ->groupBy('incometypeid')
                             ->selectRaw('sum(amount) as sum, incometypeid')
                             ->orderBy('sum', 'DESC')
-                            ->limit(3)
                             ->get('incometypeid', 'sum');
             $data['topSaving'] = MySaving::where('userid',$userId)
                             ->whereBetween('date', [$fromDate, $toDate])
                             ->groupBy('savingtypeid')
                             ->selectRaw('sum(amount) as sum, savingtypeid')
                             ->orderBy('sum', 'DESC')
-                            ->limit(3)
                             ->get('savingtypeid', 'sum');
             $data['topLiability'] = MyLiability::where('userid',$userId)
                             ->whereBetween('date', [$fromDate, $toDate])
                             ->groupBy('lender')
                             ->selectRaw('sum(amount) as sum, lender')
                             ->orderBy('sum', 'DESC')
-                            ->limit(3)
                             ->get('lender', 'sum');
             $data['topReceivable'] = MyReceivable::where('userid',$userId)
                             ->whereBetween('date', [$fromDate, $toDate])
                             ->groupBy('borrower')
                             ->selectRaw('sum(amount) as sum, borrower')
                             ->orderBy('sum', 'DESC')
-                            ->limit(3)
                             ->get('borrower', 'sum');
             // dd($data['topIncome']);
             return view('admin.report.reportView', $data);
