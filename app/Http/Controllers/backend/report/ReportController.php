@@ -54,14 +54,14 @@ class ReportController extends Controller
             $data['topLiability'] = MyLiability::leftJoin('my_liability_payments', 'my_liability_payments.liabilityid','=','my_liabilities.id')->where('userid',$userId)
                             ->whereBetween('my_liabilities.date', [$fromDate, $toDate])
                             ->groupBy('lender')
-                            ->selectRaw('sum(my_liabilities.amount) as total, sum(my_liability_payments.amount) as payed, sum(my_liabilities.amount)-sum(my_liability_payments.amount) as unpayed, lender')
+                            ->selectRaw('sum(my_liabilities.amount) as total, sum(my_liability_payments.amount) as payed, sum(my_liabilities.amount) - sum(COALESCE(my_liability_payments.amount,0)) as unpayed, lender')
                             ->orderBy('unpayed', 'DESC')
                             ->get('lender', 'total', 'payed', 'unpayed');
 
             $data['topReceivable'] = MyReceivable::leftJoin('my_receivable_payments', 'my_receivable_payments.receivableid','=','my_receivables.id')->where('userid', $userId)
                             ->whereBetween('my_receivables.date', [$fromDate, $toDate])
                             ->groupBy('borrower')
-                            ->selectRaw('sum(my_receivables.amount) as total, sum(my_receivable_payments.amount) as payed, sum(my_receivables.amount)-sum(my_receivable_payments.amount) as unpayed, borrower')
+                            ->selectRaw('sum(my_receivables.amount) as total, sum(my_receivable_payments.amount) as payed, sum(my_receivables.amount) - sum(COALESCE(my_receivable_payments.amount,0)) as unpayed, borrower')
                             ->orderBy('unpayed', 'DESC')
                             ->get('borrower', 'total', 'payed', 'unpayed');
             // dd($data['topIncome']);
