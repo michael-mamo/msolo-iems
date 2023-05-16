@@ -191,7 +191,7 @@
                             <i class="ion ion-person-add"></i>
                         </div>
 
-                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('mySaving.view')}}" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="modal fade" id="modal-saving">
@@ -263,7 +263,7 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('mySaving.view')}}" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -278,7 +278,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('myIncome.view')}}" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -293,7 +293,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('myExpense.view')}}" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -309,7 +309,7 @@
                     <div class="card-header border-0">
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title">This Year Income and Expense</h4>
-                            <a href="javascript:void(0);">More</a>
+                            <a href="{{route('report.view')}}">More</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -358,7 +358,7 @@
                     <div class="card-header border-0">
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title">Last Year Income and Expense</h4>
-                            <a href="javascript:void(0);">More</a>
+                            <a href="{{route('report.view')}}">More</a>
                         </div>
                     </div>
                     <div class="card-body">
