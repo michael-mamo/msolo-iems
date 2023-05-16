@@ -98,7 +98,7 @@
                         <div class="row mt-5">
                         <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
                                 <h4 class="text-center" >Income Statement</h4>
-                                <table class="table table-sm table-bordered">
+                                <table class="table table-sm">
                                     <thead>
                                     <tr>
                                     <th>Category</th>
@@ -119,7 +119,7 @@
                                     @php
                                     $topTotalIncome += $income->sum;
                                     @endphp
-                                    <tr>
+                                    <tr class="text-sm">
                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$income['IncomeType']['name']}}</td>
                                     <td>{{number_format($income->sum,2)}} Birr</td>
                                     <td></td>
@@ -144,7 +144,7 @@
                                     @php
                                     $topTotalExpense += $expense->sum;
                                     @endphp
-                                    <tr>
+                                    <tr class="text-sm">
                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$expense['ExpenseType']['name']}}</td>
                                     <td></td>
                                     <td>{{number_format($expense->sum,2)}} Birr</td>
@@ -159,8 +159,7 @@
                                     <tr>
                                     <thead>
                                     <th>Net Income</th>
-                                    <th>{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
-                                    <th></th>
+                                    <th colspan="2">{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
                                     </tr>
                                     </thead>
                                     </tbody>
