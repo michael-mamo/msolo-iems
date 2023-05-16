@@ -289,13 +289,13 @@
                                 </tr> -->
                                 <tr>
                                     <td>Total Receivable:</td>
-                                    <td>{{number_format($totalReceivable,2)}} Birr</td>
+                                    <td>{{number_format($totalUnpayed,2)}} Birr</td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td>Total Liability:</td>
                                     <td></td>
-                                    <td>{{number_format($totalLiability,2)}} Birr</td>
+                                    <td>{{number_format($totalLiabilityUnpayed,2)}} Birr</td>
                                 </tr>
                                 <tr>
                                     <th>Capital:</th>
