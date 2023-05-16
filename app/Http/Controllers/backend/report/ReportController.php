@@ -47,10 +47,11 @@ class ReportController extends Controller
                             ->get('incometypeid', 'sum');
             $data['topSaving'] = MySaving::where('userid',$userId)
                             // ->whereBetween('date', [$fromDate, $toDate])
-                            ->groupBy('title')
-                            ->selectRaw('sum(amount) as sum, title')
+                            ->where('status','!=','Terminated')
+                            ->groupBy('title', 'savingfor')
+                            ->selectRaw('sum(amount) as sum, title, savingfor')
                             ->orderBy('sum', 'DESC')
-                            ->get('title', 'sum');
+                            ->get('title','savingfor', 'sum');
             $data['topLiability'] = MyLiability::leftJoin('my_liability_payments', 'my_liability_payments.liabilityid','=','my_liabilities.id')->where('userid',$userId)
                             // ->whereBetween('my_liabilities.date', [$fromDate, $toDate])
                             ->groupBy('lender')

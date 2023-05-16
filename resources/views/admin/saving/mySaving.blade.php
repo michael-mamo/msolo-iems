@@ -45,11 +45,15 @@
                       <!-- Add the bg color to the header using any of the bg-* classes -->
                       <div class="widget-user-header">
                         <div class="btn-group float-right">
+                        @if($mySaving->status != 'Terminated')
                         <button type="submit" data-toggle="modal" data-target="#modal-edit-saving{{$mySaving->id}}"
                             class="btn btn-sm"><i class="fa fa-edit text-info"></i></button>
                         <a href="{{route('mySaving.complete', $mySaving->id)}}" id="complete" type="submit" class="btn btn-sm "><i class="fa fa-check text-success"></i></a>
                         <a href="{{route('mySaving.terminate', $mySaving->id)}}" id="terminate" type="submit" class="btn btn-sm "><i class="text-warning fa fa-times text-bold"></i></a>
                         <a href="{{route('mySaving.delete', $mySaving->id)}}" id="delete" type="submit" class="btn btn-sm "><i class="fa fa-trash text-danger"></i></a>
+                        @else
+                        <a href="{{route('mySaving.reactivate', $mySaving->id)}}" type="submit" class="btn btn-sm "><i class="fa fa-check text-warning"></i></a>
+                        @endif
                         </div>
                         <br>
                         <h3 class="ml-2 mr-2 widget-user-username text-center mb-2"><b>{{$mySaving->title}}</b></h3>

@@ -133,6 +133,7 @@ Route::prefix('saving')->group(function(){
     Route::get('mySaving/delete/{id}', [MySavingController::class, 'MySavingDelete'])->name('mySaving.delete');
     Route::get('mySaving/complete/{id}', [MySavingController::class, 'MySavingComplete'])->name('mySaving.complete');
     Route::get('mySaving/terminate/{id}', [MySavingController::class, 'MySavingTerminate'])->name('mySaving.terminate');
+    Route::get('mySaving/re-activate/{id}', [MySavingController::class, 'MySavingReactivate'])->name('mySaving.reactivate');
 
     // All mySavingDeposit routes
     Route::POST('mySavingDeposit/add/{id}', [MySavingDepositController::class, 'MySavingDepositAdd'])->name('mySavingDeposit.add');

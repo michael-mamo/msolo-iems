@@ -260,6 +260,7 @@
                                     <thead>
                                     <tr>
                                     <th>Saving Title</th>
+                                    <th>Saving For</th>
                                     <th>Saved Amount</th>
                                     </tr>
                                     </thead>
@@ -273,15 +274,15 @@
                                     @endphp
                                     <tr class="text-sm">
                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$saving->title}}</td>
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$saving->savingfor}}</td>
                                     <td>{{number_format($saving->sum,2)}} Birr</td>
-                                    <td></td>
                                     </tr>
                                     <tr>
                                     @endforeach
                                     <tr class="text-success">
                                     <th>Total Saving</th>
-                                    <th>{{number_format($totalSaving,2)}} Birr</th>
                                     <th></th>
+                                    <th>{{number_format($totalSaving,2)}} Birr</th>
                                     </tr>
                                     </tbody>
                                 </table>

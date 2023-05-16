@@ -106,11 +106,25 @@ class MySavingController extends Controller
     }
     // Function to terminate my saving
     public function MySavingTerminate($id){
+        // Check if meets the required amount
         $data = MySaving::find($id);
         $data->status = 'Terminated';
         $data->save();
         $notification = array(
             'message'=>'Saving is Terminated successfully',
+            'alert-type'=>'success'
+        );
+
+        return redirect()->route('mySaving.view')->with($notification);
+    }
+    // reactivate
+    public function MySavingReactivate($id){
+        // Check if meets the required amount
+        $data = MySaving::find($id);
+        $data->status = 'In Progress';
+        $data->save();
+        $notification = array(
+            'message'=>'Saving is re activated successfully',
             'alert-type'=>'success'
         );
 
