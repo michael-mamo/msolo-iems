@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <!-- /.row -->
-                        <div class="row mt-3">
+                        <div class="row mt-5">
                         <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
                                 <h4 class="text-center" >Balance Sheet</h4>
                                 <table class="table table-sm">
@@ -252,7 +252,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-5">
                             <!-- accepted payments column -->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
                             <h4 class="text-center" >Savings</h4>
