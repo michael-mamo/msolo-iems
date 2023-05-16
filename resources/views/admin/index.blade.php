@@ -54,8 +54,7 @@
                                             @csrf
                                             <div class="card-body card_addincome" id="card_addincome">
                                                 <div class="form-group">
-                                                    <label for="date">Date</label>
-                                                    <input name='date' required type="date"
+                                                    <input name='date[]' required type="date"
                                                         class="form-control form-control-sm" id="date">
                                                 </div>
                                                 <div class="row">
@@ -73,7 +72,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-12">
-                                                                <input name="amount[]" type="number" min=0 step=".01"
+                                                                <input name="amount[]" required type="number" min=0 step=".01"
                                                                     class="form-control form-control-sm" id="amount"
                                                                     placeholder="Type the amount in Birr here">
                                                             </div>
@@ -132,8 +131,7 @@
                                             @csrf
                                             <div class="card-body card_addexpense" id="card_addexpense">
                                                 <div class="form-group">
-                                                    <label for="date">Date</label>
-                                                    <input name='date' required type="date"
+                                                    <input name='date[]' required type="date"
                                                         class="form-control form-control-sm" id="date">
                                                 </div>
                                                 <div class="row">
@@ -151,7 +149,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-12">
-                                                                <input name="amount[]" type="number" min=0 step=".01"
+                                                                <input name="amount[]" required type="number" min=0 step=".01"
                                                                     class="form-control form-control-sm" id="amount"
                                                                     placeholder="Type the amount in Birr here">
                                                             </div>
@@ -228,12 +226,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="amount">Amount</label>
-                                                    <input name="amount" type="number" min=0 step=".01" class="form-control" id="amount"
+                                                    <input name="amount" required type="number" min=0 step=".01" class="form-control" id="amount"
                                                     placeholder="Type Amount here (in ETB)">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="targetAmount">Target Amount</label>
-                                                    <input name="targetAmount" type="number" min=0 step=".01" class="form-control" id="targetAmount"
+                                                    <input name="targetAmount" required type="number" min=0 step=".01" class="form-control" id="targetAmount"
                                                     placeholder="Type target Amount here (in ETB)">
                                                 </div>
                                                 <div class="form-group">
@@ -682,7 +680,7 @@
             incomeSelect++;
             var selectIncomeClass = 'selectInc'+incomeSelect;
             // var whole_extra_item_add_income = $('#whole_extra_item_add_income').html();
-            var whole_extra_item_add_income = "<div class='whole_extra_item_add_income'id='whole_extra_item_add_income'><div class='delete_extra_item_income' id='delete_extra_item_income'><div class='row'><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><div class='row'><div class='form-group col-12'><select required name='incomeType[]' style='width: 100%;' class='"+selectIncomeClass+" form-control form-control-sm'><option value=''>--Choose Income Type--</option>@foreach($incomeTypeData as $incomeType)<option value='{{$incomeType->id}}'>{{$incomeType->name}}</option>@endforeach</select></div><div class='form-group col-12'><input name='amount[]' type='number' min=0 step='.01' class='form-control form-control-sm'id='amount'placeholder='Type the amount in Birr here'></div></div></div><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><textarea name='description[]' id='' rows='3'class='form-control form-control-sm'placeholder='Some description about the income'></textarea></div><div class='mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center'><span id='addincome' class='btn btn-success btn-sm addincome'><span class='fas fa-plus'></span></span><span id='removeincome' class='btn btn-danger btn-sm removeincome'><span class='fas fa-minus'></span></span></div></div></div></div>";
+            var whole_extra_item_add_income = "<div class='whole_extra_item_add_income'id='whole_extra_item_add_income'><div class='delete_extra_item_income' id='delete_extra_item_income'><div class='form-group'><input name='date[]' required type='date'class='form-control form-control-sm' id='date'></div><div class='row'><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><div class='row'><div class='form-group col-12'><select required name='incomeType[]' style='width: 100%;' class='"+selectIncomeClass+" form-control form-control-sm'><option value=''>--Choose Income Type--</option>@foreach($incomeTypeData as $incomeType)<option value='{{$incomeType->id}}'>{{$incomeType->name}}</option>@endforeach</select></div><div class='form-group col-12'><input  name='amount[]' required type='number' min=0 step='.01' class='form-control form-control-sm'id='amount'placeholder='Type the amount in Birr here'></div></div></div><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><textarea name='description[]' id='' rows='3'class='form-control form-control-sm'placeholder='Some description about the income'></textarea></div><div class='mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center'><span id='addincome' class='btn btn-success btn-sm addincome'><span class='fas fa-plus'></span></span><span id='removeincome' class='btn btn-danger btn-sm removeincome'><span class='fas fa-minus'></span></span></div></div></div></div>";
             $(".card_addincome").append(whole_extra_item_add_income);
             $('.'+selectIncomeClass).select2()
         });
@@ -693,7 +691,7 @@
         $(document).on('click', '.addexpense', function() {
             expenseSelect++;
             var selectExpenseClass = 'selectExp'+expenseSelect;
-            var whole_extra_item_add_expense = "<div class='whole_extra_item_add_expense'id='whole_extra_item_add_expense'><div class='delete_extra_item_expense' id='delete_extra_item_expense'><div class='row'><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><div class='row'><div class='form-group col-12'><select style='width: 100%;' required name='expenseType[]'class='"+selectExpenseClass+" form-control form-control-sm' id='expenseType'><option value=''>--Choose Expense Type--</option>@foreach($expenseTypeData as $expenseType)<option value='{{$expenseType->id}}'>{{$expenseType->name}}</option>@endforeach</select></div><div class='form-group col-12'><input name='amount[]' type='number' min=0 step='.01' class='form-control form-control-sm'id='amount'placeholder='Type the amount in Birr here'></div></div></div><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><textarea name='description[]' id='' rows='3' class='form-control form-control-sm' placeholder='Some description about the expense'></textarea></div><div class='mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center'><span id='addexpense' class='btn btn-success btn-sm addexpense'><span class='fas fa-plus'></span></span><span id='removeexpense'class='btn btn-danger btn-sm removeexpense'><span class='fas fa-minus'></span></span></div></div></div></div>";
+            var whole_extra_item_add_expense = "<div class='whole_extra_item_add_expense'id='whole_extra_item_add_expense'><div class='delete_extra_item_expense' id='delete_extra_item_expense'><div class='form-group'><input name='date[]' required type='date'class='form-control form-control-sm' id='date'></div><div class='row'><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><div class='row'><div class='form-group col-12'><select style='width: 100%;' required name='expenseType[]'class='"+selectExpenseClass+" form-control form-control-sm' id='expenseType'><option value=''>--Choose Expense Type--</option>@foreach($expenseTypeData as $expenseType)<option value='{{$expenseType->id}}'>{{$expenseType->name}}</option>@endforeach</select></div><div class='form-group col-12'><input name='amount[]' required type='number' min=0 step='.01' class='form-control form-control-sm'id='amount'placeholder='Type the amount in Birr here'></div></div></div><div class='col-sm-12 col-xs-12 col-md-5 col-lg-5'><textarea name='description[]' id='' rows='3' class='form-control form-control-sm' placeholder='Some description about the expense'></textarea></div><div class='mt-2 mb-2 col-sm-12 col-xs-12 col-md-2 col-lg-2 text-center'><span id='addexpense' class='btn btn-success btn-sm addexpense'><span class='fas fa-plus'></span></span><span id='removeexpense'class='btn btn-danger btn-sm removeexpense'><span class='fas fa-minus'></span></span></div></div></div></div>";
             $(this).closest(".card_addexpense").append(whole_extra_item_add_expense);
             $('.'+selectExpenseClass).select2();
         });

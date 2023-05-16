@@ -16,9 +16,15 @@
     <!-- <aside class="control-sidebar control-sidebar-dark"> -->
     <!-- </aside> -->
     </body>
+
+    <!-- <script>
+        $(":submit").closest("form").submit(function(){
+                $(':submit').attr('disabled', 'disabled');
+        });
+    </script> -->
     <script>
-    window.addEventListener('load', () => loadDark());
-</script>
+        window.addEventListener('load', () => loadDark());
+    </script>
 
 
 <script>

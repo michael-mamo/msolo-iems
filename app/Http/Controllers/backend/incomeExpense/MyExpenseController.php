@@ -139,7 +139,7 @@ class MyExpenseController extends Controller
         if($countExpenseType != NULL){
             for ($i=0; $i < $countExpenseType; $i++) {
                 $data = new MyExpense();
-                $data->date = $request->date;
+                $data->date = $request->date[$i];
                 $data->expensetypeid = $request->expenseType[$i];
                 $data->amount = $request->amount[$i];
                 $data->description = $request->description[$i];

@@ -97,7 +97,7 @@ class MyIncomeController extends Controller
         if($countIncomeType != NULL){
             for ($i=0; $i < $countIncomeType; $i++) {
                 $data = new MyIncome();
-                $data->date = $request->date;
+                $data->date = $request->date[$i];
                 $data->incometypeid = $request->incomeType[$i];
                 $data->amount = $request->amount[$i];
                 $data->description = $request->description[$i];
