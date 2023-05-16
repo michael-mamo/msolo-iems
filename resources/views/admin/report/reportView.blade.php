@@ -183,15 +183,15 @@
                                     <td>Payed Amount</td>
                                     <td>Unpayed Amount</td>
                                     @php
-                                    $totalTotal = 0.00;
-                                    $totalPayed = 0.00;
-                                    $totalUnpayed = 0.00;
+                                    $totalReceivableTotal = 0.00;
+                                    $totalReceivablePayed = 0.00;
+                                    $totalReceivableUnpayed = 0.00;
                                     @endphp
                                     @foreach($topReceivable as $key=>$receivable)
                                     @php
-                                    $totalTotal += $receivable->total;
-                                    $totalPayed += $receivable->payed;
-                                    $totalUnpayed += $receivable->unpayed;
+                                    $totalReceivableTotal += $receivable->total;
+                                    $totalReceivablePayed += $receivable->payed;
+                                    $totalReceivableUnpayed += $receivable->unpayed;
                                     @endphp
                                     <tr class="text-sm">
                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$receivable->borrower}}</td>
@@ -203,13 +203,13 @@
                                     @endforeach
                                     <tr>
                                     <th>Total Receivable</th>
-                                    <th>{{number_format($totalTotal,2)}} Birr</th>
-                                    <th>{{number_format($totalPayed,2)}} Birr</th>
-                                    <th>{{number_format($totalUnpayed,2)}} Birr</th>
+                                    <th>{{number_format($totalReceivableTotal,2)}} Birr</th>
+                                    <th>{{number_format($totalReceivablePayed,2)}} Birr</th>
+                                    <th>{{number_format($totalReceivableUnpayed,2)}} Birr</th>
                                     </tr>
                                     <!-- <tr class="text-success"> -->
                                     <!-- <th>Total Received Amount Between ('{{$fromDate}}' - '{{$toDate}}')</th> -->
-                                    <!-- <th colspan="3" class="text-center">{{number_format($totalPayed,2)}} Birr</th> -->
+                                    <!-- <th colspan="3" class="text-center">{{number_format($totalReceivablePayed,2)}} Birr</th> -->
                                     <!-- </tr> -->
                                     <thead>
                                     <thead>
@@ -229,15 +229,15 @@
                                     @endphp
                                     @foreach($topLiability as $key=>$liability)
                                     @php
-                                    $totalLiabilityTotal += $receivable->total;
+                                    $totalLiabilityTotal += $liability->total;
                                     $totalLiabilityPayed += $liability->received;
-                                    $totalLiabilityUnpayed += $receivable->unpayed;
+                                    $totalLiabilityUnpayed += $liability->unpayed;
                                     @endphp
                                     <tr class="text-sm">
-                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$receivable->lender}}</td>
-                                    <td>{{number_format($receivable->total,2)}} Birr</td>
-                                    <td>{{number_format($receivable->payed,2)}} Birr</td>
-                                    <td>{{number_format($receivable->unpayed,2)}} Birr</td>
+                                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$liability->lender}}</td>
+                                    <td>{{number_format($liability->total,2)}} Birr</td>
+                                    <td>{{number_format($liability->payed,2)}} Birr</td>
+                                    <td>{{number_format($liability->unpayed,2)}} Birr</td>
                                     </tr>
                                     <tr>
                                     @endforeach
@@ -289,7 +289,7 @@
                                 </tr> -->
                                 <tr>
                                     <td>Total Receivable:</td>
-                                    <td>{{number_format($totalUnpayed,2)}} Birr</td>
+                                    <td>{{number_format($totalReceivableUnpayed,2)}} Birr</td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -301,7 +301,7 @@
                                     <th>Capital:</th>
                                     <th></th>
                                     <!-- <th>{{number_format($totalSaving + $totalReceivable - $totalLiability,2)}} Birr</th> -->
-                                    <th class="{{$totalReceivable >= $totalLiability?'text-success':'text-danger'}}">{{number_format($totalReceivable - $totalLiability,2)}} Birr</th>
+                                    <th>{{number_format($totalReceivableUnpayed - $totalLiabilityUnpayed,2)}} Birr</th>
                                 </tr>
                                 </table>
                             </div>
