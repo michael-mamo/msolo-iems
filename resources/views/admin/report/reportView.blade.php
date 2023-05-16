@@ -98,7 +98,7 @@
                         <div class="row mt-3">
                         <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
                                 <h4 class="text-center" >Income Statement</h4>
-                                <table class="table table-sm no-border">
+                                <table class="table table-sm ">
                                     <thead>
                                     <tr>
                                     <th>Category</th>
@@ -170,7 +170,7 @@
                         <div class="row mt-5">
                         <div class="col-lg-12 col-lg-12 col-sm-12 col-xs-12  table-responsive">
                                 <h4 class="text-center" >Balance Sheet</h4>
-                                <table class="table table-sm no-border">
+                                <table class="table table-sm ">
                                     <thead>
                                     <tr>
                                     <th colspan="4">Account Recievable</th>
@@ -256,7 +256,7 @@
                             <!-- accepted payments column -->
                             <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12">
                             <h4 class="text-center" >Savings</h4>
-                                <table class="table table-sm no-border">
+                                <table class="table table-sm ">
                                     <thead>
                                     <tr>
                                     <th>Saving Title</th>
