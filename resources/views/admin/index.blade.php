@@ -652,7 +652,7 @@
             data: [@foreach($topFiveExpenseAmounts as $key=> $value)
               '{{$value}}',
             @endforeach],
-            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', 'White'],
+            backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', 'purple'],
         }
     ]
     }
