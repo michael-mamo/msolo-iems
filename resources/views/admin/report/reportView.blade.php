@@ -128,7 +128,7 @@
                                     @endforeach
                                     <tr>
                                     <th>Total Income</th>
-                                    <th>{{number_format($totalIncome,2)}} Birr</th>
+                                    <th class="text-success">{{number_format($totalIncome,2)}} Birr</th>
                                     <th></th>
                                     </tr>
                                     <thead>
@@ -154,12 +154,12 @@
                                     <tr>
                                     <th>Total Expense</th>
                                     <th></th>
-                                    <th>{{number_format($totalExpense,2)}} Birr</th>
+                                    <th class="text-danger">{{number_format($totalExpense,2)}} Birr</th>
                                     </tr>
                                     <tr>
                                     <thead>
                                     <th>Net Income</th>
-                                    <th colspan="2">{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
+                                    <th colspan="2" class="{{$totalIncome >= $totalExpense?'text-success':'text-danger'}}">{{number_format($totalIncome - $totalExpense,2)}} Birr</th>
                                     </tr>
                                     </thead>
                                     </tbody>
