@@ -17,11 +17,11 @@
     <!-- </aside> -->
     </body>
 
-    <!-- <script>
+    <script>
         $(":submit").closest("form").submit(function(){
                 $(':submit').attr('disabled', 'disabled');
         });
-    </script> -->
+    </script>
     <script>
         window.addEventListener('load', () => loadDark());
     </script>
