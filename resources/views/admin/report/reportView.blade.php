@@ -229,13 +229,13 @@
                                     @endphp
                                     @foreach($topLiability as $key=>$liability)
                                     @php
-                                    $totalLiabilityTotal += $liability->total;
-                                    $totalLiabilityPayed += $liability->received;
+                                    $totalLiabilityTotal += $liability->amount;
+                                    $totalLiabilityPayed += $liability->payed;
                                     $totalLiabilityUnpayed += $liability->unpayed;
                                     @endphp
                                     <tr class="text-sm">
                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$liability->lender}}</td>
-                                    <td>{{number_format($liability->total,2)}} Birr</td>
+                                    <td>{{number_format($liability->amount,2)}} Birr</td>
                                     <td>{{number_format($liability->payed,2)}} Birr</td>
                                     <td>{{number_format($liability->unpayed,2)}} Birr</td>
                                     </tr>

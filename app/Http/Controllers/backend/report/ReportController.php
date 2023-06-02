@@ -52,13 +52,10 @@ class ReportController extends Controller
                             ->selectRaw('sum(amount) as sum, title, savingfor')
                             ->orderBy('sum', 'DESC')
                             ->get('title','savingfor', 'sum');
-            $data['topLiability'] = MyLiability::leftJoin('my_liability_payments', 'my_liability_payments.liabilityid','=','my_liabilities.id')->where('userid',$userId)
+            $data['topLiability'] = MyLiability::select('my_liabilities.lender','my_liabilities.amount')->leftJoin('my_liability_payments', 'my_liability_payments.liabilityid','=','my_liabilities.id')->where('userid',$userId)
                             // ->whereBetween('my_liabilities.date', [$fromDate, $toDate])
-                            ->groupBy('lender')
-                            ->selectRaw('sum(my_liabilities.amount) as total, sum(my_liability_payments.amount) as payed, sum(my_liabilities.amount) - sum(COALESCE(my_liability_payments.amount,0)) as unpayed, lender')
-                            ->orderBy('unpayed', 'DESC')
-                            ->get('lender', 'total', 'payed', 'unpayed');
-
+                            ->groupBy('lender', 'amount')->selectRaw('sum(my_liability_payments.amount) as payed, my_liabilities.amount - sum(COALESCE(my_liability_payments.amount,0)) as unpayed, lender')->get('lender', 'amount', 'payed', 'unpayed');
+            
             $data['topReceivable'] = MyReceivable::leftJoin('my_receivable_payments', 'my_receivable_payments.receivableid','=','my_receivables.id')->where('userid', $userId)
                             // ->whereBetween('my_receivables.date', [$fromDate, $toDate])
                             ->groupBy('borrower')
