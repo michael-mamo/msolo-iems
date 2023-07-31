@@ -27,18 +27,47 @@
         <!-- Genetal expense widgets -->
         <!-- row -->
         <div class="row text-sm">
-            <div class="col-md-12 col-12 callout callout-info">
-                <div class="text-center">
-                <h4 class = "text-gray float-left">My Expense Data</h4>
-                <button type="button" class="btn btn-primary float-right btn-md" data-toggle="modal" data-target="#modal-newExpense">
-                  New Expense <span class="fa fa-plus"></span>
-                </button>
+          <div class="col-md-12 col-12 callout callout-info">
+            <form action="{{route('myExpense.filter')}}" method="get">
+                  @csrf    
+              <div class="row">
+                  <div class="col-md-3 col-sm-12 col-lg-3">
+                    <h4 class = "text-gray float-left">My Expense Data</h4>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <label class="text-center" for="fromDate">From Date</label>
+                    @if(isset($fromDate))
+                    <input value="{{$fromDate}}" required type="date" name="fromDate" id="fromDate" class="form-control form-control-sm">
+                    @else
+                    <input required type="date" name="fromDate" id="fromDate" class="form-control form-control-sm">
+                    @endif
+                    <label class="text-center" for="toDate">To Date</label>
+                    @if(isset($toDate))
+                    <input value="{{$toDate}}" required type="date" name="toDate" id="toDate" class="form-control form-control-sm">
+                    @else
+                    <input required type="date" name="toDate" id="toDate" class="form-control form-control-sm">
+                    @endif
+                    <div class="row mt-2 mb-2">
+                      <div class="col-sm-12 col-6 col-md-6">
+                        <button class="btn btn-success btn-block btn-lg"><span class="fa fa-filter"></span> Filter</button>
+                      </div>
+                      <div class="col-sm-12 col-6 col-md-6">
+                        <a href="{{route('myExpense.view')}}" type="button" class="text-decoration-none text-white btn btn-lg btn-block btn-danger "><span class="fa fa-trash"></span> Remove Filter</a>
+                      </div>                    
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-12">
+                    <button type="button" class="btn btn-primary btn-block float-right btn-lg" data-toggle="modal" data-target="#modal-newExpense">
+                      New Expense <span class="fa fa-plus"></span>
+                    </button>
+                  </div>
                 </div>
-            </div>
+              </form>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-4 col-lg-4">
-            <div class="info-box bg-orange">
+            <div class="info-box bg-green">
               <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
               <div class="info-box-content">
@@ -49,15 +78,15 @@
                   <div class="progress-bar" style="width: {{$differenceInDay}}%"></div>
                 </div>
                   @if($differenceInDay > 0)
-                  <span class="progress-description text-danger text-bold">
+                  <span class="progress-description text-sm">
                    {{number_format($differenceInDay, 2, '.', ',')}} % Increase than yesterday
                    </span>
                    @elseif($differenceInDay < 0)
-                   <span class="progress-description text-primary text-bold">
+                   <span class="progress-description text-sm">
                    {{number_format($differenceInDay, 2, '.', ',')}} % Increase than yesterday
                    </span>
                    @elseif($differenceInDay == 0)
-                   <span class="progress-description text-secondary text-bold">
+                   <span class="progress-description  text-sm">
                    0 % Increase than yesterday
                    </span>
                    @endif
@@ -78,15 +107,15 @@
                   <div class="progress-bar" style="width: {{$differenceInMonth}}%"></div>
                 </div>
                 @if($differenceInMonth > 0)
-                  <span class="progress-description text-danger text-bold">
+                  <span class="progress-description text-sm">
                    {{number_format($differenceInMonth, 2, '.', ',')}} % Increase than Last Month
                    </span>
                    @elseif($differenceInMonth < 0)
-                   <span class="progress-description text-primary text-bold">
+                   <span class="progress-description text-sm">
                    {{number_format($differenceInMonth, 2, '.', ',')}} % Increase than Last Month
                    </span>
                    @elseif($differenceInMonth == 0)
-                   <span class="progress-description text-secondary text-bold">
+                   <span class="progress-description text-sm">
                    0 % Increase than Last Month
                    </span>
                    @endif
@@ -97,7 +126,7 @@
           </div>
           <!-- /.col -->
           <div class="col-md-4 col-sm-4 col-lg-4">
-            <div class="info-box bg-green">
+            <div class="info-box bg-red">
               <span class="info-box-icon"><i class="fa fa-coins"></i></span>
 
               <div class="info-box-content">
@@ -108,15 +137,15 @@
                   <div class="progress-bar" style="width: {{$differenceInYear}}%"></div>
                 </div>
                 @if($differenceInYear > 0)
-                  <span class="progress-description text-danger text-bold">
+                  <span class="progress-description text-sm">
                    {{number_format($differenceInYear, 2, '.', ',')}} % Increase than Last Year
                    </span>
                    @elseif($differenceInYear < 0)
-                   <span class="progress-description text-primary text-bold">
+                   <span class="progress-description text-sm">
                    {{number_format($differenceInYear, 2, '.', ',')}} % Increase than Last Year
                    </span>
                    @elseif($differenceInYear == 0)
-                   <span class="progress-description text-secondary text-bold">
+                   <span class="progress-description text-sm">
                    0 % Increase than Last Year
                    </span>
                    @endif
@@ -284,7 +313,7 @@
                     </tr>
                   </tfoot>
                 </table>
-
+                
               </div>
               <!-- /.card-body -->
             </div>
@@ -310,21 +339,33 @@
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s expense as of date {{$todayDate}}'
+                @if(isset($fromDate))
+                title: '{{$fullName}} \'s expense from date {{$fromDate}} to {{$toDate}}',
+                @else
+                title: '{{$fullName}} \'s expense as of date {{$todayDate}}',
+                @endif
             },
             {
                 extend: 'excelHtml5',
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s expense as of date {{$todayDate}}'
+                @if(isset($fromDate))
+                title: '{{$fullName}} \'s expense from date {{$fromDate}} to {{$toDate}}',
+                @else
+                title: '{{$fullName}} \'s expense as of date {{$todayDate}}',
+                @endif
             },
             {
                 extend: 'pdfHtml5',
                 exportOptions: {
                     columns: ':visible'
                 },
+                @if(isset($fromDate))
+                title: '{{$fullName}} \'s expense from date {{$fromDate}} to {{$toDate}}',
+                @else
                 title: '{{$fullName}} \'s expense as of date {{$todayDate}}',
+                @endif
                 customize: function (doc) {
                     doc.content[1].table.widths =
                         Array(doc.content[1].table.body[0].length + 1).join('*').split('');
@@ -335,14 +376,22 @@
                 exportOptions: {
                     columns: ':visible'
                 },
-                title: '{{$fullName}} \'s expense as of date {{$todayDate}}'
+                @if(isset($fromDate))
+                title: '{{$fullName}} \'s expense from date {{$fromDate}} to {{$toDate}}',
+                @else
+                title: '{{$fullName}} \'s expense as of date {{$todayDate}}',
+                @endif
             },
             {
               extend: 'print',
                 exportOptions: {
                     columns: ':visible',
                 },
-                title: '{{$fullName}} \'s expense as of date {{$todayDate}}'
+                @if(isset($fromDate))
+                title: '{{$fullName}} \'s expense from date {{$fromDate}} to {{$toDate}}',
+                @else
+                title: '{{$fullName}} \'s expense as of date {{$todayDate}}',
+                @endif
             },
             'colvis'
                 ]

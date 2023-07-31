@@ -117,12 +117,14 @@ Route::prefix('incomeExpense')->group(function(){
     Route::POST('myIncome/add', [MyIncomeController::class, 'MyIncomeAdd'])->name('myIncome.add');
     Route::POST('myIncome/edit/{id}', [MyIncomeController::class, 'MyIncomeEdit'])->name('myIncome.edit');
     Route::get('myIncome/delete/{id}', [MyIncomeController::class, 'MyIncomeDelete'])->name('myIncome.delete');
+    Route::get('myIncome/filter', [MyIncomeController::class, 'MyIncomeFilter'])->name('myIncome.filter');
 
     // All myExpense routes
     Route::get('myExpense/view', [MyExpenseController::class, 'MyExpenseView'])->name('myExpense.view');
     Route::POST('myExpense/add', [MyExpenseController::class, 'MyExpenseAdd'])->name('myExpense.add');
     Route::POST('myExpense/edit/{id}', [MyExpenseController::class, 'MyExpenseEdit'])->name('myExpense.edit');
     Route::get('myExpense/delete/{id}', [MyExpenseController::class, 'MyExpenseDelete'])->name('myExpense.delete');
+    Route::get('myExpense/filter', [MyExpenseController::class, 'MyExpenseFilter'])->name('myExpense.filter');
 
 });
 Route::prefix('saving')->group(function(){

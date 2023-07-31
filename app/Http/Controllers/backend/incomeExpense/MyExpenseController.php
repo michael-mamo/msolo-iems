@@ -20,6 +20,7 @@ class MyExpenseController extends Controller
         $todayDay = Carbon::today()->format('d l');
         $todayMonth = Carbon::today()->format('F');
         $todayYear = Carbon::today()->format('Y');
+        $data['filter'] = 0;
         $lastYear = $todayYear-1;
         $differenceInDay = 0.00;
         $differenceInMonth = 0.00;
@@ -131,6 +132,143 @@ class MyExpenseController extends Controller
                                   ->whereYear('date', $todayYear)->orwhereYear('date', $lastYear)->get();
         $data['expenseTypeData'] = ExpenseType::where('isactive', 1)->orderby('name')->get();
         return view('admin.incomeExpense.myExpense', $data);
+    }
+
+    //Function to view My income page
+    public function MyExpenseFilter(Request $request){
+        $fromDate = $request->fromDate;
+        $toDate = $request->toDate;
+        if($fromDate <= $toDate){
+            $data['filter'] = 1;
+            $data['fromDate'] = $fromDate;
+            $data['toDate'] = $toDate;
+            $userId = Auth::user()->id;
+            $user = User::where('id',$userId)->first();
+            $data['fullName'] = $user->name.' '.$user->lname;
+            $todayDate = Carbon::today()->format('Y-m-d');
+            $todayDay = Carbon::today()->format('d l');
+            $todayMonth = Carbon::today()->format('F');
+            $todayYear = Carbon::today()->format('Y');
+            $lastYear = $todayYear-1;
+            $differenceInDay = 0.00;
+            $differenceInMonth = 0.00;
+            $differenceInYear = 0.00;
+            $todayExpense = MyExpense::where('userid', $userId)
+                            ->wheredate('date', $todayDate)
+                            ->sum('amount');
+            $yesterdayExpense = MyExpense::where('userid', $userId)
+                                ->wheredate('date', (Carbon::yesterday())
+                                ->format('Y-m-d'))
+                                ->sum('amount');
+            $thisMonthExpense = MyExpense::where('userid', $userId)
+                                ->whereYear('date', Carbon::today()
+                                ->format('Y'))->whereMonth('date', Carbon::today()
+                                ->format('m'))
+                                ->sum('amount');
+            $lastMonthExpense = MyExpense::where('userid', $userId)
+                                ->whereYear('date', Carbon::today()
+                                ->format('Y'))
+                                ->whereMonth('date', Carbon::today()
+                                ->format('m')-1)
+                                ->sum('amount');
+            $thisYearExpense = MyExpense::where('userid', $userId)
+                                ->whereYear('date', Carbon::today()
+                                ->format('Y'))
+                                ->sum('amount');
+            $lastYearExpense = MyExpense::where('userid', $userId)
+                                ->whereYear('date', (Carbon::today()
+                                ->format('Y'))-1)
+                                ->sum('amount');
+
+            // Increase
+            if($yesterdayExpense < $todayExpense){
+                if($yesterdayExpense==0){
+                    $differenceInDay = 100;
+                }
+                else{
+                    $differenceInDay = ($todayExpense - $yesterdayExpense)/$yesterdayExpense * 100;
+                }
+            }
+            // Decrease or equal
+            else{
+                if($todayExpense == $yesterdayExpense){
+                    $differenceInDay = 0;
+                }
+                elseif($todayExpense==0){
+                    $differenceInDay = -100;
+                }
+                else{
+                    $differenceInDay = -($yesterdayExpense - $todayExpense)/$todayExpense * 100;
+                }
+            }
+            // End of dayly increase check
+            // Increase
+            if($thisMonthExpense < $lastMonthExpense){
+                if($lastMonthExpense==0){
+                    $differenceInMonth = 100;
+                }
+                else{
+                    $differenceInMonth = ($thisMonthExpense - $lastMonthExpense)/$lastMonthExpense * 100;
+                }
+            }
+            // Decrease or equal
+            else{
+                if($thisMonthExpense == $lastMonthExpense){
+                    $differenceInMonth = 0;
+                }
+                elseif($thisMonthExpense==0){
+                    $differenceInMonth = -100;
+                }
+                else{
+                    $differenceInMonth = -($lastMonthExpense - $thisMonthExpense)/$thisMonthExpense * 100;
+                }
+            }
+            // Increase
+            if($thisYearExpense < $lastYearExpense){
+                if($lastYearExpense==0){
+                    $differenceInYear = 100;
+                }
+                else{
+                    $differenceInMonth = ($thisYearExpense - $lastYearExpense)/$lastYearExpense * 100;
+                }
+            }
+            // Decrease or equal
+            else{
+                if($thisYearExpense == $lastYearExpense){
+                    $differenceInYear = 0;
+                }
+                elseif($thisYearExpense==0){
+                    $differenceInYear = -100;
+                }
+                else{
+                    $differenceInYear = -($lastYearExpense - $thisYearExpense)/$thisYearExpense * 100;
+                }
+            }
+            // End of Yearly increase check
+            $data['todayDate'] = $todayDate;
+            $data['todayDay'] = $todayDay;
+            $data['todayMonth'] = $todayMonth;
+            $data['todayYear'] = $todayYear;
+            $data['lastYear'] = $lastYear;
+            $data['todayExpense'] = $todayExpense;
+            $data['differenceInDay'] =  $differenceInDay;
+            $data['thisMonthExpense'] = $thisMonthExpense;
+            $data['differenceInMonth'] =$differenceInMonth;
+            $data['thisYearExpense']= $thisYearExpense;
+            $data['differenceInYear'] = $differenceInYear;
+            $data['myExpenseData'] = MyExpense::where('userid',$userId)
+                                    ->whereBetween('date', [$fromDate, $toDate])->get();
+            $data['expenseTypeData'] = ExpenseType::where('isactive', 1)->orderby('name')->get();
+            return view('admin.incomeExpense.myExpense', $data);
+            }
+        else{
+            $data['filter'] = 0;
+            $notification = array(
+                'message' => 'From date should be atleast less than or equal to to date',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('myExpense.view')-> with($notification);
+        }
     }
     // Function to add income
     public function MyExpenseAdd(Request $request){

@@ -23,7 +23,7 @@ class ReportController extends Controller
         $fromDate = $request->fromDate;
         $toDate = $request->toDate;
         if($fromDate <= $toDate){
-            $data['report'] = 1;
+            $data['filter'] = 1;
             $data['fromDate'] = $fromDate;
             $data['toDate'] = $toDate;
             $data['reportDate'] = Carbon::now()->format('Y-m-d H:i:s');
