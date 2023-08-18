@@ -26,6 +26,7 @@ class ReportController extends Controller
             $data['filter'] = 1;
             $data['fromDate'] = $fromDate;
             $data['toDate'] = $toDate;
+            $data['report'] = 1;
             $data['reportDate'] = Carbon::now()->format('Y-m-d H:i:s');
             $data['totalIncome'] = MyIncome::where('userid', $userId)->whereBetween('date', [$fromDate, $toDate])->sum('amount');
             $data['totalExpense'] = MyExpense::where('userid', $userId)->whereBetween('date', [$fromDate, $toDate])->sum('amount');
