@@ -195,7 +195,7 @@
                                     @endphp
                                     <tr class="text-sm">
                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$receivable->borrower}}</td>
-                                    <td>{{number_format($receivable->total,2)}} Birr</td>
+                                    <td>{{number_format($receivable->amount,2)}} Birr</td>
                                     <td>{{number_format($receivable->payed,2)}} Birr</td>
                                     <td>{{number_format($receivable->unpayed,2)}} Birr</td>
                                     </tr>

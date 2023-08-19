@@ -56,14 +56,18 @@ class ReportController extends Controller
             $data['topLiability'] = MyLiability::select('my_liabilities.lender','my_liabilities.amount')->leftJoin('my_liability_payments', 'my_liability_payments.liabilityid','=','my_liabilities.id')->where('userid',$userId)
                             // ->whereBetween('my_liabilities.date', [$fromDate, $toDate])
                             ->groupBy('lender', 'amount')->selectRaw('sum(my_liability_payments.amount) as payed, my_liabilities.amount - sum(COALESCE(my_liability_payments.amount,0)) as unpayed, lender')->get('lender', 'amount', 'payed', 'unpayed');
-            
-            $data['topReceivable'] = MyReceivable::leftJoin('my_receivable_payments', 'my_receivable_payments.receivableid','=','my_receivables.id')->where('userid', $userId)
-                            // ->whereBetween('my_receivables.date', [$fromDate, $toDate])
-                            ->groupBy('borrower')
-                            ->selectRaw('sum(my_receivables.amount) as total, sum(my_receivable_payments.amount) as payed, sum(my_receivables.amount) - sum(COALESCE(my_receivable_payments.amount,0)) as unpayed, borrower')
-                            ->orderBy('unpayed', 'DESC')
-                            ->get('borrower', 'total', 'payed', 'unpayed');
-            // dd($data['topIncome']);
+
+            $data['topReceivable'] = MyReceivable::select('my_receivables.borrower','my_receivables.amount')->leftJoin('my_receivable_payments', 'my_receivable_payments.receivableid','=','my_receivables.id')->where('userid',$userId)
+                            // ->whereBetween('my_liabilities.date', [$fromDate, $toDate])
+                            ->groupBy('borrower', 'amount')->selectRaw('sum(my_receivable_payments.amount) as payed, my_receivables.amount - sum(COALESCE(my_receivable_payments.amount,0)) as unpayed, borrower')->get('borrower', 'amount', 'payed', 'unpayed');
+
+            // $data['topReceivable'] = MyReceivable::leftJoin('my_receivable_payments', 'my_receivable_payments.receivableid','=','my_receivables.id')->where('userid', $userId)
+            //                 // ->whereBetween('my_receivables.date', [$fromDate, $toDate])
+            //                 ->groupBy('borrower')
+            //                 ->selectRaw('sum(my_receivables.amount) as total, sum(my_receivable_payments.amount) as payed, sum(my_receivables.amount) - sum(COALESCE(my_receivable_payments.amount,0)) as unpayed, borrower')
+            //                 ->orderBy('unpayed', 'DESC')
+            //                 ->get('borrower', 'total', 'payed', 'unpayed');
+            // dd($data['topReceivable']);
             return view('admin.report.reportView', $data);
         }
         else{
