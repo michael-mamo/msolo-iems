@@ -176,9 +176,9 @@ Route::get('report/generate', [ReportController::class, 'ReportGenerate'])->name
 Route::prefix('contact')->group(function(){
     Route::get('feedback/view', [ContactController::class, 'FeedbackView'])->name('feedback.view');
     Route::get('contactAdmin', [ContactController::class, 'ContactAdmin'])->name('contact.contactadmin');
-    Route::get('contactAdmin/send', [ContactController::class, 'ContactAdminSend'])->name('contact.contactadmin.send');
+    Route::POST('contactAdmin/send', [ContactController::class, 'ContactAdminSend'])->name('contact.contactadmin.send');
     Route::get('contactUser', [ContactController::class, 'ContactUser'])->name('contact.contactuser');
-    Route::get('contactUser/send/{recId}', [ContactController::class, 'ContactUserSend'])->name('contact.contactuser.send');
+    Route::POST('contactUser/send/{recId}', [ContactController::class, 'ContactUserSend'])->name('contact.contactuser.send');
     Route::get('contactUser/{id}', [ContactController::class, 'ShowMessages'])->name('contact.contactuser.showmessage');
     Route::get('compose', [ContactController::class, 'ComposeMessageView'])->name('contact.compose.view');
 });

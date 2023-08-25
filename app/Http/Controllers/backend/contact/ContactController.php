@@ -39,6 +39,17 @@ class ContactController extends Controller
         $data->recieverid = $adminId;
         $data->recieverrole = 'Admin';
         $data->message = $request->message;
+        $fileName = '';
+        if($request->file('attachment')){
+            $files = $request->file('attachment');
+            foreach($files as $file){
+                // $file = $request->file('attachment');
+                $fileName .= '@@'.date('YmdHi').$file->getClientOriginalName();
+                $fileOName = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('uploads/chatAttachments/'), $fileOName);
+                $data['attachment'] = $fileName;
+            } 
+        }
         $data->isseen = 0;
         $data->save();
         return redirect()->back();
@@ -69,6 +80,12 @@ class ContactController extends Controller
         $data->recieverrole = 'User';
         $data->message = $request->message;
         $data->isseen = 0;
+        if($request->file('file')){
+            $file = $request->file('file');
+            $fileName = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('uploads/chatAttachments/'), $fileName);
+            $data['attachment'] = $fileName;
+        }
         $data->save();
         return redirect()->back();
     }

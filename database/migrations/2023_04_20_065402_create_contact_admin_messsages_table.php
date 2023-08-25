@@ -19,7 +19,8 @@ class CreateContactAdminMesssagesTable extends Migration
             $table->string('senderrole');
             $table->integer('recieverid');
             $table->string('recieverrole');
-            $table->string('message', 2000);
+            $table->string('message', 2000)->nullable();
+            $table->string('attachment', 2000)->nullable();
             $table->integer('replyonid')->nullable();
             $table->integer('isseen')->default(0);
             $table->timestamps();

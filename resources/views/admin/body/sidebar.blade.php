@@ -166,7 +166,7 @@ $route = Route::current()->getName();
           <a href="{{route('contact.contactadmin')}}" class="nav-link {{ ($route == 'contact.contactadmin')?'active':''}}">
             <i class="nav-icon fas fa-comments"></i>
             <p>
-              Contact Admin
+              Contact Admin 
             </p>
           </a>
         </li>
