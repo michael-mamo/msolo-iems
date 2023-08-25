@@ -51,6 +51,7 @@
                                         @foreach($messages as $key=>$message)
                                         @if(Auth::User()->id == $message->recieverid)
                                         <div class="row">
+                                            @if($message->message != '' || $message->attachment != '')
                                             <div class="direct-chat-msg col-6">
                                                 <div class="direct-chat-infos clearfix">
                                                     <span class="direct-chat-name float-left">{{$message['SenderInfo']['name']}} {{$message['SenderInfo']['lname']}}</span>
@@ -60,14 +61,25 @@
                                                 <img class="direct-chat-img" src="{{(!empty($message['SenderInfo']['profile_photo_path']))? url('uploads/userImages/'.$message['SenderInfo']['profile_photo_path']): url('uploads/userImages/maleDefault.png')}}"
                                                     alt="user Img">
                                                 <!-- /.direct-chat-img -->
+                                                @if($message->message != '')
                                                 <div class="direct-chat-text">
                                                     {!! nl2br($message->message)!!}
                                                 </div>
-                                                <a href="{{$message->attachment}}">
-                                                    Download File <i class="fa fa-file">{{$message->attachment}}</i>
-                                                </a>
+                                                @endif
+                                                @if($message->attachment != '')
+                                                    @foreach(explode('@@', $message->attachment) as $attachment) 
+                                                    @if($attachment != '')
+                                                    <div class="direct-chat-text">
+                                                        <a class="mt-2"  target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
+                                                            <i class="fa fa-file text-white"> Download file {{$loop->index}}</i>
+                                                        </a>
+                                                    </div>
+                                                    @endif
+                                                    @endforeach
+                                                @endif
                                                 <!-- /.direct-chat-text -->
                                             </div>
+                                            @endif
                                         </div>
                                         @elseif(Auth::User()->id == $message->senderid)
                                         <!-- /.direct-chat-msg -->
@@ -183,5 +195,5 @@
             document.getElementById('attachment').files = dt.files;
         });
     });
-  </script>
+</script>
 @endsection

@@ -112,6 +112,7 @@
                                         <!-- /.direct-chat-msg -->
                                         <div class="row">
                                             <div class="col-6"></div>
+                                             @if($message->message != '' || $message->attachment != '')
                                             <div class="direct-chat-msg right col-6">
                                                 <div class="direct-chat-infos clearfix">
                                                     <span class="direct-chat-name float-right">{{$message['SenderInfo']['name']}} {{$message['SenderInfo']['lname']}}</span>
@@ -121,11 +122,24 @@
                                                 <img class="direct-chat-img" src="{{(!empty($message['SenderInfo']['profile_photo_path']))? url('uploads/userImages/'.$message['SenderInfo']['profile_photo_path']): url('uploads/userImages/maleDefault.png')}}"
                                                     alt="user Img">
                                                 <!-- /.direct-chat-img -->
+                                                @if($message->message != '')
                                                 <div class="direct-chat-text">
                                                     {!! nl2br($message->message)!!}
                                                 </div>
-                                                <!-- /.direct-chat-text -->
+                                                @endif
+                                                @if($message->attachment != '')
+                                                    @foreach(explode('@@', $message->attachment) as $attachment) 
+                                                    @if($attachment != '')
+                                                    <div class="direct-chat-text">
+                                                        <a class="mt-2"  target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
+                                                            <i class="fa fa-file text-white"> Download file {{$loop->index}}</i>
+                                                        </a>
+                                                    </div>
+                                                   @endif
+                                                    @endforeach
+                                                @endif
                                             </div>
+                                            @endif
                                         </div>
                                         @else
                                         There is some error please check here
@@ -165,10 +179,18 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <form action="{{route('contact.contactuser.send', $recId)}}" method="get">
+                                    <div class="ml-5" id="filesList">
+                                        <p id="files-names"></p>
+                                    </div> 
+                                    <form action="{{route('contact.contactuser.send', $recId)}}" enctype ="multipart/form-data" method = "POST">
+                                        @csrf
                                         <div class="input-group">
                                             <textarea rows="2" name="message" placeholder="Type Your Message ..."
                                                 class="form-control"></textarea>
+                                            <input type="file" multiple name="attachment[]" id="attachment" style="display:none;">
+                                            <span class="input-group-append">
+                                                <a href="#" class="btn btn-white" onclick="thisFileUpload();"><i class="fa-lg fa fa-paperclip"></i></a>
+                                            </span>
                                             <span class="input-group-append">
                                                 <button type="submit" class="btn btn-primary">Send</button>
                                             </span>
@@ -188,4 +210,45 @@
         </div>
     </div>
 </body>
+<script>
+    function thisFileUpload() {
+        document.getElementById("attachment").click();
+    };
+</script>
+<script> 
+const dt = new DataTransfer(); // Permet de manipuler les fichiers de l'input file
+  
+    $("#attachment").on('change', function(e){
+        for(var i = 0; i < this.files.length; i++){
+            let fileBloc = $('<span/>', {class: 'file-block', style:"width:100%; display: inline-block;"}),
+                fileName = $('<span/>', {class: 'name', text: this.files.item(i).name});
+            fileBloc.append('<span class="mt-1 file-delete"><i class = "badge badge-danger"><span class="fa fa-times"></span></i></span>')
+                .append(fileName);
+            $("#filesList > #files-names").append(fileBloc);
+        };
+        // Ajout des fichiers dans l'objet DataTransfer
+        for (let file of this.files) {
+            dt.items.add(file);
+        }
+        // Mise à jour des fichiers de l'input file après ajout
+        this.files = dt.files;
+  
+        // EventListener pour le bouton de suppression créé
+        $('span.file-delete').click(function(){
+            let name = $(this).next('span.name').text();
+            // Supprimer l'affichage du nom de fichier
+            $(this).parent().remove();
+            for(let i = 0; i < dt.items.length; i++){
+                // Correspondance du fichier et du nom
+                if(name === dt.items[i].getAsFile().name){
+                    // Suppression du fichier dans l'objet DataTransfer
+                    dt.items.remove(i);
+                    continue;
+                }
+            }
+            // Mise à jour des fichiers de l'input file après suppression
+            document.getElementById('attachment').files = dt.files;
+        });
+    });
+</script>
 @endsection
