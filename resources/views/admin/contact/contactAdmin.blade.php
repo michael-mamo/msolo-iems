@@ -70,7 +70,7 @@
                                                     @foreach(explode('@@', $message->attachment) as $attachment) 
                                                     @if($attachment != '')
                                                     <div class="direct-chat-text">
-                                                        <a class="mt-2"  target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
+                                                        <a class="mt-2" download href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
                                                             <i class="fa fa-file text-white"> Download file {{$loop->index}}</i>
                                                         </a>
                                                     </div>
@@ -104,7 +104,7 @@
                                                     @foreach(explode('@@', $message->attachment) as $attachment) 
                                                     @if($attachment != '')
                                                     <div class="direct-chat-text">
-                                                        <a class="mt-2"  target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
+                                                        <a class="mt-2" download href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
                                                             <i class="fa fa-file text-white"> Download file {{$loop->index}}</i>
                                                         </a>
                                                     </div>

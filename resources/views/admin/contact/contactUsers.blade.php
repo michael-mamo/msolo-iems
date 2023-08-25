@@ -97,7 +97,7 @@
                                                     @foreach(explode('@@', $message->attachment) as $attachment) 
                                                         @if($attachment != '')
                                                         <div class="direct-chat-text">
-                                                            <a class="mt-2" target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
+                                                            <a class="mt-2" download href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
                                                                 Download file {{$loop->index}}<i class="fa fa-file"></i>
                                                             </a>
                                                         </div>
@@ -131,7 +131,7 @@
                                                     @foreach(explode('@@', $message->attachment) as $attachment) 
                                                     @if($attachment != '')
                                                     <div class="direct-chat-text">
-                                                        <a class="mt-2"  target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
+                                                        <a class="mt-2" download  href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
                                                             <i class="fa fa-file text-white"> Download file {{$loop->index}}</i>
                                                         </a>
                                                     </div>
@@ -145,37 +145,7 @@
                                         There is some error please check here
                                         @endif
                                         @endforeach
-                                        <!-- Message to the right -->
-
-                                        <!-- /.direct-chat-msg -->
                                     </div>
-                                    <!--/.direct-chat-messages-->
-
-                                    <!-- Contacts are loaded here -->
-                                    <div class="direct-chat-contacts">
-                                        <ul class="contacts-list">
-                                            <li>
-                                                <a href="#">
-                                                    <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg"
-                                                        alt="User Avatar">
-
-                                                    <div class="contacts-list-info">
-                                                        <span class="contacts-list-name">
-                                                            Count Dracula
-                                                            <small
-                                                                class="contacts-list-date float-right">2/28/2015</small>
-                                                        </span>
-                                                        <span class="contacts-list-msg">How have you been? I
-                                                            was...</span>
-                                                    </div>
-                                                    <!-- /.contacts-list-info -->
-                                                </a>
-                                            </li>
-                                            <!-- End Contact Item -->
-                                        </ul>
-                                        <!-- /.contatcts-list -->
-                                    </div>
-                                    <!-- /.direct-chat-pane -->
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
