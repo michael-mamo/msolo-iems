@@ -93,7 +93,7 @@
                                                     @if($attachment != '')
                                                     <div class="direct-chat-text">
                                                         <a class="mt-2"  target="_blank" href="{{ URL::to('/uploads/chatAttachments/'.$attachment) }}">
-                                                            <i class="fa fa-file text-white">Download file {{$loop->index}}</i>
+                                                            <i class="fa fa-file text-white"> Download file {{$loop->index}}</i>
                                                         </a>
                                                     </div>
                                                     @endif
