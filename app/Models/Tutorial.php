@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tutorial extends Model
 {
-    use HasFactory;
+    public function Category(){
+        return $this->belongsTo(TutorialCategory::class, 'category', 'id');
+    }
 }

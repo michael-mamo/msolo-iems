@@ -15,6 +15,7 @@ class CreateTutorialsTable extends Migration
     {
         Schema::create('tutorials', function (Blueprint $table) {
             $table->id();
+            $table->integer('category')->nullable();
             $table->string('title')->unique();
             $table->string('subtitle')->nullable();
             $table->string('description')->nullable();

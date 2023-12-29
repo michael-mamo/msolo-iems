@@ -105,6 +105,12 @@ $route = Route::current()->getName();
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{ route('tutorialCategory.view') }}" class="nav-link {{ ($route == 'tutorialCategory.view')?'active':''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tutorial Category</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('tutorial.view') }}" class="nav-link {{ ($route == 'tutorial.view')?'active':''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Tutorial</p>
@@ -189,14 +195,14 @@ $route = Route::current()->getName();
           </a>
         </li>
         @endif
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a href="{{route('help.tutorial')}}" class="nav-link {{ ($route == 'help.tutorial')?'active':''}}">
             <i class="nav-icon fas fa-question-circle"></i>
             <p>
               Help
             </p>
           </a>
-        </li> -->
+        </li> 
         <li class="nav-item">
           <a href="{{route('profile.view')}}" class="nav-link {{ ($route == 'profile.view')?'active':''}}">
             <i class="nav-icon fas fa-user"></i>

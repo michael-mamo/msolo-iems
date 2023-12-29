@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\configuration\SavingTypeController;
 use App\Http\Controllers\backend\configuration\TutorialController;
 use App\Http\Controllers\backend\configuration\LiabilityTypeController;
 use App\Http\Controllers\backend\configuration\ReceivableTypeController;
+use App\Http\Controllers\backend\configuration\TutorialCategoryController;
 use App\Http\Controllers\backend\incomeExpense\MyIncomeController;
 use App\Http\Controllers\backend\incomeExpense\MyExpenseController;
 use App\Http\Controllers\backend\saving\MySavingController;
@@ -91,6 +92,12 @@ Route::prefix('configuration')->group(function(){
     Route::POST('savingType/add', [SavingTypeController::class, 'SavingTypeAdd'])->name('savingType.add');
     Route::POST('savingType/edit/{id}', [SavingTypeController::class, 'SavingTypeEdit'])->name('savingType.edit');
     Route::get('savingType/delete/{id}', [SavingTypeController::class, 'SavingTypeDelete'])->name('savingType.delete');
+
+    // All tutorial Category routes
+    Route::get('tutorialCategory/view', [TutorialCategoryController::class, 'TutorialCategoryView'])->name('tutorialCategory.view');
+    Route::POST('tutorialCategory/add', [TutorialCategoryController::class, 'TutorialCategoryAdd'])->name('tutorialCategory.add');
+    Route::POST('tutorialCategory/edit/{id}', [TutorialCategoryController::class, 'TutorialCategoryEdit'])->name('tutorialCategory.edit');
+    Route::get('tutorialCategory/delete/{id}', [TutorialCategoryController::class, 'TutorialCategoryDelete'])->name('tutorialCategory.delete');
 
     // All tutorial routes
     Route::get('tutorial/view', [TutorialController::class, 'TutorialView'])->name('tutorial.view');

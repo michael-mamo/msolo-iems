@@ -46,6 +46,20 @@
                           @csrf
                           <div class="card-body">
                             <div class="row">
+                              <div class="col-md-12 col-sm-12 form-group">
+                                <label for="category" class="text-sm">Category</label>
+                                <select required name="category" class="form-control form-control-sm" id="category">
+                                  <option value="">--Choose category--</option>
+                                  @foreach($tutorialCategory as $key=>$category)
+                                  <option  value="{{$category->id}}">{{$category->name}}</option>
+                                  @endforeach
+                                </select>
+                                @error('category')
+                                <span class = "text-danger text-sm">{{$message}}</span>
+                                @enderror
+                              </div>
+                            </div>
+                            <div class="row">
                               <div class="col-md-6 col-sm-6 col-6 form-group">
                                 <label for="title text-sm">Title</label>
                                 <input name="title" type="text" class="form-control form-control-sm" id="title"
@@ -101,6 +115,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
+                      <th>Category</th>
                       <th>Title</th>
                       <th>Subtitle</th>
                       <th>File</th>
@@ -112,9 +127,10 @@
                   @foreach($allData as $key=>$tutorial)
                     <tr>
                       <td>{{$key+1}}</td>
+                      <td>{{$tutorial['Category']['name']}}</td> 
                       <td>{{$tutorial->title}}</td>
                       <td>{{$tutorial->subtitle}}</td>
-                      <td class="text-center"><video height="100px" width="100px" controls src="{{url('uploads/tutorials/'.$tutorial->file)}}"></video></td>
+                      <td class="text-center"><video height="100px" width="100px" controls src="{{url('uploads/tutorials/'.$tutorial['Category']['name'].'/'.$tutorial->file)}}"></video></td>
                       <td>@if($tutorial->isactive == '1')
                           Yes
                           @else
@@ -146,6 +162,20 @@
                             <form action="{{route('tutorial.edit', $tutorial->id)}}" method="POST">
                               @csrf
                               <div class="card-body">
+                                <div class="row">
+                                  <div class="col-md-12 col-sm-12 form-group">
+                                    <label for="category" class="text-sm">Category</label>
+                                    <select required name="category" class="form-control form-control-sm" id="category">
+                                      <option value="">--Choose category--</option>
+                                      @foreach($tutorialCategory as $key=>$category)
+                                      <option  value="{{$category->id}}" {{$tutorial->category == $category->id?"selected":""}}>{{$category->name}}</option>
+                                      @endforeach
+                                    </select>
+                                    @error('category')
+                                    <span class = "text-danger text-sm">{{$message}}</span>
+                                    @enderror
+                                  </div>
+                                </div>
                                 <div class="row">
                                   <div class="col-md-6 col-sm-6 col-6 form-group">
                                     <label for="editTitle text-sm">Title</label>
@@ -200,6 +230,7 @@
                   <tfoot>
                     <tr>
                       <th>No</th>
+                      <th>Category</th>
                       <th>Title</th>
                       <th>Subtitle</th>
                       <th>File</th>

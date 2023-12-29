@@ -27,42 +27,61 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-
-                        @foreach($allData as $tutorial)
-                        <div class="col-6 col-md-6 col-sm-12">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">{{$tutorial->subtitle}}</h3>
+                        @foreach($tutorialCategory as $category)
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            <div class="card">
+                                <div class="ribbon-wrapper ribbon-xl">
+                                    <div class=" ribbon ribbon-sm bg-success text-xm">
+                                        {{$category->name}}
+                                    </div>
                                 </div>
                                 <!-- /.card-header -->
-                                <div height="400px" class="card-body">
+                                <div height="300px" class="card-body">
                                     <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="position-relative ">
-                                                <div class="mt-5 mr-5 card-img-overlay text-secondary flex-column">
-                                                    <p class="card-text text-white pb-2 pt-1">{{$tutorial->description}}
-                                                    </p>
-                                                    <a href="#" class="text-white">Posted At:
-                                                        {{$tutorial->created_at}}</a>
+                                        @foreach($allData as $tutorial)
+                                        @if($tutorial->category == $category->id )
+                                        <div class="col-md-6 col-sm-12 col-lg-4 ">
+                                            <div class="card card-outline card-primary">
+                                                <div class="card-header">
+                                                    <h6 class="username">{{$tutorial->title}}</h6>
+
                                                 </div>
-                                                <video height="100%" width="100%" controls
-                                                    src="{{url('uploads/tutorials/'.$tutorial->file)}}"></video>
-                                                <div class="ribbon-wrapper ribbon-xl">
-                                                    <div class="ribbon ribbon-sm bg-success text-sm">
-                                                        {{$tutorial->title}}
+                                                <!-- /.card-header -->
+                                                <div class="card-body p-0 m-0">
+                                                    <video height="100%" width="100%" controls
+                                                        src="{{url('uploads/tutorials/'.$category->name.'/'.$tutorial->file)}}">\
+                                                    </video>
+                                                </div>
+                                                <div class="card-footer ">
+                                                    <div id="accordion{{$tutorial->id}}">
+                                                        <h6 class="card-title w-100 pt-0">
+                                                            <a class="text-sm" data-toggle="collapse"
+                                                                href="#collapse{{$tutorial->id}}">
+                                                                {{$tutorial->subtitle}}
+                                                            </a>
+                                                        </h6>
+                                                    </div>
+                                                    <div id="collapse{{$tutorial->id}}" class="collapse p-0 m-0"
+                                                        data-parent="#accordion{{$tutorial->id}}">
+                                                        <span
+                                                            class="text-muted text-sm">{{$tutorial->description}}</span>
+                                                        <span
+                                                            class="float-right text-muted text-xs"><b>{{$tutorial->created_at}}</b></span>
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
+                                        @endif
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
                         </div>
+
                         @endforeach
+
                     </div>
                     <!-- /.row -->
 
