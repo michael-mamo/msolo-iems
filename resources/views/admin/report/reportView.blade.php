@@ -367,7 +367,7 @@
 <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script> -->
-<script src="http://cdn.kendostatic.com/2015.2.624/js/jquery.min.js"></script>
+<!-- <script src="http://cdn.kendostatic.com/2015.2.624/js/jquery.min.js"></script> -->
 <script src="http://cdn.kendostatic.com/2015.2.624/js/kendo.all.min.js"></script>  
 
 <script>
