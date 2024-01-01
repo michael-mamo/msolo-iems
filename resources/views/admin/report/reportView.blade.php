@@ -347,9 +347,9 @@
                         <div class="row no-print">
                             <div class="text-center col-12">
                             <a onclick="printReport()" rel="noopener" class="btn btn-success btn-lg"><i class="fas fa-print"></i> Print</a>
-                            <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                            <button id="downloadPdf" type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                 <i class="fas fa-download"></i> Generate PDF
-                            </button> -->
+                            </button>
                             </div>
                         </div>
                         </div>
@@ -364,6 +364,12 @@
         <!-- Include the footer here -->
     </div>
 </body>
+<!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script> -->
+<script src="http://cdn.kendostatic.com/2015.2.624/js/jquery.min.js"></script>
+<script src="http://cdn.kendostatic.com/2015.2.624/js/kendo.all.min.js"></script>  
+
 <script>
     function printReport(){
         var printData =  document.getElementById("printable").innerHTML
@@ -372,7 +378,71 @@
         window.print();
         document.body.innerHTML = originalContents;
     }
+</script>
+<script>
+    // $('#downloadPdf').click(function() {
+    //     console.log('Hi HI hi')
+    //     window.scrollTo(0,0);
+    //     var w = document.getElementById("printable").offsetWidth;
+    //     var h = document.getElementById("printable").offsetHeight;
+    //     document.getElementById("printable").style.height="auto";
+    //     html2canvas(document.getElementById("printable")).then((canvas) => {
+    //         console.log(canvas);
+    //         let cimage = canvas.toDataURL("image/jpeg", 1);
+    //         console.log(cimage);
+    //         let pdf = new jsPDF('L', 'px', [w,h]);
+    //         pdf.addImage(cimage, 'JPEG', 0,0, w, h);
+    //         pdf.save('mahi.pdf');
+    //     });
+    //     window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+    // });
+</script>
+<!-- Using Kendo -->
+<script>
+    $("#downloadPdf").click(function() {
+        // Convert the DOM element to a drawing using kendo.drawing.drawDOM
+        kendo.drawing.drawDOM($("#printable"))
+        .then(function(group) {
+            // Render the result as a PDF file
+            return kendo.drawing.exportPDF(group, {
+                paperSize: "auto",
+                margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+            });
+        })
+        .done(function(data) {
+            // Save the PDF file
+            kendo.saveAs({
+                dataURI: data,
+                fileName: "check me.pdf",
+            });
+        });
+    });
+</script>
+<script>
+// $(document).ready(function() {
+//      $('#print').click(function() {
+//      var currentPosition = document.getElementById("content").scrollTop;
+//       var w = document.getElementById("content").offsetWidth;
+//       var h = document.getElementById("content").offsetHeight;
+//      document.getElementById("content").style.height="auto";
 
+//       html2canvas(document.getElementById("content"), {
+
+//         dpi: 300, // Set to 300 DPI
+//         scale: 3, // Adjusts your resolution
+//         onrendered: function(canvas) {
+//           var img = canvas.toDataURL("image/jpeg", 1);
+//           var doc = new jsPDF('L', 'px', [w, h]);
+//           doc.addImage(img, 'JPEG', 0, 0, w, h);
+//           doc.addPage();
+//           doc.save('sample-file.pdf');
+//         }
+//       });
+//      document.getElementById("content").style.height="100px";
+//      document.getElementById("content").scrollTop = currentPosition;
+//     });
+
+// });
 </script>
 </html>
 @endsection
