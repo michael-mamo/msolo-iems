@@ -347,9 +347,9 @@
                         <div class="row no-print">
                             <div class="text-center col-12">
                             <a onclick="printReport()" rel="noopener" class="btn btn-success btn-lg"><i class="fas fa-print"></i> Print</a>
-                            <button id="downloadPdf" type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                            <!-- <button id="downloadPdf" type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                 <i class="fas fa-download"></i> Generate PDF
-                            </button>
+                            </button> -->
                             </div>
                         </div>
                         </div>
@@ -413,7 +413,7 @@
             // Save the PDF file
             kendo.saveAs({
                 dataURI: data,
-                fileName: "check me.pdf",
+                fileName: "updated.pdf",
             });
         });
     });

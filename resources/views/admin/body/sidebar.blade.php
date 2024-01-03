@@ -219,6 +219,14 @@ $route = Route::current()->getName();
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{route('customer.view')}}" class="nav-link {{ ($route == 'customer.view')?'active':''}}">
+            <i class="nav-icon fas fa-file"></i>
+            <p>
+              PDF Generator
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>

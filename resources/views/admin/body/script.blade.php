@@ -24,5 +24,6 @@
 <script src="{{asset('backend/assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/select2/js/select2.full.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/kendo/kendo.all.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/kendo/pako_deflate.min.js')}}"></script>
 
 
