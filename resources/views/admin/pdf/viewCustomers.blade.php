@@ -71,6 +71,18 @@ use Carbon\Carbon;
                                                         data-toggle="modal" data-target="#viewBa{{$customer->id}}">
                                                         BA</span>
                                                     </button>
+                                                    <button type="button" class="btn btn-sm btn-secondary float-left"
+                                                        data-toggle="modal" data-target="#viewBa{{$customer->id}}">
+                                                        BA</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-secondary float-left"
+                                                        data-toggle="modal" data-target="#viewBa{{$customer->id}}">
+                                                        BA</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-secondary float-left"
+                                                        data-toggle="modal" data-target="#viewBa{{$customer->id}}">
+                                                        BA</span>
+                                                    </button>
                                                     <!-- <button type="button" class="btn btn-sm btn-secondary float-left"
                                                         data-toggle="modal" data-target="#viewDu{{$customer->id}}">
                                                         DU</span>
@@ -102,7 +114,7 @@ use Carbon\Carbon;
     </div>
     @foreach($allData as $key=>$customer)
     <div class="modal fade text-left" id="viewBa{{$customer->id}}">
-        <div class="modal-dialog modal-xl" id="downloadBa{{$customer->id}}">
+        <div class="modal-dialog modal-lg" id="downloadBa{{$customer->id}}">
             <div class="modal-content" id="printBa{{$customer->id}}">
                 <div class="modal-body" id="downloadKendo{{$customer->id}}">
                     <img src="{{url('uploads/pdfimages/static/ba.png')}}" style="height:60px; width:100%;">
