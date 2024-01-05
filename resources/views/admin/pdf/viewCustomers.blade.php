@@ -3,10 +3,25 @@
 @php
 use Carbon\Carbon;
 @endphp
-
 <style>
-@page { size: auto;  margin: 0mm; }
+    @page {
+        size: auto;
+        margin: 0mm;
+    }
+
+    @media print {
+        #viewBa {
+            display: block;
+        }
+    }
+    .table {
+    padding:0; 
+    margin:0;
+    cellpadding: 0; 
+    cellspacing: 0;
+    }
 </style>
+
 <body class="hold-transition sidebar-mini dark-mode">
     <div class="wrapper">
         <div class="content-wrapper">
@@ -35,15 +50,13 @@ use Carbon\Carbon;
                                     Register <span class="fa fa-plus"></span>
                                 </a>
                                 <!-- list of registered roles in table -->
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-bordered table-condensed table-striped">
                                     <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>Passport Number</th>
                                             <th>Full Name</th>
-                                            <th>View</th>
-                                            <th>Print</th>
-                                            <th>Download</th>
+                                            <th>View/Download</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,34 +68,13 @@ use Carbon\Carbon;
                                             <td class="text-center">
                                                 <div class="btn-group bg-success">
                                                     <button type="button" class="btn btn-sm btn-secondary float-left"
-                                                        data-toggle="modal"
-                                                        data-target="#viewBa{{$customer->id}}">
+                                                        data-toggle="modal" data-target="#viewBa{{$customer->id}}">
                                                         BA</span>
                                                     </button>
-                                                    <button type="button" class="btn btn-sm btn-secondary float-left"
-                                                        data-toggle="modal"
-                                                        data-target="#viewDu{{$customer->id}}">
+                                                    <!-- <button type="button" class="btn btn-sm btn-secondary float-left"
+                                                        data-toggle="modal" data-target="#viewDu{{$customer->id}}">
                                                         DU</span>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="btn-group bg-success">
-                                                    <button class="btn btn-sm btn-success" onclick="printReportBA()"><i>BA</i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-success" onclick="printReportDU()"><i>DU</i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="text-center">
-                                                <div class="btn-group bg-success">
-                                                    <a type="button" id="btnDownloadBa{{$customer->id}}" class="btn btn-sm btn-danger">
-                                                        <i>BA</i>
-                                                    </a>
-                                                    <a type="button" id="btnDownloadDu{{$customer->id}}" class="btn btn-sm btn-danger">
-                                                        <i>DU</i>
-                                                    </a>
+                                                    </button> -->
                                                 </div>
                                             </td>
                                         </tr>
@@ -93,9 +85,7 @@ use Carbon\Carbon;
                                             <th>No</th>
                                             <th>Passport Number</th>
                                             <th>Full Name</th>
-                                            <th>View</th>
-                                            <th>Print</th>
-                                            <th>Download</th>
+                                            <th>View/Download</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -114,34 +104,30 @@ use Carbon\Carbon;
     <div class="modal fade text-left" id="viewBa{{$customer->id}}">
         <div class="modal-dialog modal-xl" id="downloadBa{{$customer->id}}">
             <div class="modal-content" id="printBa{{$customer->id}}">
-                <div class="modal-header">
-                    <img src="{{url('uploads/pdfimages/static/ba.png')}}" style="height:120px; width:100%;">
-                </div>
-                <div class="modal-body">
+                <div class="modal-body" id="downloadKendo{{$customer->id}}">
+                    <img src="{{url('uploads/pdfimages/static/ba.png')}}" style="height:60px; width:100%;">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-3 text-center">
                             <img src="{{url('uploads/pdfimages/protraitimage/'.$customer->protraitimage)}}"
-                                style="height:150px; width:100%;" />
+                                style="height:120px; width:150px;" />
                         </div>
                         <div class="col-9">
-                            <h6 class="float-left">phone: {{$customer->phone}}
-                            </h6>
-                            <h4 class="text-danger float-right">REF:
-                            </h4>
-                            <table class="table table-bordered table-sm">
+                            <small class="float-left text-bold">PHONE:- {{$customer->phone}}</small>
+                            <small class="text-danger float-right">REF:</small>
+                            <table class="table table-bordered table-condensed table-condensed table-sm text-sm">
                                 <tr>
-                                    <td>POST APPLIED FOR</td>
+                                    <th>POST APPLIED FOR</th>
                                     <td>{{$customer->appliedfor}}</td>
                                     <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td>Post Applied For</td>
-                                    <td>{{$customer->appliedfor}}</td>
+                                    <th>MONTHLY SALARY</th>
+                                    <td>{{$customer->salary}}</td>
                                     <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td>Post Applied For</td>
-                                    <td>{{$customer->appliedfor}}</td>
+                                    <th>CONTRACT PERIOD</th>
+                                    <td>{{$customer->contactperiod}}</td>
                                     <td>arabic part</td>
                                 </tr>
                             </table>
@@ -149,10 +135,10 @@ use Carbon\Carbon;
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-sm">
+                            <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
-                                    <td>NAME IN FULL</td>
-                                    <td>{{$customer->fullname}}</td>
+                                    <th>NAME IN FULL</th>
+                                    <th>{{$customer->fullname}}</th>
                                     <td>arabic part</td>
                                 </tr>
                             </table>
@@ -160,177 +146,181 @@ use Carbon\Carbon;
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <h6>DETAILS OF APPLICATION</h6>
-                            <table class="table table-bordered table-condensed table-sm">
+                            <small>DETAILS OF APPLICATION</small>
+                            <table class="table table-bordered table-condensed table-condensed table-sm text-sm">
                                 <tr>
-                                    <td><small>NATIONALITY</small></td>
-                                    <td><small>ETHIOPIA</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <td><b>NATIONALITY</b></td>
+                                    <td>ETHIOPIA</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>RELEGION</small></td>
-                                    <td><small>{{$customer->relegion}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <td><b>RELEGION</b></td>
+                                    <td>{{$customer->relegion}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>DATE OF BIRTH</small></td>
-                                    <td><small>{{$customer->dateofbirth}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>DATE OF BIRTH</th>
+                                    <td>{{$customer->dateofbirth}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>AGE</small></td>
-                                    <td><small>{{ Carbon::parse($customer->dateofbirth)->age ?? 0 }}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>AGE</th>
+                                    <td>{{ Carbon::parse($customer->dateofbirth)->age ?? 0 }}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>PLACE OF BIRTH</small></td>
-                                    <td><small>{{$customer->place}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>PLACE OF BIRTH</th>
+                                    <td>{{$customer->place}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>LIVING TOWN</small></td>
-                                    <td><small>{{$customer->town}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>LIVING TOWN</th>
+                                    <td>{{$customer->town}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>MARITAL STATUS</small></td>
-                                    <td><small>{{$customer->maritalstatus}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>MARITAL STATUS</th>
+                                    <td>{{$customer->maritalstatus}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>NO. OF CHILDEREN</small></td>
-                                    <td><small>{{$customer->children}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>NO. OF CHILDEREN</th>
+                                    <td>{{$customer->children}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>WEIGHT</small></td>
-                                    <td><small>{{$customer->weight}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>WEIGHT</th>
+                                    <td>{{$customer->weight}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>HEIGHT</small></td>
-                                    <td><small>{{$customer->height}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>HEIGHT</th>
+                                    <td>{{$customer->height}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>COMPLEXION</small></td>
-                                    <td><small>{{$customer->complexion}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>COMPLEXION</th>
+                                    <td>{{$customer->complexion}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>EDUCATIONAL</small></td>
-                                    <td><small>{{$customer->education}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>EDUCATIONAL</th>
+                                    <td>{{$customer->education}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                             </table>
-                            <h6 class="float-left">KNOWLEDGE OF LANGUAGE</h6>
-                            <h6 class="float-right">arabic part</h6>
-                            <table class="table table-bordered table-sm">
+                            <small class="float-left">KNOWLEDGE OF LANGUAGE</small>
+                            <small class="float-right">arabic part</small>
+                            <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
-                                    <td>LANGUAGE</td>
-                                    <td>SPEAK</td>
-                                    <td>WRITE</td>
-                                    <td>READ</td>
+                                    <th>LANGUAGE</th>
+                                    <th>SPEAK</th>
+                                    <th>WRITE</th>
+                                    <th>READ</th>
                                 </tr>
                                 <tr>
-                                    <td>ARABIC</td>
+                                    <th>ARABIC</th>
                                     <td>{{$customer->arabics == 1?'YES':'NO'}}</td>
                                     <td>{{$customer->arabicw == 1?'YES':'NO'}}</td>
                                     <td>{{$customer->arabicr == 1?'YES':'NO'}}</td>
                                 </tr>
                                 <tr>
-                                    <td>ENGLISH</td>
+                                    <th>ENGLISH</th>
                                     <td>{{$customer->englishs == 1?'YES':'NO'}}</td>
                                     <td>{{$customer->englishw == 1?'YES':'NO'}}</td>
                                     <td>{{$customer->englishr == 1?'YES':'NO'}}</td>
                                 </tr>
                             </table>
-                            <h6 class="float-left">PREVIOUS EMPLOYEMENT BROAD</h6>
-                            <h6 class="float-right">arabic part</h6>
-                            <table class="table table-bordered table-sm">
+                            <small class="float-left">PREVIOUS EMPLOYEMENT BROAD</small>
+                            <small class="float-right">arabic part</small>
+                            <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
-                                    <td>COUNTRY</td>
+                                    <th>COUNTRY</th>
                                     <td>{{$customer->empcountry}}</td>
                                     <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td>PERIOD</td>
+                                    <th>PERIOD</th>
                                     <td>{{$customer->empperiod}}</td>
                                     <td>arabic part</td>
                                 </tr>
                             </table>
-                            <h6 class="float-left">WORK EXPERIANCE</h6>
-                            <h6 class="float-right">arabic part</h6>
-                            <table class="table table-bordered table-sm">
+                            <small class="float-left">WORK EXPERIANCE</small>
+                            <small class="float-right">arabic part</small>
+                            <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
-                                    <td>DRIVING</td>
+                                    <th>DRIVING</th>
                                     <td>{{$customer->driving == 1?'YES':'NO'}}</td>
                                     <td>arabicpart</td>
                                 </tr>
                                 <tr>
-                                    <td>COOKING</td>
+                                    <th>COOKING</th>
                                     <td>{{$customer->cooking == 1?'YES':'NO'}}</td>
                                     <td>arabicpart</td>
                                 </tr>
                                 <tr>
-                                    <td>CLEANING</td>
+                                    <th>CLEANING</th>
                                     <td>{{$customer->cleaning == 1?'YES':'NO'}}</td>
                                     <td>arabicpart</td>
                                 </tr>
                                 <tr>
-                                    <td>WASHING</td>
+                                    <th>WASHING</th>
                                     <td>{{$customer->washing == 1?'YES':'NO'}}</td>
                                     <td>arabicpart</td>
                                 </tr>
                                 <tr>
-                                    <td>BABY SITTING</td>
+                                    <th>BABY SITTING</th>
                                     <td>{{$customer->babyseat == 1?'YES':'NO'}}</td>
                                     <td>arabicpart</td>
                                 </tr>
                                 <tr>
-                                    <td>SEWING</td>
+                                    <th>SEWING</th>
                                     <td>{{$customer->sewing == 1?'YES':'NO'}}</td>
                                     <td>arabicpart</td>
                                 </tr>
-
                             </table>
-                            <h4>{{$customer->delala}}</h4>
-                            <h6>DATE ____________________________________________ arabic part</h6>
+                            <small>{{$customer->delala}}</small>
+                            <br>
+                            <small class="float-left">DATE _____________________________________ </small>
+                            <small class="float-right">arabic part</small>
                         </div>
                         <div class="col-6">
-                            <h6>PASSPORT DETAILS</h6>
-                            <table class="table table-bordered table-condensed table-sm">
+                            <small class="float-left">PASSPORT DETAILS</small>
+                            <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
-                                    <td><small><b>NUMBER</b></small></td>
-                                    <td><small>{{$customer->passportnumber}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>NUMBER</th>
+                                    <td>{{$customer->passportnumber}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>DATE OF ISSUE</small></td>
-                                    <td><small>{{$customer->pdate}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>DATE OF ISSUE</th>
+                                    <td>{{$customer->pdate}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>PLACE OF ISSUE</small></td>
-                                    <td><small>{{$customer->pplace}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>PLACE OF ISSUE</th>
+                                    <td>{{$customer->pplace}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                                 <tr>
-                                    <td><small>DATE OF ESP.</small></td>
-                                    <td><small>{{$customer->pexpiry}}</small></td>
-                                    <td><small>arabic part</small></td>
+                                    <th>DATE OF ESP.</th>
+                                    <td>{{$customer->pexpiry}}</td>
+                                    <td>arabic part</td>
                                 </tr>
                             </table>
                             <img src="{{url('uploads/pdfimages/fullimage/'.$customer->fullimage)}}"
-                                style="height:800px; width:100%; border: 1px;" alt="">
+                                style="height:700px; width:100%; border: 1px;" alt="">
                         </div>
                     </div>
-                    <div class="row bg-blue ">
-                        <div class="col-12 text-center">
-                            <h2 class="text-orange">BADAWOOD RECRUITING OFFICE</h2>
-                        </div>
-
+                    <img src="{{url('uploads/pdfimages/static/baFooter.png')}}" style="height:30px; width:100%;">
+                    <div class="row mt-5">
+                        <img src="{{url('uploads/pdfimages/passportimage/'.$customer->passportimage)}}"
+                            style="height:800px; width:100%;">
                     </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <!-- <button id="btnDownloadBaModal{{$customer->id}}" class="btn btn-secondary">Download</button> -->
+                    <button onclick='saveToPDF{{$customer->id}}()' class="btn btn-success">Save to PDF</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -353,6 +343,9 @@ use Carbon\Carbon;
     </div>
     @endforeach
     <!-- ./wrapper -->
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+
     <script>
         $(function () {
             $("#example1").DataTable({
@@ -363,16 +356,31 @@ use Carbon\Carbon;
     </script>
     <script>
         @foreach($allData as $key=> $customer)
-        $("#btnDownloadBa{{$customer->id}}").click(function () {
+        function saveToPDF{{$customer->id}}() {
+            window.scrollTo(0, 0);
+            var contentToSave = document.getElementById('downloadKendo{{$customer->id}}');
+            html2pdf(contentToSave, {
+                filename: '{{$customer->fullname}} BA.pdf',
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            });
+        }
+        @endforeach
+    </script>
+
+    <script>
+
+        @foreach($allData as $key=> $customer)
+        $("#btnDownloadBaModal{{$customer->id}}").click(function () {
             // Convert the DOM element to a drawing using kendo.drawing.drawDOM
-            $('#viewBa{{$customer->id}}').addClass('show');
+            // $('#downloadKendo{{$customer->id}}').addClass('show');
             // console.log(document.getElementById("printBa{{$customer->id}}"));
-            kendo.drawing.drawDOM($('#viewBa{{$customer->id}}'))
+            kendo.drawing.drawDOM($('#downloadKendo{{$customer->id}}'))
                 .then(function (group) {
                     // Render the result as a PDF file
                     return kendo.drawing.exportPDF(group, {
-                        paperSize: "A4",
-                        margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+                        paperSize: "a4",
+                        // margin: { left: "1cm", top: "1cm", right: "1cm", bottom: "1cm" }
+                        forcePageBreak: ".page-break"
                     });
                 })
                 .done(function (data) {
@@ -386,10 +394,10 @@ use Carbon\Carbon;
         $("#btnDownloadDu{{$customer->id}}").click(function () {
             // Convert the DOM element to a drawing using kendo.drawing.drawDOM
             // $("#downloadDu{{$customer->id}}").show();
-            kendo.drawing.drawDOM($(".downloadDu{{$customer->id}}").modal(), {forcePageBreak: ".page-break" })
+            kendo.drawing.drawDOM($(".downloadDu{{$customer->id}}").modal(), { forcePageBreak: ".page-break" })
                 .then(function (group) {
                     // Render the result as a PDF file
-                    
+
                     return kendo.drawing.exportPDF(group, {
                         paperSize: "auto",
                         multiPage: true,
@@ -407,22 +415,23 @@ use Carbon\Carbon;
         @endforeach
     </script>
     <script>
+
         @foreach($allData as $key=> $customer)
-        function printReportBA(){
-            var printData =  document.getElementById("printBa{{$customer->id}}").innerHTML
+        function printReportBA() {
+            var printData = document.getElementById("printBa{{$customer->id}}").innerHTML
             var originalContents = document.body.innerHTML
             document.body.innerHTML = printData
             window.print();
             document.body.innerHTML = originalContents;
         }
-        function printReportDU(){
-            var printData =  document.getElementById("printDu{{$customer->id}}").innerHTML
+        function printReportDU() {
+            var printData = document.getElementById("printDu{{$customer->id}}").innerHTML
             var originalContents = document.body.innerHTML
             document.body.innerHTML = printData
             window.print();
             document.body.innerHTML = originalContents;
         }
         @endforeach
-</script>
+    </script>
 </body>
 @endsection
