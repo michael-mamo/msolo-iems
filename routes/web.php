@@ -198,7 +198,10 @@ Route::prefix('help')->group(function(){
 Route::get('developer/view', [DeveloperController::class, 'ViewDeveloper'])->name('developer.view');
 Route::POST('pdfGenerator/register', [PDFGeneratorController::class, 'RegsterCustomer'])->name('customer.register');
 Route::get('pdfGenerator/customers', [PDFGeneratorController::class, 'ViewCustomers'])->name('customer.view');
-Route::get('pdfGenerator/view', [PDFGeneratorController::class, 'ViewPDFController'])->name('customer.add');
+Route::get('pdfGenerator/add', [PDFGeneratorController::class, 'ViewPDFGenerator'])->name('customer.add');
+Route::get('pdfGenerator/edit/{id}', [PDFGeneratorController::class, 'EditCustomer'])->name('customer.edit');
+Route::POST('pdfGenerator/update/{id}', [PDFGeneratorController::class, 'UpdateCustomer'])->name('customer.update');
+Route::get('pdfGenerator/delete/{id}', [PDFGeneratorController::class, 'DeleteCustomer'])->name('customer.delete');
 Route::get('profile/view', [ProfileController::class, 'ViewProfile'])->name('profile.view');
 Route::POST('profile/edit', [ProfileController::class, 'EditProfile'])->name('profile.edit');
 Route::post('profile/changePassword/{id}', [ProfileController::class, 'ChangePassword'])->name('profile.changepassword');
