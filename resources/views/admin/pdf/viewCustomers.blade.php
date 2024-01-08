@@ -157,17 +157,17 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>POST APPLIED FOR</th>
                                     <td>{{$customer->appliedfor}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الوظيفة التي تم التقدم لها</td>
                                 </tr>
                                 <tr>
                                     <th>MONTHLY SALARY</th>
                                     <td>{{$customer->salary}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الراتب الشهري</td>
                                 </tr>
                                 <tr>
                                     <th>CONTRACT PERIOD</th>
                                     <td>{{$customer->contactperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مدة العقد</td>
                                 </tr>
                             </table>
                         </div>
@@ -178,7 +178,7 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>NAME IN FULL</th>
                                     <th>{{$customer->fullname}}</th>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الاسم بالكامل</td>
                                 </tr>
                             </table>
                         </div>
@@ -190,66 +190,66 @@ use Carbon\Carbon;
                                 <tr>
                                     <td><b>NATIONALITY</b></td>
                                     <td>ETHIOPIA</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">جنسية</td>
                                 </tr>
                                 <tr>
                                     <td><b>RELEGION</b></td>
                                     <td>{{$customer->relegion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الانزلاق</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF BIRTH</th>
                                     <td>{{$customer->dateofbirth}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>AGE</th>
                                     <td>{{ Carbon::parse($customer->dateofbirth)->age ?? 0 }}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">عمر</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF BIRTH</th>
                                     <td>{{$customer->place}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>LIVING TOWN</th>
                                     <td>{{$customer->town}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ليفينغ تاون</td>
                                 </tr>
                                 <tr>
                                     <th>MARITAL STATUS</th>
                                     <td>{{$customer->maritalstatus}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الحالة الاجتماعية</td>
                                 </tr>
                                 <tr>
                                     <th>NO. OF CHILDEREN</th>
                                     <td>{{$customer->children}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم شيلدرين</td>
                                 </tr>
                                 <tr>
                                     <th>WEIGHT</th>
                                     <td>{{$customer->weight}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ثقل</td>
                                 </tr>
                                 <tr>
                                     <th>HEIGHT</th>
                                     <td>{{$customer->height}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ارتفاع</td>
                                 </tr>
                                 <tr>
                                     <th>COMPLEXION</th>
                                     <td>{{$customer->complexion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بشره</td>
                                 </tr>
                                 <tr>
                                     <th>EDUCATIONAL</th>
                                     <td>{{$customer->education}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تربوي</td>
                                 </tr>
                             </table>
                             <small class="float-left">KNOWLEDGE OF LANGUAGE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">معرفة اللغة</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>LANGUAGE</th>
@@ -271,80 +271,81 @@ use Carbon\Carbon;
                                 </tr>
                             </table>
                             <small class="float-left">PREVIOUS EMPLOYEMENT BROAD</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">التوظيف السابق واسع</small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>COUNTRY</th>
                                     <td>{{$customer->empcountry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بلد</td>
                                 </tr>
                                 <tr>
                                     <th>PERIOD</th>
                                     <td>{{$customer->empperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مرحلة زمنية</td>
                                 </tr>
                             </table>
                             <small class="float-left">WORK EXPERIANCE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right"></small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>DRIVING</th>
                                     <td>{{$customer->driving == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">سوق</td>
                                 </tr>
                                 <tr>
                                     <th>COOKING</th>
                                     <td>{{$customer->cooking == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">طبخ</td>
                                 </tr>
                                 <tr>
                                     <th>CLEANING</th>
                                     <td>{{$customer->cleaning == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">تنظيف</td>
                                 </tr>
                                 <tr>
                                     <th>WASHING</th>
                                     <td>{{$customer->washing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">غسل</td>
                                 </tr>
                                 <tr>
                                     <th>BABY SITTING</th>
                                     <td>{{$customer->babyseat == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">مجالسة الأطفال</td>
                                 </tr>
                                 <tr>
                                     <th>SEWING</th>
                                     <td>{{$customer->sewing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">الخياطه</td>
                                 </tr>
                             </table>
                             <small>{{$customer->delala}}</small>
                             <br>
                             <small class="float-left">DATE _____________________________________ </small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">تاريخ</small>
                         </div>
                         <div class="col-6">
                             <small class="float-left">PASSPORT DETAILS</small>
+                            <small class="float-right">تفاصيل جواز السفر</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>NUMBER</th>
                                     <td>{{$customer->passportnumber}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF ISSUE</th>
                                     <td>{{$customer->pdate}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الإصدار</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF ISSUE</th>
                                     <td>{{$customer->pplace}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الإصدار</td>
                                 </tr>
                                 <tr>
-                                    <th>DATE OF ESP.</th>
+                                    <th>DATE OF EXP.</th>
                                     <td>{{$customer->pexpiry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ انتهاء الصلاحية</td>
                                 </tr>
                             </table>
                             <img src="{{url('uploads/pdfimages/fullimage/'.$customer->fullimage)}}"
@@ -383,17 +384,17 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>POST APPLIED FOR</th>
                                     <td>{{$customer->appliedfor}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الوظيفة التي تم التقدم لها</td>
                                 </tr>
                                 <tr>
                                     <th>MONTHLY SALARY</th>
                                     <td>{{$customer->salary}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الراتب الشهري</td>
                                 </tr>
                                 <tr>
                                     <th>CONTRACT PERIOD</th>
                                     <td>{{$customer->contactperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مدة العقد</td>
                                 </tr>
                             </table>
                         </div>
@@ -404,7 +405,7 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>NAME IN FULL</th>
                                     <th>{{$customer->fullname}}</th>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الاسم بالكامل</td>
                                 </tr>
                             </table>
                         </div>
@@ -416,66 +417,66 @@ use Carbon\Carbon;
                                 <tr>
                                     <td><b>NATIONALITY</b></td>
                                     <td>ETHIOPIA</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">جنسية</td>
                                 </tr>
                                 <tr>
                                     <td><b>RELEGION</b></td>
                                     <td>{{$customer->relegion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الانزلاق</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF BIRTH</th>
                                     <td>{{$customer->dateofbirth}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>AGE</th>
                                     <td>{{ Carbon::parse($customer->dateofbirth)->age ?? 0 }}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">عمر</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF BIRTH</th>
                                     <td>{{$customer->place}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>LIVING TOWN</th>
                                     <td>{{$customer->town}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ليفينغ تاون</td>
                                 </tr>
                                 <tr>
                                     <th>MARITAL STATUS</th>
                                     <td>{{$customer->maritalstatus}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الحالة الاجتماعية</td>
                                 </tr>
                                 <tr>
                                     <th>NO. OF CHILDEREN</th>
                                     <td>{{$customer->children}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم شيلدرين</td>
                                 </tr>
                                 <tr>
                                     <th>WEIGHT</th>
                                     <td>{{$customer->weight}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ثقل</td>
                                 </tr>
                                 <tr>
                                     <th>HEIGHT</th>
                                     <td>{{$customer->height}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ارتفاع</td>
                                 </tr>
                                 <tr>
                                     <th>COMPLEXION</th>
                                     <td>{{$customer->complexion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بشره</td>
                                 </tr>
                                 <tr>
                                     <th>EDUCATIONAL</th>
                                     <td>{{$customer->education}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تربوي</td>
                                 </tr>
                             </table>
                             <small class="float-left">KNOWLEDGE OF LANGUAGE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">معرفة اللغة</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>LANGUAGE</th>
@@ -497,80 +498,81 @@ use Carbon\Carbon;
                                 </tr>
                             </table>
                             <small class="float-left">PREVIOUS EMPLOYEMENT BROAD</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">التوظيف السابق واسع</small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>COUNTRY</th>
                                     <td>{{$customer->empcountry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بلد</td>
                                 </tr>
                                 <tr>
                                     <th>PERIOD</th>
                                     <td>{{$customer->empperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مرحلة زمنية</td>
                                 </tr>
                             </table>
                             <small class="float-left">WORK EXPERIANCE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right"></small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>DRIVING</th>
                                     <td>{{$customer->driving == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">سوق</td>
                                 </tr>
                                 <tr>
                                     <th>COOKING</th>
                                     <td>{{$customer->cooking == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">طبخ</td>
                                 </tr>
                                 <tr>
                                     <th>CLEANING</th>
                                     <td>{{$customer->cleaning == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">تنظيف</td>
                                 </tr>
                                 <tr>
                                     <th>WASHING</th>
                                     <td>{{$customer->washing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">غسل</td>
                                 </tr>
                                 <tr>
                                     <th>BABY SITTING</th>
                                     <td>{{$customer->babyseat == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">مجالسة الأطفال</td>
                                 </tr>
                                 <tr>
                                     <th>SEWING</th>
                                     <td>{{$customer->sewing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">الخياطه</td>
                                 </tr>
                             </table>
                             <small>{{$customer->delala}}</small>
                             <br>
                             <small class="float-left">DATE _____________________________________ </small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">تاريخ</small>
                         </div>
                         <div class="col-6">
                             <small class="float-left">PASSPORT DETAILS</small>
+                            <small class="float-right">تفاصيل جواز السفر</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>NUMBER</th>
                                     <td>{{$customer->passportnumber}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF ISSUE</th>
                                     <td>{{$customer->pdate}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الإصدار</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF ISSUE</th>
                                     <td>{{$customer->pplace}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الإصدار</td>
                                 </tr>
                                 <tr>
-                                    <th>DATE OF ESP.</th>
+                                    <th>DATE OF EXP.</th>
                                     <td>{{$customer->pexpiry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ انتهاء الصلاحية</td>
                                 </tr>
                             </table>
                             <img src="{{url('uploads/pdfimages/fullimage/'.$customer->fullimage)}}"
@@ -609,17 +611,17 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>POST APPLIED FOR</th>
                                     <td>{{$customer->appliedfor}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الوظيفة التي تم التقدم لها</td>
                                 </tr>
                                 <tr>
                                     <th>MONTHLY SALARY</th>
                                     <td>{{$customer->salary}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الراتب الشهري</td>
                                 </tr>
                                 <tr>
                                     <th>CONTRACT PERIOD</th>
                                     <td>{{$customer->contactperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مدة العقد</td>
                                 </tr>
                             </table>
                         </div>
@@ -630,7 +632,7 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>NAME IN FULL</th>
                                     <th>{{$customer->fullname}}</th>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الاسم بالكامل</td>
                                 </tr>
                             </table>
                         </div>
@@ -642,66 +644,66 @@ use Carbon\Carbon;
                                 <tr>
                                     <td><b>NATIONALITY</b></td>
                                     <td>ETHIOPIA</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">جنسية</td>
                                 </tr>
                                 <tr>
                                     <td><b>RELEGION</b></td>
                                     <td>{{$customer->relegion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الانزلاق</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF BIRTH</th>
                                     <td>{{$customer->dateofbirth}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>AGE</th>
                                     <td>{{ Carbon::parse($customer->dateofbirth)->age ?? 0 }}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">عمر</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF BIRTH</th>
                                     <td>{{$customer->place}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>LIVING TOWN</th>
                                     <td>{{$customer->town}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ليفينغ تاون</td>
                                 </tr>
                                 <tr>
                                     <th>MARITAL STATUS</th>
                                     <td>{{$customer->maritalstatus}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الحالة الاجتماعية</td>
                                 </tr>
                                 <tr>
                                     <th>NO. OF CHILDEREN</th>
                                     <td>{{$customer->children}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم شيلدرين</td>
                                 </tr>
                                 <tr>
                                     <th>WEIGHT</th>
                                     <td>{{$customer->weight}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ثقل</td>
                                 </tr>
                                 <tr>
                                     <th>HEIGHT</th>
                                     <td>{{$customer->height}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ارتفاع</td>
                                 </tr>
                                 <tr>
                                     <th>COMPLEXION</th>
                                     <td>{{$customer->complexion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بشره</td>
                                 </tr>
                                 <tr>
                                     <th>EDUCATIONAL</th>
                                     <td>{{$customer->education}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تربوي</td>
                                 </tr>
                             </table>
                             <small class="float-left">KNOWLEDGE OF LANGUAGE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">معرفة اللغة</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>LANGUAGE</th>
@@ -723,80 +725,81 @@ use Carbon\Carbon;
                                 </tr>
                             </table>
                             <small class="float-left">PREVIOUS EMPLOYEMENT BROAD</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">التوظيف السابق واسع</small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>COUNTRY</th>
                                     <td>{{$customer->empcountry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بلد</td>
                                 </tr>
                                 <tr>
                                     <th>PERIOD</th>
                                     <td>{{$customer->empperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مرحلة زمنية</td>
                                 </tr>
                             </table>
                             <small class="float-left">WORK EXPERIANCE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right"></small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>DRIVING</th>
                                     <td>{{$customer->driving == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">سوق</td>
                                 </tr>
                                 <tr>
                                     <th>COOKING</th>
                                     <td>{{$customer->cooking == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">طبخ</td>
                                 </tr>
                                 <tr>
                                     <th>CLEANING</th>
                                     <td>{{$customer->cleaning == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">تنظيف</td>
                                 </tr>
                                 <tr>
                                     <th>WASHING</th>
                                     <td>{{$customer->washing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">غسل</td>
                                 </tr>
                                 <tr>
                                     <th>BABY SITTING</th>
                                     <td>{{$customer->babyseat == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">مجالسة الأطفال</td>
                                 </tr>
                                 <tr>
                                     <th>SEWING</th>
                                     <td>{{$customer->sewing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">الخياطه</td>
                                 </tr>
                             </table>
                             <small>{{$customer->delala}}</small>
                             <br>
                             <small class="float-left">DATE _____________________________________ </small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">تاريخ</small>
                         </div>
                         <div class="col-6">
                             <small class="float-left">PASSPORT DETAILS</small>
+                            <small class="float-right">تفاصيل جواز السفر</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>NUMBER</th>
                                     <td>{{$customer->passportnumber}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF ISSUE</th>
                                     <td>{{$customer->pdate}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الإصدار</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF ISSUE</th>
                                     <td>{{$customer->pplace}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الإصدار</td>
                                 </tr>
                                 <tr>
-                                    <th>DATE OF ESP.</th>
+                                    <th>DATE OF EXP.</th>
                                     <td>{{$customer->pexpiry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ انتهاء الصلاحية</td>
                                 </tr>
                             </table>
                             <img src="{{url('uploads/pdfimages/fullimage/'.$customer->fullimage)}}"
@@ -835,17 +838,17 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>POST APPLIED FOR</th>
                                     <td>{{$customer->appliedfor}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الوظيفة التي تم التقدم لها</td>
                                 </tr>
                                 <tr>
                                     <th>MONTHLY SALARY</th>
                                     <td>{{$customer->salary}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الراتب الشهري</td>
                                 </tr>
                                 <tr>
                                     <th>CONTRACT PERIOD</th>
                                     <td>{{$customer->contactperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مدة العقد</td>
                                 </tr>
                             </table>
                         </div>
@@ -856,7 +859,7 @@ use Carbon\Carbon;
                                 <tr>
                                     <th>NAME IN FULL</th>
                                     <th>{{$customer->fullname}}</th>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الاسم بالكامل</td>
                                 </tr>
                             </table>
                         </div>
@@ -868,66 +871,66 @@ use Carbon\Carbon;
                                 <tr>
                                     <td><b>NATIONALITY</b></td>
                                     <td>ETHIOPIA</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">جنسية</td>
                                 </tr>
                                 <tr>
                                     <td><b>RELEGION</b></td>
                                     <td>{{$customer->relegion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الانزلاق</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF BIRTH</th>
                                     <td>{{$customer->dateofbirth}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>AGE</th>
                                     <td>{{ Carbon::parse($customer->dateofbirth)->age ?? 0 }}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">عمر</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF BIRTH</th>
                                     <td>{{$customer->place}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الميلاد</td>
                                 </tr>
                                 <tr>
                                     <th>LIVING TOWN</th>
                                     <td>{{$customer->town}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ليفينغ تاون</td>
                                 </tr>
                                 <tr>
                                     <th>MARITAL STATUS</th>
                                     <td>{{$customer->maritalstatus}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">الحالة الاجتماعية</td>
                                 </tr>
                                 <tr>
                                     <th>NO. OF CHILDEREN</th>
                                     <td>{{$customer->children}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم شيلدرين</td>
                                 </tr>
                                 <tr>
                                     <th>WEIGHT</th>
                                     <td>{{$customer->weight}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ثقل</td>
                                 </tr>
                                 <tr>
                                     <th>HEIGHT</th>
                                     <td>{{$customer->height}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">ارتفاع</td>
                                 </tr>
                                 <tr>
                                     <th>COMPLEXION</th>
                                     <td>{{$customer->complexion}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بشره</td>
                                 </tr>
                                 <tr>
                                     <th>EDUCATIONAL</th>
                                     <td>{{$customer->education}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تربوي</td>
                                 </tr>
                             </table>
                             <small class="float-left">KNOWLEDGE OF LANGUAGE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">معرفة اللغة</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>LANGUAGE</th>
@@ -949,80 +952,81 @@ use Carbon\Carbon;
                                 </tr>
                             </table>
                             <small class="float-left">PREVIOUS EMPLOYEMENT BROAD</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">التوظيف السابق واسع</small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>COUNTRY</th>
                                     <td>{{$customer->empcountry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">بلد</td>
                                 </tr>
                                 <tr>
                                     <th>PERIOD</th>
                                     <td>{{$customer->empperiod}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مرحلة زمنية</td>
                                 </tr>
                             </table>
                             <small class="float-left">WORK EXPERIANCE</small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right"></small>
                             <table class="table table-condensed table-bordered table-sm text-sm">
                                 <tr>
                                     <th>DRIVING</th>
                                     <td>{{$customer->driving == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">سوق</td>
                                 </tr>
                                 <tr>
                                     <th>COOKING</th>
                                     <td>{{$customer->cooking == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">طبخ</td>
                                 </tr>
                                 <tr>
                                     <th>CLEANING</th>
                                     <td>{{$customer->cleaning == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">تنظيف</td>
                                 </tr>
                                 <tr>
                                     <th>WASHING</th>
                                     <td>{{$customer->washing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">غسل</td>
                                 </tr>
                                 <tr>
                                     <th>BABY SITTING</th>
                                     <td>{{$customer->babyseat == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">مجالسة الأطفال</td>
                                 </tr>
                                 <tr>
                                     <th>SEWING</th>
                                     <td>{{$customer->sewing == 1?'YES':'NO'}}</td>
-                                    <td>arabicpart</td>
+                                    <td class="text-right">الخياطه</td>
                                 </tr>
                             </table>
                             <small>{{$customer->delala}}</small>
                             <br>
                             <small class="float-left">DATE _____________________________________ </small>
-                            <small class="float-right">arabic part</small>
+                            <small class="float-right" class="text-right">تاريخ</small>
                         </div>
                         <div class="col-6">
                             <small class="float-left">PASSPORT DETAILS</small>
+                            <small class="float-right">تفاصيل جواز السفر</small>
                             <table class="table table-bordered table-condensed table-sm text-sm">
                                 <tr>
                                     <th>NUMBER</th>
                                     <td>{{$customer->passportnumber}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">رقم</td>
                                 </tr>
                                 <tr>
                                     <th>DATE OF ISSUE</th>
                                     <td>{{$customer->pdate}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ الإصدار</td>
                                 </tr>
                                 <tr>
                                     <th>PLACE OF ISSUE</th>
                                     <td>{{$customer->pplace}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">مكان الإصدار</td>
                                 </tr>
                                 <tr>
-                                    <th>DATE OF ESP.</th>
+                                    <th>DATE OF EXP.</th>
                                     <td>{{$customer->pexpiry}}</td>
-                                    <td>arabic part</td>
+                                    <td class="text-right">تاريخ انتهاء الصلاحية</td>
                                 </tr>
                             </table>
                             <img src="{{url('uploads/pdfimages/fullimage/'.$customer->fullimage)}}"
